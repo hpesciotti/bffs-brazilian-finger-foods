@@ -28,6 +28,10 @@ class DietaryCategory(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Dietary Category"
+        verbose_name_plural = "Dietary Categories"
+
 class Allergens(models.Model):
     """
     Similarly to dietary categories, this model maintains the allergens. 
@@ -40,7 +44,11 @@ class Allergens(models.Model):
     def __str__(self):
         return self.name
 
-# Main Product model 
+    class Meta:
+        verbose_name = "Allergen"
+        verbose_name_plural = "Allergens"
+
+# Main Product model
 class Product(models.Model):
     """
     Establishes the products to be sold by the website as part of its catalogue. 
@@ -66,7 +74,11 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-# Batch model 
+    class Meta:
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
+
+# Batch model
 class Batch(models.Model):
     """
     This model establishes the parameters for creating a batch of an
@@ -90,3 +102,6 @@ class Batch(models.Model):
 
     class Meta:
         ordering = ["expiry_date"]
+        verbose_name = "Batch"
+        verbose_name_plural = "Batches"
+    

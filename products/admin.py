@@ -8,13 +8,14 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'cooking_process')
     list_filter = ('cooking_process', 'dietary_categories', 'allergens')
     search_fields = ('name', 'description', 'dietary_info')
-    filter_horizontal = ('dietary_categories', 'allergens')  # Para facilitar a seleção de M2M
+    filter_horizontal = ('dietary_categories', 'allergens')
     ordering = ('name',)
 
 
 @admin.register(Batch)
 class BatchAdmin(admin.ModelAdmin):
-    list_display = ('product', 'batch_number', 'expiry_date', 'quantity', 'offer', 'discount_percentage')
+    list_display = ('product', 'batch_number', 'expiry_date', 'quantity', 'offer',
+     'discount_percentage')
     list_filter = ('expiry_date', 'offer')
     search_fields = ('batch_number', 'product__name')
     ordering = ('expiry_date',)
