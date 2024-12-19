@@ -12,7 +12,6 @@ OFFER_CHOICES = [
     (2, "Discount"),
 ]
 
-
 # Part of Product model dietary_categories field
 class DietaryCategory(models.Model):
     """
@@ -104,4 +103,3 @@ class Batch(models.Model):
         ordering = ["expiry_date"]
         verbose_name = "Batch"
         verbose_name_plural = "Batches"
-    
