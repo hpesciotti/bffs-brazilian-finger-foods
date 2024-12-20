@@ -3,56 +3,57 @@
 
 {% block page_header %}
 <div class="container header-container">
-    <div class="row">
-        <div class="col">
+  <div class="row">
+    <div class="col">
 
-        </div>
     </div>
+  </div>
 </div>
 {% endblock %}
 
 {% block content %}
-<div class="container h-50 w-100">
-    <div class="row">
-        <div class="col-12 mb-1">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="/media/coxinha_2_wide.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/media/esfirra_2_wide.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/media/pao_de_queijo_wide.jpg" class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
+<div class="container-fluid w-100 px-0 mx-0">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
     </div>
+    <div class="carousel-inner 100vw">
+      <div class="carousel-item active">
+        <img src="/media/slide_1_pao_de_queijo_wide.JPG" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/media/slide_2_coxinha_wide.JPG" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/media/slide_3_esfira_wide.JPG" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </div>
 
 {% block postloadjs %}
-  <script>
-    var myCarousel = document.querySelector('#carouselExample');
-    var carousel = new bootstrap.Carousel(myCarousel, {
-      interval: 2000,  
-      wrap: true
-    });
-  </script>
+<script>
+  var myCarousel = document.querySelector('#carouselExample');
+  var carousel = new bootstrap.Carousel(myCarousel, {
+    interval: 2000,
+    wrap: true
+  });
+</script>
 {% endblock %}
 
 {% endblock %}
