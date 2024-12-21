@@ -4,6 +4,7 @@ from django.db import models
 COOKING_PROCESS_CHOICES = [
     (1, "Baked"),
     (2, "Fried"),
+    (3, "Fried or Baked"), # alteração
 ]
 
 # Options for batch model
@@ -33,11 +34,12 @@ class DietaryCategory(models.Model):
 
 # Main Model
 class Product(models.Model):
-    product_id = models.CharField(max_length=100, unique=True, primary_key=True)
-    friendly_name = models.CharField(max_length=255)
+    product_id = models.AutoField(primary_key=True)
     name = models.CharField(
-        max_length=255,
-        help_text="Enter the name in lowercase, separated by underscores.")
+        max_length=100, unique=True,
+        help_text="Enter the name in lowercase, separated by underscores.") # alteração
+    full_name = models.CharField(max_length=255) # alteração
+    short_widget_name = models.CharField(max_length=255) # alteração
     dietary_categories = models.ManyToManyField("DietaryCategory",
      related_name="products")
     energy_kj = models.DecimalField(max_digits=7, decimal_places=2)
@@ -47,7 +49,6 @@ class Product(models.Model):
     carbohydrates = models.DecimalField(max_digits=5, decimal_places=2)
     sugars = models.DecimalField(max_digits=5, decimal_places=2)
     protein = models.DecimalField(max_digits=5, decimal_places=2)
-    salt = models.DecimalField(max_digits=5, decimal_places=2)
     sodium = models.DecimalField(max_digits=5, decimal_places=2)
     fiber = models.DecimalField(max_digits=5, decimal_places=2)
     cooking_process = models.IntegerField(choices=COOKING_PROCESS_CHOICES,
@@ -57,13 +58,18 @@ class Product(models.Model):
         help_text="Enter allergens separated by commas. Example: Dairy, Eggs, Nuts",
     )
     description = models.TextField()
+    ingredients = models.TextField() # alteração
     price = models.DecimalField(max_digits=6, decimal_places=2)
     best_seller = models.BooleanField(default=False)
-    image = models.ImageField(upload_to="products/", blank=True, null=True)
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
+    image_large = models.ImageField(upload_to="products/large/",
+     blank=True, null=True) # alteração
+    image_large_url = models.URLField(max_length=1024, null=True, blank=True) # alteração
+    image_widget = models.ImageField(upload_to="products/widgets/",
+     blank=True, null=True) # alteração
+    image_widget_url = models.URLField(max_length=1024, null=True, blank=True) # alteração
 
     def __str__(self):
-        return self.friendly_name
+        return self.short_widget_name # alteração
 
     class Meta:
         verbose_name = "Product"
