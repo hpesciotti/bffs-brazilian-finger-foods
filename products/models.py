@@ -49,7 +49,7 @@ class Product(models.Model):
     carbohydrates = models.DecimalField(max_digits=5, decimal_places=2)
     sugars = models.DecimalField(max_digits=5, decimal_places=2)
     protein = models.DecimalField(max_digits=5, decimal_places=2)
-    sodium = models.DecimalField(max_digits=5, decimal_places=2)
+    salt = models.DecimalField(max_digits=5, decimal_places=2)
     fiber = models.DecimalField(max_digits=5, decimal_places=2)
     cooking_process = models.IntegerField(choices=COOKING_PROCESS_CHOICES,
      default=1)
