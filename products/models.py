@@ -31,47 +31,39 @@ class DietaryCategory(models.Model):
         verbose_name = "Dietary Category"
         verbose_name_plural = "Dietary Categories"
 
-class Allergens(models.Model):
-    """
-    Similarly to dietary categories, this model maintains the allergens. 
-    In the same manner, more than one allergen can be assigned to 
-    a product (many-to-many relationship).
-    """
-    name = models.CharField(max_length=100, unique=True)
-    description = models.TextField(blank=True, null=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Allergen"
-        verbose_name_plural = "Allergens"
-
-# Main Product model
+# Main Model
 class Product(models.Model):
-    """
-    Establishes the products to be sold by the website as part of its catalogue. 
-    Products are unique, and quantities and expiry dates for stock functions 
-    are handled by the model Batch. Includes the basic information offered 
-    to customers, such as dietary information, allergens, cooking process 
-    and other relevant details for filtering and display.
-    """
-    name = models.CharField(max_length=255, unique=True)
-    dietary_categories = models.ManyToManyField(
-        DietaryCategory, blank=True, related_name="products")
-    dietary_info = models.TextField(blank=True, null=True)
-    cooking_process = models.IntegerField(
-        choices=COOKING_PROCESS_CHOICES, default=1)
-    allergens = models.ManyToManyField(
-        Allergens, blank=True, related_name="products")
+    product_id = models.CharField(max_length=100, unique=True, primary_key=True)
+    friendly_name = models.CharField(max_length=255)
+    name = models.CharField(
+        max_length=255,
+        help_text="Enter the name in lowercase, separated by underscores.")
+    dietary_categories = models.ManyToManyField("DietaryCategory",
+     related_name="products")
+    energy_kj = models.DecimalField(max_digits=7, decimal_places=2)
+    energy_kcal = models.DecimalField(max_digits=7, decimal_places=2)
+    fat = models.DecimalField(max_digits=5, decimal_places=2)
+    saturated_fat = models.DecimalField(max_digits=5, decimal_places=2)
+    carbohydrates = models.DecimalField(max_digits=5, decimal_places=2)
+    sugars = models.DecimalField(max_digits=5, decimal_places=2)
+    protein = models.DecimalField(max_digits=5, decimal_places=2)
+    salt = models.DecimalField(max_digits=5, decimal_places=2)
+    sodium = models.DecimalField(max_digits=5, decimal_places=2)
+    fiber = models.DecimalField(max_digits=5, decimal_places=2)
+    cooking_process = models.IntegerField(choices=COOKING_PROCESS_CHOICES,
+     default=1)
+    allergens = models.CharField(
+        max_length=255,
+        help_text="Enter allergens separated by commas. Example: Dairy, Eggs, Nuts",
+    )
     description = models.TextField()
-    price = models.DecimalField(
-        max_digits=6, decimal_places=2)
-    image = models.ImageField(
-        upload_to="products/images/", blank=True, null=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    best_seller = models.BooleanField(default=False)
+    image = models.ImageField(upload_to="products/", blank=True, null=True)
+    image_url = models.URLField(max_length=1024, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.friendly_name
 
     class Meta:
         verbose_name = "Product"
@@ -87,7 +79,8 @@ class Batch(models.Model):
     expiry dates, stock quantities, and potential discounts.
     """
     product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, related_name="batches")
+        Product, to_field='product_id', on_delete=models.CASCADE,
+         related_name="batches")
     batch_number = models.CharField(max_length=100, unique=True)
     expiry_date = models.DateTimeField()
     quantity = models.PositiveIntegerField()
