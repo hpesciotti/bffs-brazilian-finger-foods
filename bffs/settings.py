@@ -62,8 +62,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'bffs.urls'
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACKS = ['bootstrap5']
 
