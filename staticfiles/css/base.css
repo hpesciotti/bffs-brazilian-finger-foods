@@ -3,8 +3,6 @@ html {
 }
 
 body {
-    background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
-    background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
     font-family: 'Roboto Condensed';
@@ -31,6 +29,18 @@ body {
     background: black;
     color: white;
     min-width: 260px;
+}
+
+.carousel-inner {
+    width: 100vw;
+    overflow: hidden;
+}
+  
+  .carousel-item img {
+    object-fit: cover; 
+    width: 100vw;
+    height: auto;
+    max-height: 400px;
 }
 
 .btn-black {
@@ -282,10 +292,10 @@ input[name='q']::placeholder {
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 116px;
+        padding-top: 112px;
     }
 
     body {
-        height: calc(100vh - 116px);
+        height: calc(100vh - 112px);
     }
 }
