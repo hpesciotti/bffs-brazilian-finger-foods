@@ -1,1 +1,1 @@
-web: gunicorn bffs.wsgi
+web: gunicorn bffs-brazilian-finger-foods.wsgi
