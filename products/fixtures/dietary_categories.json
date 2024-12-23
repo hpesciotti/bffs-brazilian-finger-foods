@@ -1,0 +1,51 @@
+[
+    {
+        "model": "products.dietarycategory",
+        "pk": 1,
+        "fields": {
+            "name": "Dairy-Free",
+            "description": "Excludes dairy products."
+        }
+    },
+    {
+        "model": "products.dietarycategory",
+        "pk": 2,
+        "fields": {
+            "name": "Gluten-Free",
+            "description": "Excludes gluten from wheat, barley, and rye."
+        }
+    },
+    {
+        "model": "products.dietarycategory",
+        "pk": 3,
+        "fields": {
+            "name": "Ovolactovegetarian",
+            "description": "Includes dairy and eggs, but excludes other animal products."
+        }
+    },
+    {
+        "model": "products.dietarycategory",
+        "pk": 4,
+        "fields": {
+            "name": "Vegan",
+            "description": "Excludes all animal products"
+        }
+    },
+    {
+        "model": "products.dietarycategory",
+        "pk": 5,
+        "fields": {
+            "name": "Seafood",
+            "description": "Includes shellfish, fish and other seafood."
+        }
+    },
+    {
+        "model": "products.dietarycategory",
+        "pk": 6,
+        "fields": {
+            "name": "Other",
+            "description": "For any dietary category not specifically listed."
+        }
+
+    }
+]
