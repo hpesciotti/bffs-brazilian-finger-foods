@@ -37,9 +37,9 @@ class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
     name = models.CharField(
         max_length=100, unique=True,
-        help_text="Enter the name in lowercase, separated by underscores.") # alteração
-    full_name = models.CharField(max_length=255) # alteração
-    short_widget_name = models.CharField(max_length=255) # alteração
+        help_text="Enter the name in lowercase, separated by underscores.")
+    full_name = models.CharField(max_length=255)
+    short_widget_name = models.CharField(max_length=255)
     dietary_categories = models.ManyToManyField("DietaryCategory",
      related_name="products")
     energy_kj = models.DecimalField(max_digits=7, decimal_places=2)
@@ -58,18 +58,16 @@ class Product(models.Model):
         help_text="Enter allergens separated by commas. Example: Dairy, Eggs, Nuts",
     )
     description = models.TextField()
-    ingredients = models.TextField() # alteração
+    ingredients = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     best_seller = models.BooleanField(default=False)
     image_large = models.ImageField(upload_to="products/large/",
-     blank=True, null=True) # alteração
-    image_large_url = models.URLField(max_length=1024, null=True, blank=True) # alteração
+     blank=True, null=True)
     image_widget = models.ImageField(upload_to="products/widgets/",
-     blank=True, null=True) # alteração
-    image_widget_url = models.URLField(max_length=1024, null=True, blank=True) # alteração
+     blank=True, null=True)
 
     def __str__(self):
-        return self.short_widget_name # alteração
+        return self.short_widget_name
 
     class Meta:
         verbose_name = "Product"
