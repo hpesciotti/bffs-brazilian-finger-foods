@@ -77,7 +77,7 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <div class="text-center">
                                     <div><i class="fas fa-user fa-lg"></i></div>
-                                    <p class="my-0">My Account</p>
+                                    <p class="fs-6 my-0"><strong>My Account</strong></p>
                                 </div>
                             </a>
                             <div class="dropdown-menu border-0" aria-labelledby="user-options">
@@ -97,13 +97,15 @@
                             <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-dk-orange{% endif %} nav-link"
                                 href="">
                                 <div class="text-center">
-                                    <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                                    <p class="my-0">
-                                        {% if grand_total %}
-                                        ${{ grand_total|floatformat:2 }}
-                                        {% else %}
-                                        $0.00
-                                        {% endif %}
+                                    <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
+                                    <p class="fs-6 my-0">
+                                        <strong>
+                                            {% if grand_total %}
+                                            &euro;{{ grand_total|floatformat:2 }}
+                                            {% else %}
+                                            &euro; 0.00
+                                            {% endif %}
+                                        </strong>
                                     </p>
                                 </div>
                             </a>
@@ -114,15 +116,15 @@
             <div class="row bg-white">
                 <nav class="navbar navbar-expand-lg navbar-light w-100">
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"><i aria-hidden="true" class="fa-solid fa-bars text-dk-orange fs-2 py-auto"></i></span>
+                        <span class="text-center"><i aria-hidden="true" class="fa-solid fa-bars text-dk-orange fs-2 py-auto"></i></span>
                     </button>
                     {% include 'includes/mobile-top-header.html' %}
                     {% include 'includes/main-nav.html' %}
                 </nav>
             </div>
             <div id="delivery-banner" class="row text-center">
-                <div class="col bg-black text-white">
-                    <h4 class="logo-font my-1">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>
+                <div class="col bg-gray text-black">
+                    <h6 class="logo-font my-1"><i class="fa-solid fa-truck-fast fa-sm"></i> Enjoy free delivery on orders above &euro;{{ free_delivery_threshold }}! Only available in County Dublin. <i class="fa-solid fa-location-dot fa-sm"></i></h6>
                 </div>
             </div>
 

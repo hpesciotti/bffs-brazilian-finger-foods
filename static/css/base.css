@@ -3,9 +3,9 @@ html {
 }
 
 body {
-    height: calc(100vh - 164px);
+    height: calc(100vh - 167px);
     color: #555;
-    font-family: 'Roboto Condensed';
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 /* from Bulma */
@@ -21,6 +21,10 @@ body {
     height: 60px;
 }
 
+.logo-font {
+    font-family: 'Opens Sans', sans-serif;
+    font-weight: 400;
+}
 
 .navbar-light,
 .navbar-nav,
@@ -28,6 +32,11 @@ body {
     color: #e55125 !important;
 }
 
+.navbar-toggler {
+    border-color: #e55125 !important;
+}
+
+.navbar-toggler:focus,
 .nav-link:focus, 
 .nav-link:hover, 
 .nav-link:active {
@@ -120,8 +129,8 @@ body {
     border: 1px solid black !important;
 }
 
-.bg-black {
-    background: #000 !important;
+.bg-gray {
+    background: #B7B7B7 !important;
 }
 
 .overlay {
@@ -333,10 +342,10 @@ input[name='q']::placeholder {
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 112px;
+        padding-top: 92px;
     }
 
     body {
-        height: calc(100vh - 112px);
+        height: calc(100vh - 92px);
     }
 }
