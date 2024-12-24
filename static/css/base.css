@@ -17,8 +17,27 @@ body {
     width: 1.5rem;
 }
 
-.logo-font {
-    text-transform: uppercase;
+.logo {
+    height: 60px;
+}
+
+
+.navbar-light,
+.navbar-nav,
+.nav-link {
+    color: #e55125 !important;
+}
+
+.nav-link:focus, 
+.nav-link:hover, 
+.nav-link:active {
+    color: #ffa60b !important;
+}
+
+.navbar-light,
+.navbar-toggler {
+    color: rgba(255,166,11,.9);
+    border-color: rgba(229, 81, 37, 0.9);
 }
 
 .main-logo-link {
@@ -41,6 +60,20 @@ body {
     width: 100vw;
     height: auto;
     max-height: 400px;
+}
+
+.btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(255,166,11,.9);
+}
+
+.btn:hover {
+    color: #ffa60b;
+}
+
+.btn-dk-orange {
+    background: #e55125;
+    color: white;
 }
 
 .btn-black {
@@ -73,6 +106,14 @@ body {
 
 .text-black {
     color: #000 !important;
+}
+
+.text-dk-orange {
+    color: #e55125;
+}
+
+.border-dk-orange {
+    border: 1px solid #e55125 !important;
 }
 
 .border-black {
