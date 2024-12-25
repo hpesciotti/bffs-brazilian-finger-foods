@@ -52,13 +52,13 @@
       <h2 class="text-center">Best Sellers</h2>
     </div>
   </div>
-
+</div>
 
 {% block postloadjs %}
 <script>
-  var carouselHero = document.querySelector('#carouselHero');
+  const carouselHero = document.querySelector('#carouselHero');
   if (myCarousel) {
-    var carousel = new bootstrap.Carousel(carouselHero, {
+    const carousel = new bootstrap.Carousel(carouselHero, {
       interval: 3000,
       wrap: true
     });

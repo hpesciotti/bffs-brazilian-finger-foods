@@ -172,6 +172,44 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
+/* Footer */
+footer {
+    overflow: hidden;
+}
+
+.text-white-footer {
+    color: #fafafafa;
+    text-shadow:  0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+.icon-footer {
+    color: #fafafafa;
+    text-shadow:  0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+.icon-footer:hover {
+    color: black;
+    text-shadow:  0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.footer-address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-link,
+footer a {
+    text-decoration: none !important;
+    color: black;
+}
+
+.footer-link:hover,
+footer a:hover {
+    text-decoration: none !important;
+    color: rgba(0, 0, 0, 0.486);
+}
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
@@ -372,6 +410,20 @@ input[name='q']::placeholder {
     }
 }
 
+@media (max-width: 800px) {
+    .newsletter-form {
+        text-align: center;
+    }
+    .newsletter-form .form-control {
+        max-width: 100%;
+        width: 100%;
+    }
+    .newsletter-form button {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
 @media (max-width: 561px) {
     .header-container {
         padding-top: 127px;
@@ -381,3 +433,4 @@ input[name='q']::placeholder {
         height: calc(100vh - 127px);
     }
 }
+

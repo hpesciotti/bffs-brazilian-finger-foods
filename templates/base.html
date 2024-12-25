@@ -127,7 +127,6 @@
                     <h6 class="logo-font my-1"><i class="fa-solid fa-truck-fast fa-sm"></i> Enjoy free delivery on orders above &euro;{{ free_delivery_threshold }}! Only available in County Dublin. <i class="fa-solid fa-location-dot fa-sm"></i></h6>
                 </div>
             </div>
-
         </header>
         {% block page_header %}
         {% endblock %}
@@ -150,8 +149,14 @@
         </div>
         {% endif %}
 
+        <!-- Main -->
+        <main class="d-flex flex-column min-vh-100">
         {% block content %}
         {% endblock %}
+        </main>
+        
+        <!-- Footer -->
+        {% include 'includes/footer.html' %}
 
         {% block postloadjs %}
         {% endblock %}
