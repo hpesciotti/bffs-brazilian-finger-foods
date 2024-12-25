@@ -49,6 +49,13 @@ body {
     border-color: rgba(229, 81, 37, 0.9);
 }
 
+.form-control:focus {
+    color: #555555;
+    background-color: #fff;
+    border-color: #ffa60b;
+    box-shadow: 0 0 0 .25rem rgba(255,166,11,.9);
+}
+
 .main-logo-link {
     width: fit-content;
 }
@@ -64,11 +71,10 @@ body {
     overflow: hidden;
 }
   
-  .carousel-item img {
+.carousel-item img {
     object-fit: cover; 
     width: 100vw;
-    height: auto;
-    max-height: 400px;
+    max-height: 350px;
 }
 
 .btn:focus {
@@ -325,6 +331,17 @@ input[name='q']::placeholder {
 }
 
 /* fixed top navbar only on medium and up */
+@media (min-width: 1600px) {
+    #carouselHero {
+        background-color: #e55125;
+    }
+
+    .carousel-item img {
+        object-fit: contain!important;
+        max-height: 600px!important;
+    }
+}
+
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -337,6 +354,11 @@ input[name='q']::placeholder {
     .header-container {
         padding-top: 164px;
     }
+
+    .carousel-item img {
+        object-fit: cover; 
+        max-height: 400px;
+    }
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
@@ -347,5 +369,15 @@ input[name='q']::placeholder {
 
     body {
         height: calc(100vh - 92px);
+    }
+}
+
+@media (max-width: 561px) {
+    .header-container {
+        padding-top: 127px;
+    }
+
+    body {
+        height: calc(100vh - 127px);
     }
 }
