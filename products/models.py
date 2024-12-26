@@ -86,7 +86,7 @@ class Batch(models.Model):
         Product, to_field='product_id', on_delete=models.CASCADE,
          related_name="batches")
     batch_number = models.CharField(max_length=100, unique=True)
-    expiry_date = models.DateTimeField()
+    expiry_date = models.DateField()
     quantity = models.PositiveIntegerField()
     offer = models.IntegerField(
         choices=OFFER_CHOICES, default=0)
