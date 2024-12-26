@@ -3,7 +3,6 @@ html {
 }
 
 body {
-    height: calc(100vh - 167px);
     color: #555;
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -170,6 +169,15 @@ a.category-badge > span.badge:hover {
 
 input[name='q']::placeholder {
     color: #aab7c4;
+}
+
+.dropdown-item:active {
+    background-color: #e55125 !important;
+}
+
+.dropdown-item:hover {
+    color: white;
+    background-color: #ffa60b !important;
 }
 
 /* Footer */
