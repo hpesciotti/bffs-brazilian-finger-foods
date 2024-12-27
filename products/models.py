@@ -72,7 +72,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
-
+    
 # Batch model
 class Batch(models.Model):
     """
@@ -92,6 +92,13 @@ class Batch(models.Model):
         choices=OFFER_CHOICES, default=1)
     discount_percentage = models.DecimalField(
         max_digits=5, decimal_places=2, default=0.0)
+    # Property Decorator for creating sale price, according to quantity and discount percentage.
+    @property
+    def sale_price(self):
+        if self.offer == 2 and self.quantity > 0 and self.discount_percentage > 0:
+            discount = (self.product.price * self.discount_percentage) / 100
+            return self.product.price - discount
+        return self.product.price
 
     def __str__(self):
         return f"{self.product.name} - Batch {self.batch_number}"
