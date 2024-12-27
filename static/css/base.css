@@ -158,6 +158,21 @@ a.category-badge > span.badge:hover {
     color: #fff !important;
 }
 
+.card {
+    height: fit-content;
+    width: fit-content;
+}
+
+.card-img-top {
+    height: 20em !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+.w-80 {
+    width: 80% !important;
+}
+
 .btt-button {
     height: 42px;
     width: 42px;
