@@ -1,0 +1,242 @@
+[
+    {
+        "model": "products.batch",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+            "batch_number": "BN-0001",
+            "expiry_date": "2025-02-10",
+            "quantity": 23,
+            "offer": 2,
+            "discount_percentage": 25.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 2,
+        "fields": {
+            "product": 2,
+            "batch_number": "BN-0002",
+            "expiry_date": "2025-02-15",
+            "quantity": 16,
+            "offer": 2,
+            "discount_percentage": 20.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 3,
+        "fields": {
+            "product": 3,
+            "batch_number": "BN-0003",
+            "expiry_date": "2025-02-20",
+            "quantity": 20,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 4,
+        "fields": {
+            "product": 4,
+            "batch_number": "BN-0004",
+            "expiry_date": "2025-03-01",
+            "quantity": 30,
+            "offer": 2,
+            "discount_percentage": 20.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 5,
+        "fields": {
+            "product": 5,
+            "batch_number": "BN-0005",
+            "expiry_date": "2025-03-01",
+            "quantity": 30,
+            "offer": 2,
+            "discount_percentage": 20.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 6,
+        "fields": {
+            "product": 6,
+            "batch_number": "BN-0006",
+            "expiry_date": "2025-06-30",
+            "quantity": 30,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 7,
+        "fields": {
+            "product": 7,
+            "batch_number": "BN-0007",
+            "expiry_date": "2025-06-05",
+            "quantity": 25,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 8,
+        "fields": {
+            "product": 2,
+            "batch_number": "BN-0008",
+            "expiry_date": "2025-06-25",
+            "quantity": 40,
+            "offer": 2,
+            "discount_percentage": 30.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 9,
+        "fields": {
+            "product": 9,
+            "batch_number": "BN-0009",
+            "expiry_date": "2025-06-10",
+            "quantity": 30,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 10,
+        "fields": {
+            "product": 10,
+            "batch_number": "BN-0010",
+            "expiry_date": "2024-07-15",
+            "quantity": 50,
+            "offer": 2,
+            "discount_percentage": 30.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 11,
+        "fields": {
+            "product": 11,
+            "batch_number": "BN-0011",
+            "expiry_date": "2025-06-30",
+            "quantity": 24,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 12,
+        "fields": {
+            "product": 12,
+            "batch_number": "BN-0012",
+            "expiry_date": "2025-05-22",
+            "quantity": 35,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 13,
+        "fields": {
+            "product": 13,
+            "batch_number": "BN-0013",
+            "expiry_date": "2025-07-01",
+            "quantity": 110,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 14,
+        "fields": {
+            "product": 14,
+            "batch_number": "BN-0014",
+            "expiry_date": "2024-06-18",
+            "quantity": 20,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 15,
+        "fields": {
+            "product": 15,
+            "batch_number": "BN-0015",
+            "expiry_date": "2025-07-05",
+            "quantity": 30,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 16,
+        "fields": {
+            "product": 1,
+            "batch_number": "BN-0016",
+            "expiry_date": "2025-06-10",
+            "quantity": 25,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 17,
+        "fields": {
+            "product": 2,
+            "batch_number": "BN-0017",
+            "expiry_date": "2025-06-15",
+            "quantity": 25,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 18,
+        "fields": {
+            "product": 3,
+            "batch_number": "BN-0018",
+            "expiry_date": "2025-06-20",
+            "quantity": 20,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 19,
+        "fields": {
+            "product": 4,
+            "batch_number": "BN-0019",
+            "expiry_date": "2025-07-01",
+            "quantity": 30,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    },
+    {
+        "model": "products.batch",
+        "pk": 20,
+        "fields": {
+            "product": 8,
+            "batch_number": "BN-0020",
+            "expiry_date": "2025-07-15",
+            "quantity": 30,
+            "offer": 1,
+            "discount_percentage": 0.00
+        }
+    }
+]

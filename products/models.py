@@ -4,7 +4,7 @@ from django.db import models
 COOKING_PROCESS_CHOICES = [
     (1, "Baked"),
     (2, "Fried"),
-    (3, "Fried or Baked"), # alteração
+    (3, "Fried or Baked"),
 ]
 
 # Options for batch model
@@ -89,7 +89,7 @@ class Batch(models.Model):
     expiry_date = models.DateField()
     quantity = models.PositiveIntegerField()
     offer = models.IntegerField(
-        choices=OFFER_CHOICES, default=0)
+        choices=OFFER_CHOICES, default=1)
     discount_percentage = models.DecimalField(
         max_digits=5, decimal_places=2, default=0.0)
 
