@@ -161,16 +161,30 @@ a.category-badge > span.badge:hover {
 .card {
     height: fit-content;
     width: fit-content;
+    flex-shrink: 0;
 }
 
 .card-img-top {
-    height: 20em !important;
-    width: auto !important;
+    /*! min-height: 20em; */
+    width: 300px !important;
     object-fit: contain !important;
+    transition: transform 450 ms;
 }
 
-.w-80 {
-    width: 80% !important;
+.row-netflix-style {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    gap: 50px;
+    height: 500px;
+}
+
+.row-netflix-style::-webkit-scrollbar {
+    display: none;
+}
+
+.col-netflix-style {
+    height: max-content;
 }
 
 .btt-button {

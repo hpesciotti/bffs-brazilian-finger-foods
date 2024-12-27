@@ -49,49 +49,49 @@
 
 
   <div class="row my-4">
-    <div class="col-12">
+    <div class="col-12 col-netflix-style">
       <h2 class="text-center">Best Sellers</h2>
-      <!-- Carousel - Best Sellers -->
-      <div id="bestSellersCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          {% for product in best_seller_products %}
-            {% if forloop.counter0|divisibleby:4 %}
-              <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}">
-                <div class="row justify-content-lg-around justify-content-xl-center slide align-items-center">
-            {% endif %}
-            
-            <div class="col-lg-2 col-md-4 px-2 mx-2">
-              <div class="card">
-                <div class="card-body text-center">
-                  <img src="{{ product.image_widget.url }}" class="card-img-top" alt="{{ product.short_widget_name }}">
-                  <h5 class="card-title">{{ product.short_widget_name }}</h5>
-                  <p class="card-text">{{ product.dietary_categotie }}</p>
-                  <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
-                  <a href="#" class="btn btn-primary">View More</a>
-                </div>
-              </div>
-            </div>
-            
-            {% if forloop.counter|divisibleby:4 or forloop.last %}
-              </div>
-            </div>
-            {% endif %}
-          {% empty %}
-            <p>No best seller products available.</p>
-          {% endfor %}
+      <!-- Netflix Style row - Best Sellers -->
+      <!-- <div class="row justify-content-lg-around justify-content-xl-center slide align-items-center"> -->
+      <div class="row-netflix-style mx-5">
+        {% for product in best_seller_products %}
+        <div class="card">
+          <div class="card-body text-center">
+            <img src="{{ product.image_widget.url }}" class="card-img-top" alt="{{ product.short_widget_name }}">
+            <h5 class="card-title">{{ product.short_widget_name }}</h5>
+            <p class="card-text">{{ product.dietary_categotie }}</p>
+            <p class="card-text"><strong>Price:</strong> &euro;{{ product.price }}</p>
+            <a href="#" class="btn btn-primary">View More</a>
+          </div>
         </div>
-        <!-- Buttons carousel -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#bestSellersCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#bestSellersCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+        {% endfor %}
       </div>
     </div>
   </div>
+
+  <div class="row my-4">
+    <div class="col-12 col-netflix-style">
+      <h2 class="text-center">Salles</h2>
+      <!-- Netflix Style row - Best Sellers -->
+      <!-- <div class="row justify-content-lg-around justify-content-xl-center slide align-items-center"> -->
+      <div class="row-netflix-style mx-5">
+        {% for product in offer_products %}
+        <div class="card">
+          <div class="card-body text-center">
+            <img src="{{ product.image_widget.url }}" class="card-img-top" alt="{{ product.short_widget_name }}">
+            <h5 class="card-title">{{ product.short_widget_name }}</h5>
+            <p class="card-text">{{ product.dietary_categotie }}</p>
+            <p class="card-text text-danger"><strong>Price:</strong> &euro;{{ product.price }}</p>
+            <p class="card-text fs-3 text-success"><strong>Price:</strong> &euro;&euro;{{ product.price|multiply:1|subtract:product.price|multiply:product.discount_percentage|divide:100 }}</p>
+            <a href="#" class="btn btn-primary">View More</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</div>
 
 
 {% block postloadjs %}
