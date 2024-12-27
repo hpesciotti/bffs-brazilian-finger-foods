@@ -47,8 +47,8 @@
         <title>BFFs - Brazilian Finger Foods</title>
     </head>
 
-    <body>
-        <header class="container-fluid fixed-top">
+    <body class="d-flex flex-column h-100">
+        <header class="container-fluid fixed-top px-0 mx-0">
             <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-flex justify-content-center align-items-center">
                     <a href="{% url 'home' %}" class="nav-link main-logo-link">
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="row bg-white">
-                <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <nav class="navbar navbar-expand-lg navbar-light w-100 px-3">
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="text-center"><i aria-hidden="true" class="fa-solid fa-bars text-dk-orange fs-2 py-auto"></i></span>
                     </button>
@@ -122,7 +122,7 @@
                     {% include 'includes/main-nav.html' %}
                 </nav>
             </div>
-            <div id="delivery-banner" class="row text-center">
+            <div id="delivery-banner" class="row text-center px-0 mx-0">
                 <div class="col bg-gray text-black">
                     <h6 class="logo-font my-1"><i class="fa-solid fa-truck-fast fa-sm"></i> Enjoy free delivery on orders above &euro;{{ free_delivery_threshold }}! Only available in County Dublin. <i class="fa-solid fa-location-dot fa-sm"></i></h6>
                 </div>
@@ -150,7 +150,7 @@
         {% endif %}
 
         <!-- Main -->
-        <main class="d-flex flex-column min-vh-100">
+        <main class="header-container container-fluid d-flex vh-100 px-0 mx-0">
         {% block content %}
         {% endblock %}
         </main>
