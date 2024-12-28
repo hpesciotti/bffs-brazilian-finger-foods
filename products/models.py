@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal
 
 # Options for poduct model
 COOKING_PROCESS_CHOICES = [
@@ -97,8 +98,9 @@ class Batch(models.Model):
     def sale_price(self):
         if self.offer == 2 and self.quantity > 0 and self.discount_percentage > 0:
             discount = (self.product.price * self.discount_percentage) / 100
-            return self.product.price - discount
-        return self.product.price
+            sale_price = self.product.price - discount
+            return Decimal(sale_price).quantize(Decimal('0.00'))
+        return Decimal(self.product.price).quantize(Decimal('0.00'))
 
     def __str__(self):
         return f"{self.product.name} - Batch {self.batch_number}"

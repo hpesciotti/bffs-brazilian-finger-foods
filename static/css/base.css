@@ -95,6 +95,12 @@ body {
     color: white;
 }
 
+.btn-dk-orange:hover {
+    background: white;
+    color: #e55125;
+    border-color: #e55125;
+}
+
 .btn-black {
     background: black;
     color: white;
@@ -159,9 +165,17 @@ a.category-badge > span.badge:hover {
 }
 
 .card {
-    height: fit-content;
-    width: fit-content;
+    /* height: fit-content;
+    width: fit-content; */
     flex-shrink: 0;
+    width: 350px;
+    height: 520px;
+    border: 1px solid rgba(224, 79, 36,.9);
+    border-radius: .35rem;
+}
+
+.card-text {
+    font-family: 'Opens Sans', sans-serif;
 }
 
 .card-img-top {
@@ -169,6 +183,17 @@ a.category-badge > span.badge:hover {
     width: 300px !important;
     object-fit: contain !important;
     transition: transform 450 ms;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+}
+
+.strikethrough {
+    text-decoration: line-through;
+    color: red;
+}
+
+.text-green {
+    color: #0dc143;
 }
 
 .row-netflix-style {
@@ -176,11 +201,13 @@ a.category-badge > span.badge:hover {
     overflow-y: hidden;
     overflow-x: scroll;
     gap: 50px;
-    height: 500px;
+    height: 550px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
 .row-netflix-style::-webkit-scrollbar {
-    display: none;
+    display: none; /* Chrome, Safari, Edge */
 }
 
 .col-netflix-style {
