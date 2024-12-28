@@ -498,4 +498,13 @@ footer a:hover {
         padding-top: 63px;
     }
 
+    .card-img-top {
+        width: 200px 
+    }
+
+    .card {
+        width: fit-content;
+        height: fit-content;
+    }
+
 }
