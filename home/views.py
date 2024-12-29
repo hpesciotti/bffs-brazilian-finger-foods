@@ -8,11 +8,6 @@ def index(request):
     A view to return the index page 
     """
 
-def index(request):
-    """ 
-    A view to return the index page 
-    """
-
     best_seller_products =  Product.objects.prefetch_related(
         'batches', 'dietary_categories'
     ).filter(best_seller=True)
@@ -33,7 +28,7 @@ def index(request):
     for product in best_seller_products:
         product.discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
         
-        # Fallback para o preço original se não houver desconto
+        # original price
         product.original_price_batch = product.batches.filter(quantity__gt=0).first()
         
         product.dietary_categories_names = product.dietary_categories.values_list('name', flat=True)

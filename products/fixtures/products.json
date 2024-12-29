@@ -6,7 +6,7 @@
         "name": "coxinha_frango",
         "full_name": "Coxinha de Frango (Chicken Drumsticks) | Suitable for Frying or Baking - 500g",
         "short_widget_name": "Coxinha (Chicken Drumsticks)",
-        "dietary_categories": [1, 3],
+        "dietary_categories": [1],
         "energy_kj": 703.00,
         "energy_kcal": 168.00,
         "fat": 4.00,
@@ -130,7 +130,7 @@
         "ingredients": "<p>Cassava Starch, eggs, minas cheese, rapeseed oil, whole milk, parmesan cheese and salt.</p>",
         "price": 13.50,
         "best_seller": true,
-        "image_large": "products/pao_de_queijo_wide.webp",
+        "image_large": "products/large/pao_de_queijo_wide.webp",
         "image_widget": "products/widgets/pao_de_queijo_rect.webp"
       }
     },
@@ -157,7 +157,7 @@
         "ingredients": "<p>Cassava Starch, cassava puree, turmeric, rapeseed oil, water, nutrional yeast and salt.</p>",
         "price": 12.90,
         "best_seller": true,
-        "image_large": "products/pao_de_beijo_wide.webp",
+        "image_large": "products/large/pao_de_beijo_wide.webp",
         "image_widget": "products/widgets/pao_de_beijo_rect.webp"
       }
     },
