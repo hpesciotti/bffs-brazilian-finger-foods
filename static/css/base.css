@@ -28,6 +28,7 @@ body {
 .logo-font {
     font-family: 'Opens Sans', sans-serif;
     font-weight: 400;
+    font-size: large;
 }
 
 .navbar-light,
@@ -345,10 +346,10 @@ footer a:hover {
 
 /* -------------------------------- Media Queries */
 
-/* Slightly larger container on xl screens */
+
 @media (min-width: 1200px) {
   .container {
-    max-width: 80%;
+    max-width: 60%;
   }
 }
 
