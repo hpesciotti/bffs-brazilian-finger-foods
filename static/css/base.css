@@ -220,6 +220,10 @@ a.category-badge > span.badge:hover {
     color: #0dc143;
 }
 
+.row {
+    width: 100%;
+}
+
 .row-netflix-style {
     display: flex;
     overflow-y: hidden;
