@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center my-4">
+    <div class="col-xl-8 col-12">
+        <!-- Cards on large screens -->
+        <div class="mx-5 d-none d-md-block">
+            <h1 class="text-center pb-1">All Products</h1>
+            {% for product in products %}
+            <div class="card-long my-2">
+                <div class="card-long-body">
+                    <div class="row justify-content-center">
+                        <div class="col-5">
+                            <img src="{{ product.image_large.url }}" class="card-long-img" alt="{{ product.short_widget_name }}">
+                        </div>
+                        <div class="col-7 px-2">
+                            <h4 class="mt-2">{{ product.full_name }}</h4>
+                            {% if "Vegan" in product.dietary_categories_names and "Gluten-Free" in product.dietary_categories_names %}
+                                    <p class="fs-4"><span class="text-green">Vegan</span> | Gluten-Free</p>
+                            {% elif "Vegan" in product.dietary_categories_names %}
+                                    <p class="fs-4"><span class="text-green">Vegan</span></p>
+                            {% else %}
+                                <p class="fs-4">{{ product.dietary_categories_names|join:" | " }}</p>
+                            {% endif %}
+                                <p class="fs-5">Allergens: {{ product.allergens }}</p>
+                                <p class="fs-5">Ingredients: {{ product.ingredients |safe }}</p>
+                            {% if product.discount_price_batch %}
+                            <p class="card-text">
+                                <span class="strikethrough fs-6">&euro;{{ product.price }}</span>
+                                <span class="text-green fs-4"><strong>&euro;{{ product.discount_price_batch.sale_price }}</strong></span>
+                            </p>
+                            {% elif product.original_price_batch %}
+                                <p class="card-text">
+                                    <span class="fs-4"><strong>&euro;{{ product.original_price_batch.sale_price }}</strong></span>
+                                </p>
+                            {% else %}
+                                <p class="card-text">Out of Stock</p>
+                            {% endif %}    
+                            <a href="#" class="btn btn-dk-orange">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <!-- Cards on small screens -->
+        <div class="mx-2 d-block d-md-none">
+            {% for product in products %}
+            <div class="card mx-auto mb-3">
+                <div class="card-body text-center">
+                    <img src="{{ product.image_widget.url }}" class="card-img-top" alt="{{ product.short_widget_name }}">
+                    <h4 class="mt-2">{{ product.short_widget_name }}</h4>
+                    {% if "Vegan" in product.dietary_categories_names and "Gluten-Free" in product.dietary_categories_names %}
+                        <p class="fs-4"><span class="text-green">Vegan</span> | Gluten-Free</p>
+                    {% elif "Vegan" in product.dietary_categories_names %}
+                        <p class="fs-4"><span class="text-green">Vegan</span></p>
+                    {% else %}
+                        <p class="fs-4">{{ product.dietary_categories_names|join:" | " }}</p>
+                    {% endif %}
+                    {% if product.discount_price_batch %}
+                    <p class="card-text">
+                        <span class="strikethrough fs-6">&euro;{{ product.price }}</span>
+                        <span class="text-green fs-4"><strong>&euro;{{ product.discount_price_batch.sale_price }}</strong></span>
+                    </p>
+                    {% elif product.original_price_batch %}
+                        <p class="card-text">
+                            <span class="fs-4"><strong>&euro;{{ product.original_price_batch.sale_price }}</strong></span>
+                        </p>
+                    {% else %}
+                        <p class="card-text">Out of Stock</p>
+                    {% endif %}    
+                    <a href="#" class="btn btn-dk-orange">Add to Cart</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-12 col-md-10">
+        <h4 class="text-center fw-bold grey m-3">Proudct Information</h4>
+        <div class="accordion" id="InfoAccordion">
+            {% for product in products %}
+            <div class="accordion" id="accordionInfo">
+                <div class="accordion-item">
+                  <h5 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Ingredients
+                    </button>
+                  </h5>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>{{ product.ingredients |safe }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h5 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Description
+                    </button>
+                  </h5>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{ product.description |safe }}
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h5 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Nutritional Chart
+                    </button>
+                  </h5>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <table style="width:100%; border-collapse: collapse; text-align: left;">
+                            <thead>
+                                <tr>
+                                    <th>Nutritional Information</th>
+                                    <th>Per 100g</th>
+                                    <th>Per Serving (30g)</th>
+                                    <th>% RI* (Per Serving)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Energy</td>
+                                    <td>{{ product.energy_kj }} kJ / {{ product.energy_kcal }} kcal</td>
+                                    <td>
+                                        {{ product.energy_kj|floatformat:2|mul:0.3 }} kJ / 
+                                        {{ product.energy_kcal|floatformat:2|mul:0.3 }} kcal
+                                    </td>
+                                    <td>{{ product.energy_kcal|floatformat:2|mul:0.3|div:2000|mul:100|floatformat:1 }}%</td>
+                                </tr>
+                                <tr>
+                                    <td>Fat</td>
+                                    <td>{{ product.fat }} g</td>
+                                    <td>{{ product.fat|floatformat:2|mul:0.3 }} g</td>
+                                    <td>{{ product.fat|floatformat:2|mul:0.3|div:70|mul:100|floatformat:1 }}%</td>
+                                </tr>
+                                <tr>
+                                    <td>- of which saturates</td>
+                                    <td>{{ product.saturated_fat }} g</td>
+                                    <td>{{ product.saturated_fat|floatformat:2|mul:0.3 }} g</td>
+                                    <td>{{ product.saturated_fat|floatformat:2|mul:0.3|div:20|mul:100|floatformat:1 }}%</td>
+                                </tr>
+                                <tr>
+                                    <td>Carbohydrates</td>
+                                    <td>{{ product.carbohydrates }} g</td>
+                                    <td>{{ product.carbohydrates|floatformat:2|mul:0.3 }} g</td>
+                                    <td>{{ product.carbohydrates|floatformat:2|mul:0.3|div:260|mul:100|floatformat:1 }}%</td>
+                                </tr>
+                                <tr>
+                                    <td>- of which sugars</td>
+                                    <td>{{ product.sugars }} g</td>
+                                    <td>{{ product.sugars|floatformat:2|mul:0.3 }} g</td>
+                                    <td>{{ product.sugars|floatformat:2|mul:0.3|div:90|mul:100|floatformat:1 }}%</td>
+                                </tr>
+                                <tr>
+                                    <td>Protein</td>
+                                    <td>{{ product.protein }} g</td>
+                                    <td>{{ product.protein|floatformat:2|mul:0.3 }} g</td>
+                                    <td>{{ product.protein|floatformat:2|mul:0.3|div:50|mul:100|floatformat:1 }}%</td>
+                                </tr>
+                                <tr>
+                                    <td>Salt</td>
+                                    <td>{{ product.salt }} g</td>
+                                    <td>{{ product.salt|floatformat:2|mul:0.3 }} g</td>
+                                    <td>{{ product.salt|floatformat:2|mul:0.3|div:6|mul:100|floatformat:1 }}%</td>
+                                </tr>
+                                <tr>
+                                    <td>Fiber</td>
+                                    <td>{{ product.fiber }} g</td>
+                                    <td>{{ product.fiber|floatformat:2|mul:0.3 }} g</td>
+                                    <td>N/A</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" style="text-align: left; font-size: 0.9em; padding-top: 10px;">
+                                        *RI: Reference Intake of an average adult (8400 kJ / 2000 kcal).
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% block postloadjs %}
+{% endblock %}
+
+{% endblock %}
