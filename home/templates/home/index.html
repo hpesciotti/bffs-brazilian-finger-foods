@@ -124,13 +124,11 @@
 
 {% block postloadjs %}
 <script>
-  const carouselHero = document.querySelector('#carouselHero');
-  if (myCarousel) {
-    const carousel = new bootstrap.Carousel(carouselHero, {
-      interval: 3000,
-      wrap: true
-    });
-  }
+  var carouselHero = document.querySelector('#carouselHero');
+  var carousel = new bootstrap.Carousel(carouselHero, {
+    interval: 4000,
+    wrap: true
+  })
 </script>
 {% endblock %}
 
