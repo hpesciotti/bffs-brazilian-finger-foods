@@ -3,9 +3,9 @@ from decimal import Decimal
 
 # Options for poduct model
 COOKING_PROCESS_CHOICES = [
-    (1, "Baked"),
-    (2, "Fried"),
-    (3, "Fried or Baked"),
+    (1, "baking"),
+    (2, "drying"),
+    (3, "frying or baking"),
 ]
 
 # Options for batch model

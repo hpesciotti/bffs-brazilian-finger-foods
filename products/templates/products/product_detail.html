@@ -17,7 +17,6 @@
     <div class="col-xl-8 col-12">
         <!-- Cards on large screens -->
         <div class="mx-5 d-none d-md-block">
-            <h1 class="text-center pb-1">All Products</h1>
             <div class="card-long my-2">
                 <div class="card-long-body">
                     <div class="row justify-content-center">
@@ -25,25 +24,25 @@
                             <img src="{{ product.image_large.url }}" class="card-long-img" alt="{{ product.short_widget_name }}">
                         </div>
                         <div class="col-7 px-2">
-                            <h4 class="mt-2">{{ product.full_name }}</h4>
-                            {% if "Vegan" in product.dietary_categories_names and "Gluten-Free" in product.dietary_categories_names %}
-                                    <p class="fs-4"><span class="text-green">Vegan</span> | Gluten-Free</p>
-                            {% elif "Vegan" in product.dietary_categories_names %}
-                                    <p class="fs-4"><span class="text-green">Vegan</span></p>
+                            <h4 class="mt-2">{{ product.short_widget_name }}</h4>
+                            {% if "Vegan" in dietary_categories_names and "Gluten-Free" in product.dietary_categories_names %}
+                                    <p class="fs-4">Dietary Category: <span class="text-green">Vegan</span> | Gluten-Free</p>
+                            {% elif "Vegan" in dietary_categories_names %}
+                                    <p class="fs-4">Dietary Category: <span class="text-green">Vegan</span></p>
                             {% else %}
-                                <p class="fs-4">{{ product.dietary_categories_names|join:" | " }}</p>
+                                <p class="fs-4">>Dietary Category: {{ dietary_categories_names|join:" | " }}</p>
                             {% endif %}
                                 <p class="fs-5">Allergens: {{ product.allergens }}</p>
-                                <p class="fs-5">Ingredients: {{ product.ingredients |safe }}</p>
-                            {% if product.discount_price_batch %}
-                            <p class="card-text">
-                                <span class="strikethrough fs-6">&euro;{{ product.price }}</span>
-                                <span class="text-green fs-4"><strong>&euro;{{ product.discount_price_batch.sale_price }}</strong></span>
-                            </p>
-                            {% elif product.original_price_batch %}
+                                <p class="fs-5">Suitable for: {{ product.get_cooking_process_display }}</p>
+                            {% if discount_price_batch.sale_price %}
                                 <p class="card-text">
-                                    <span class="fs-4"><strong>&euro;{{ product.original_price_batch.sale_price }}</strong></span>
+                                    Price: <span class="strikethrough fs-6">&euro;{{ original_price_batch.sale_price }}</span>
+                                    <span class="text-green fs-4"><strong>&euro;{{ discount_price_batch.sale_price }}</strong></span>
                                 </p>
+                                {% elif original_price_batch %}
+                                    <p class="card-text fs-4">
+                                        Price: <span class="fs-4"><strong>&euro;{{ original_price_batch.sale_price }}</strong></span>
+                                    </p>
                             {% else %}
                                 <p class="card-text">Out of Stock</p>
                             {% endif %}    
