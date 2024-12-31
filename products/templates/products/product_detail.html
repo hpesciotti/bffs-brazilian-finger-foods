@@ -14,77 +14,44 @@
 
 {% block content %}
 <div class="row justify-content-center my-4">
+
+    <h3 class="text-center my-3">{{ product.short_widget_name }}</h3>
+
     <div class="col-xl-8 col-12">
-        <!-- Cards on large screens -->
-        <div class="mx-5 d-none d-md-block">
-            <div class="card-long my-2">
-                <div class="card-long-body">
-                    <div class="row justify-content-center">
-                        <div class="col-5">
-                            <img src="{{ product.image_large.url }}" class="card-long-img" alt="{{ product.short_widget_name }}">
-                        </div>
-                        <div class="col-7 px-2">
-                            <h4 class="mt-2">{{ product.short_widget_name }}</h4>
-                            {% if "Vegan" in dietary_categories_names and "Gluten-Free" in product.dietary_categories_names %}
-                                    <p class="fs-4">Dietary Category: <span class="text-green">Vegan</span> | Gluten-Free</p>
-                            {% elif "Vegan" in dietary_categories_names %}
-                                    <p class="fs-4">Dietary Category: <span class="text-green">Vegan</span></p>
-                            {% else %}
-                                <p class="fs-4">>Dietary Category: {{ dietary_categories_names|join:" | " }}</p>
-                            {% endif %}
-                                <p class="fs-5">Allergens: {{ product.allergens }}</p>
-                                <p class="fs-5">Suitable for: {{ product.get_cooking_process_display }}</p>
-                            {% if discount_price_batch.sale_price %}
-                                <p class="card-text">
-                                    Price: <span class="strikethrough fs-6">&euro;{{ original_price_batch.sale_price }}</span>
-                                    <span class="text-green fs-4"><strong>&euro;{{ discount_price_batch.sale_price }}</strong></span>
-                                </p>
-                                {% elif original_price_batch %}
-                                    <p class="card-text fs-4">
-                                        Price: <span class="fs-4"><strong>&euro;{{ original_price_batch.sale_price }}</strong></span>
-                                    </p>
-                            {% else %}
-                                <p class="card-text">Out of Stock</p>
-                            {% endif %}    
-                            <a href="#" class="btn btn-dk-orange">Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-12">
+                <img src="{{ product.image_large.url }}" class="card-long-img" alt="{{ product.short_widget_name }}">
             </div>
-        </div>
-    
-        <!-- Cards on small screens -->
-        <div class="mx-2 d-block d-md-none">
-            <div class="card mx-auto mb-3">
-                <div class="card-body text-center">
-                    <img src="{{ product.image_widget.url }}" class="card-img-top" alt="{{ product.short_widget_name }}">
-                    <h4 class="mt-2">{{ product.short_widget_name }}</h4>
-                    {% if "Vegan" in product.dietary_categories_names and "Gluten-Free" in product.dietary_categories_names %}
-                        <p class="fs-4"><span class="text-green">Vegan</span> | Gluten-Free</p>
-                    {% elif "Vegan" in product.dietary_categories_names %}
-                        <p class="fs-4"><span class="text-green">Vegan</span></p>
-                    {% else %}
-                        <p class="fs-4">{{ product.dietary_categories_names|join:" | " }}</p>
-                    {% endif %}
-                    {% if product.discount_price_batch %}
-                    <p class="card-text">
-                        <span class="strikethrough fs-6">&euro;{{ product.price }}</span>
-                        <span class="text-green fs-4"><strong>&euro;{{ product.discount_price_batch.sale_price }}</strong></span>
+            <div class="col-md-5 col-12 px-3 align-self-center">
+                {% if "Vegan" in dietary_categories_names and "Gluten-Free" in product.dietary_categories_names %}
+                        <p class="fs-4">Dietary Category: <span class="text-green">Vegan</span> | Gluten-Free</p>
+                {% elif "Vegan" in dietary_categories_names %}
+                        <p class="fs-4">Dietary Category: <span class="text-green">Vegan</span></p>
+                {% else %}
+                    <p class="fs-4">>Dietary Category: {{ dietary_categories_names|join:" | " }}</p>
+                {% endif %}
+                    <p class="fs-4">Allergens: {{ product.allergens }}</p>
+                    <p class="fs-4">Suitable for: {{ product.get_cooking_process_display }}</p>
+                    <p class="fs-4">Weight: 500g</p>
+                    <p class="fs-4">Storage Condition: Frozen</p>
+                {% if discount_price_batch.sale_price %}
+                    <p class="card-text fs-4">
+                        Price: <span class="strikethrough fs-6">&euro;{{ product.price }}</span>
+                        <span class="text-green fs-3"><strong>&euro;{{ discount_price_batch.sale_price }}</strong></span>
                     </p>
-                    {% elif product.original_price_batch %}
-                        <p class="card-text">
-                            <span class="fs-4"><strong>&euro;{{ product.original_price_batch.sale_price }}</strong></span>
+                    {% elif original_price_batch %}
+                        <p class="card-text fs-4">
+                            Price: <span class="fs-4"><strong>&euro;{{ original_price_batch.sale_price }}</strong></span>
                         </p>
-                    {% else %}
-                        <p class="card-text">Out of Stock</p>
-                    {% endif %}    
-                    <a href="#" class="btn btn-dk-orange">Add to Cart</a>
-                </div>
+                {% else %}
+                    <p class="card-text">Out of Stock</p>
+                {% endif %}    
+                <a href="#" class="btn btn-dk-orange">Add to Cart</a>
             </div>
         </div>
     </div>
     
-    <div class="col-12 col-md-10">
+    <div class="col-xl-8 col-md-10 col-12">
         <h4 class="text-center fw-bold grey m-3">Product Information</h4>
         <div class="accordion" id="InfoAccordion">
             <div class="accordion" id="accordionInfo">
