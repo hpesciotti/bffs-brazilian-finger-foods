@@ -262,6 +262,35 @@ a.category-badge > span.badge:hover {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-dash' viewBox='0 0 16 16'%3E%3Cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3E%3C/svg%3E");
 }
 
+.f-pdetail {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+table {
+    width:100%; 
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    width: 100%;
+    text-align: center;
+    font-family: 'Opens Sans', sans-serif;
+    font-size: 0.8em;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #d8d6d6;
+}
+
+tfoot {
+    font-size: 0.9em;
+    text-align: center;
+}
+
 .btt-button {
     height: 42px;
     width: 42px;
@@ -492,6 +521,13 @@ footer a:hover {
     }
 }
 
+@media (min-width: 1200px) {
+    .f-pdetail {
+      font-size: calc(1rem + .3vw) !important;
+      margin-bottom: 0.7em;
+    }
+}
+
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -509,6 +545,11 @@ footer a:hover {
         object-fit: cover; 
         max-height: 400px;
     }
+
+    .f-pdetail {
+        font-size: calc(1.275rem + .3vw) !important;
+    }
+    
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
@@ -536,6 +577,22 @@ footer a:hover {
     .newsletter-form button {
         display: block;
         margin: 0 auto;
+    }
+    
+    .accordion-body {
+        padding: 0;
+    }
+
+    table {
+        font-size: 0.9em;
+    }
+    
+    th, td {
+        padding: 10px;
+    }
+
+    tfoot {
+        font-size: 0.9em;
     }
     
 }
