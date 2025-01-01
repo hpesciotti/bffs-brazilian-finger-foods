@@ -188,6 +188,7 @@ a.category-badge > span.badge:hover {
     object-fit: cover !important;
     border-top-left-radius: calc(.25rem - 1px);
     border-top-right-radius: calc(.25rem - 1px);
+    aspect-ratio: 16 / 9;
 }
 
 
@@ -366,6 +367,10 @@ footer a {
 footer a:hover {
     text-decoration: none !important;
     color: rgba(0, 0, 0, 0.486);
+}
+
+.card a:hover {
+    color: #e55125;
 }
 
 /* ------------------------------- bootstrap toasts */

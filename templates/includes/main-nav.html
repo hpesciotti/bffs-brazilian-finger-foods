@@ -5,39 +5,43 @@
                 All Products
             </a>
             <ul class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <li><a href="?sort=price&direction=asc" class="dropdown-item">By Price</a></li>
-                <li><a href="?sort=rating&direction=desc" class="dropdown-item">Deep Fried Delights</a></li>
-                <li><a href="?sort=category&direction=asc" class="dropdown-item">Oven Bites</a></li>
+                <li><a href="{% url 'products' %}?sort=price&direction=desc" class="dropdown-item">By Price</a></li>
+                <li><a href="{% url 'products' %}?cooking_process=frying&sort_by=name&sort=asc" class="dropdown-item">Deep Fried Delights</a></li>
+                <li><a href="{% url 'products' %}?cooking_process=baking&sort_by=name&sort=asc" class="dropdown-item">Oven Bites</a></li>
                 <li><a href="{% url 'products' %}" class="dropdown-item">All Products</a></li>
             </ul>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font fw-bold nav-link text-dk-orange me-5" href="#" id="all-products-link" data-bs-toggle="dropdown">
+            <a class="logo-font fw-bold nav-link text-dk-orange me-5" href="{% url 'products' %}?dietary_category=dairy-free&dietary_category=gluten-free&sort_by=name&sort=asc" id="allergens-link" data-bs-toggle="dropdown">
                 By Allergen
             </a>
-            <ul class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <li><a href="?sort=price&direction=asc" class="dropdown-item">Dairy-Free</a></li>
-                <li><a href="?sort=rating&direction=desc" class="dropdown-item">Gluten-Free</a></li>
+            <ul class="dropdown-menu border-0" aria-labelledby="allergens-link">
+                <li><a href="{% url 'products' %}?dietary_category=dairy-free&sort_by=name&sort=asc" class="dropdown-item">Dairy-Free</a></li>
+                <li><a href="{% url 'products' %}?dietary_category=gluten-free&sort_by=name&sort=asc" class="dropdown-item">Gluten-Free</a></li>
             </ul>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font fw-bold nav-link text-dk-orange me-5" href="#" id="clothing-link" data-bs-toggle="dropdown">
-                Vegan Appetizers
+            <a class="logo-font fw-bold nav-link text-dk-orange me-5" href="{% url 'products' %}?dietary_category=ovolactovegetarian&dietary_category=vegan&sort_by=name&sort_by=name&sort=asc" id="vegan-link" data-bs-toggle="dropdown">
+                Plant-Based & Meatless
             </a>
+            <ul class="dropdown-menu border-0" aria-labelledby="allergens-link">
+                <li><a href="{% url 'products' %}?dietary_category=ovolactovegetarian&sort_by=name&sort=asc" class="dropdown-item">Ovolactovegetrian</a></li>
+                <li><a href="{% url 'products' %}?dietary_category=vegan&sort_by=name&sort=asc" class="dropdown-item">Vegan Appetizers</a></li>
+            </ul>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font fw-bold nav-link text-dk-orange me-5" href="#" id="homeware-link" data-bs-toggle="dropdown">
+            <a class="logo-font fw-bold nav-link text-dk-orange me-5" href="{% url 'products' %}?offer=2&sort_by=name&sort=asc" id="offers-link" data-bs-toggle="dropdown">
                 Special Offers
             </a>
-            <ul class="dropdown-menu border-0" aria-labelledby="homeware-link">
-                <li><a href="?category=bed_bath" class="dropdown-item">Vegan</a></li>
-                <li><a href="?category=kitchen_dining" class="dropdown-item">Dairy-Free</a></li>
-                <li><a href="?category=bed_bath,kitchen_dining" class="dropdown-item">Gluten-Free</a></li>
-                <li><a href="?sort=rating&direction=desc" class="dropdown-item">Deep Fried Delights</a></li>
-                <li><a href="?sort=category&direction=asc" class="dropdown-item">Oven Bites</a></li>
+            <ul class="dropdown-menu border-0" aria-labelledby="offers-link">
+                <li><a href="{% url 'products' %}?offer=2&dietary_category=vegan&sort_by=name&sort=asc" class="dropdown-item">Vegan</a></li>
+                <li><a href="{% url 'products' %}?offer=2&dietary_category=dairy-free&sort_by=name&sort=asc" class="dropdown-item">Dairy-Free</a></li>
+                <li><a href="{% url 'products' %}?offer=2&dietary_category=gluten-free&sort_by=name&sort=asc" class="dropdown-item">Gluten-Free</a></li>
+                <li><a href="{% url 'products' %}?offer=2&cooking_process=frying&sort_by=name&sort=asc" class="dropdown-item">Deep Fried Delights</a></li>
+                <li><a href="{% url 'products' %}?offer=2&cooking_process=baking&sort_by=name&sort=asc" class="dropdown-item">Oven Bites</a></li>
             </ul>
         </li>
 

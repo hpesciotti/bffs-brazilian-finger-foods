@@ -4,7 +4,7 @@ from decimal import Decimal
 # Options for poduct model
 COOKING_PROCESS_CHOICES = [
     (1, "baking"),
-    (2, "drying"),
+    (2, "frying"),
     (3, "frying or baking"),
 ]
 

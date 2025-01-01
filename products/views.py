@@ -1,31 +1,64 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product, Batch
+from django.db.models import Q
+from django.db.models.functions import Lower
+from .models import Product, Batch, DietaryCategory, COOKING_PROCESS_CHOICES
 
 # Create your views here.
 
 def all_products(request):
     """
-    Returns all products and render main product page
+    Returns all products and render main product page with filtering options.
     """
+    # Get query parameters
+    search_term = request.GET.get('q', '').lower()
+    dietary_category_filter = request.GET.get('dietary_category', '').lower()
+    cooking_process_filter = request.GET.get('cooking_process', '').lower()
+    sort_direction = request.GET.get('sort', 'asc')  # Default to ascending
 
-    products =  Product.objects.prefetch_related(
-        'batches', 'dietary_categories'
-    )
+    # Fetch products
+    products = Product.objects.prefetch_related('batches', 'dietary_categories')
 
-    # Gets the offer batch for sale first (qty > 0 and offer = 2)
+    # Apply filters
+    if search_term:
+        products = products.filter(
+            Q(name__icontains=search_term) |
+            Q(full_name__icontains=search_term) |
+            Q(short_widget_name__icontains=search_term) |
+            Q(description__icontains=search_term) |
+            Q(ingredients__icontains=search_term)
+        )
+
+    if dietary_category_filter:
+        products = products.filter(
+            dietary_categories__name__icontains=dietary_category_filter
+        )
+
+    if cooking_process_filter:
+        products = products.filter(
+            cooking_process__iexact=cooking_process_filter
+        )
+
+    # Sort products based on sort direction
+    sort_key = request.GET.get('sort_by', 'name')  # Default to sorting by 'name'
+    if sort_direction == 'desc':
+        sort_key = f"-{sort_key}"
+    products = products.order_by(sort_key)
+
+    # Prepare products with additional data
     for product in products:
         product.discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
-
-        # original price
         product.original_price_batch = product.batches.filter(quantity__gt=0).first()
-
         product.dietary_categories_names = product.dietary_categories.values_list('name', flat=True)
+
 
     context = {
         'products': products,
+        'cooking_process_choices': COOKING_PROCESS_CHOICES,
+        'dietary_categories': DietaryCategory.objects.all(),
     }
 
     return render(request, 'products/products.html', context)
+
 
 def product_detail(request, product_id):
     """ A view to show individual product details """
