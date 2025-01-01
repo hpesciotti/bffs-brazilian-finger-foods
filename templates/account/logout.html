@@ -6,13 +6,13 @@
 
 {% block inner_content %}
 <h3 class="my-1">{% trans "Sign Out" %}</h3>
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+<p class="fs-4">{% trans 'Are you sure you want to sign out?' %}</p>
 <form class="text-center" method="post" action="{% url 'account_logout' %}">
 {% csrf_token %}
 {% if redirect_field_value %}
 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
 {% endif %}
-<a class="btn btn-outline-black rounded-0" href="{% url 'home' %}">Cancel</a>
-<button class="btn btn-signup right" type="submit">{% trans 'Sign Out' %}</button>
+<a class="btn btn-invert-orange" href="{% url 'home' %}">Cancel</a>
+<button class="btn btn-dk-orange right" type="submit">{% trans 'Sign Out' %}</button>
 </form>
 {% endblock %}
