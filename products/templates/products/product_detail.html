@@ -40,14 +40,48 @@
                         <span class="text-green fs-3"><strong>&euro;{{ discount_price_batch }}</strong></span>
                     </p>
                 {% elif original_price_batch %}
-                    <p class="card-text f-pdetail">
+                    <p class="f-pdetail">
                         Price: <span class="f-pdetail"><strong>&euro;{{ original_price_batch }}</strong></span>
                     </p>
                 {% else %}
                     <p class="card-text">Out of Stock</p>
                 {% endif %}
                 
-                <a href="#" class="btn btn-dk-orange">Add to Cart</a>
+                <form class="form" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-12">
+                            <p class="f-pdetail">Quantity:</p>
+                            <div class="form-group w-50">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-dk-orange round-0" 
+                                            data-item_id="{{ batch.id }}" id="decrement-qty_{{ batch.id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control qty_input" type="number"
+                                        name="quantity" value="1" min="1" max="{{ batch.quantity }}"
+                                        data-item_id="{{ batch.id }}"
+                                        id="id_qty_{{ batch.id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-dk-orange round-0"
+                                            data-item_id="{{ batch.id }}" id="increment-qty_{{ batch.id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3 mx-auto">
+                            <button type="submit" class="btn fs-4 btn-dk-orange">Add to Cart</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -30,9 +30,9 @@ def bag_contents(request):
                 'price': sale_price,
             })
 
-    # Calcular entrega
+    # Delivery Fee
     if total < settings.FREE_DELIVERY_THRESHOLD:
-        delivery = settings.STANDARD_DELIVERY_PERCENTAGE
+        delivery = settings.STANDARD_DELIVERY_FEE
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
     else:
         delivery = 0
@@ -40,7 +40,7 @@ def bag_contents(request):
 
     grand_total = delivery + total
 
-    # Contexto ajustado
+    # Context
     context = {
         'bag_items': bag_items,
         'total': total,

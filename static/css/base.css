@@ -384,6 +384,10 @@ footer a:hover {
     color: #e55125;
 }
 
+/* .input-group > .form-control, .input-group > .form-select {
+    min-width: 10em;
+    max-width: 12em;
+} */
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
