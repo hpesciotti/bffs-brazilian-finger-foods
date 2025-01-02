@@ -73,7 +73,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
-    
+
 # Batch model
 class Batch(models.Model):
     """
@@ -93,17 +93,20 @@ class Batch(models.Model):
         choices=OFFER_CHOICES, default=1)
     discount_percentage = models.DecimalField(
         max_digits=5, decimal_places=2, default=0.0)
-    # Property Decorator for creating sale price, according to quantity and discount percentage.
-    @property
-    def sale_price(self):
+    sale_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+    def calculate_sale_price(self):
         if self.offer == 2 and self.quantity > 0 and self.discount_percentage > 0:
             discount = (self.product.price * self.discount_percentage) / 100
-            sale_price = self.product.price - discount
-            return Decimal(sale_price).quantize(Decimal('0.00'))
+            return Decimal(self.product.price - discount).quantize(Decimal('0.00'))
         return Decimal(self.product.price).quantize(Decimal('0.00'))
 
-    def __str__(self):
-        return f"{self.product.name} - Batch {self.batch_number}"
+    def save(self, *args, **kwargs):
+        if self.quantity == 0:
+            self.delete()
+        else:
+            self.sale_price = self.calculate_sale_price()
+            super().save(*args, **kwargs)
 
     class Meta:
         ordering = ["expiry_date"]

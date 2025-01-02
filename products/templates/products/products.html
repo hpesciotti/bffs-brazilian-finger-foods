@@ -17,15 +17,12 @@
         <div class="row mt-1 mb-2">
             <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                 <div class="sort-select-wrapper w-50">
-                    <select id="sort-selector"
-                        class="sort-box border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                    <select id="sort-selector" name="sort_by" class="sort-box border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-                        <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
-                        <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                        <option value="sale_price_asc" {% if current_sorting == 'sale_price_asc' %}selected{% endif %}>Price (low to high)</option>
+                        <option value="sale_price_desc" {% if current_sorting == 'sale_price_desc' %}selected{% endif %}>Price (high to low)</option>
                         <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
                         <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
-                        <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
-                        <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
                     </select>
                 </div>
             </div>
@@ -64,11 +61,11 @@
                             {% if product.discount_price_batch %}
                             <p class="card-text">
                                 <span class="strikethrough fs-6">&euro;{{ product.price }}</span>
-                                <span class="text-green fs-4"><strong>&euro;{{ product.discount_price_batch.sale_price }}</strong></span>
+                                <span class="text-green fs-4"><strong>&euro;{{ product.discount_price_batch }}</strong></span>
                             </p>
                             {% elif product.original_price_batch %}
                                 <p class="card-text">
-                                    <span class="fs-4"><strong>&euro;{{ product.original_price_batch.sale_price }}</strong></span>
+                                    <span class="fs-4"><strong>&euro;{{ product.original_price_batch }}</strong></span>
                                 </p>
                             {% else %}
                                 <p class="card-text">Out of Stock</p>
@@ -98,11 +95,11 @@
                     {% if product.discount_price_batch %}
                     <p class="card-text">
                         <span class="strikethrough fs-6">&euro;{{ product.price }}</span>
-                        <span class="text-green fs-4"><strong>&euro;{{ product.discount_price_batch.sale_price }}</strong></span>
+                        <span class="text-green fs-4"><strong>&euro;{{ product.discount_price_batch }}</strong></span>
                     </p>
                     {% elif product.original_price_batch %}
                         <p class="card-text">
-                            <span class="fs-4"><strong>&euro;{{ product.original_price_batch.sale_price }}</strong></span>
+                            <span class="fs-4"><strong>&euro;{{ product.original_price_batch }}</strong></span>
                         </p>
                     {% else %}
                         <p class="card-text">Out of Stock</p>
@@ -118,38 +115,32 @@
 
 {% block postloadjs %}
     {{ block.super }}
-        <script type="text/javascript">
-            // Ao clicar no botão, a página será movida para o topo
-            $('.btt-link').click(function(e) {
-                window.scrollTo(0, 0);
-            });
-
-            // Função para lidar com mudanças no seletor de ordenação
-            $('#sort-selector').change(function() {
-                var selector = $(this);
-                var currentUrl = new URL(window.location);
-
-                var selectedVal = selector.val(); // O valor selecionado no seletor
-                if (selectedVal != "reset") {
-                    // Dividir o valor selecionado para obter a opção de ordenação e a direção
-                    var sortOption = selectedVal.split("_")[0]; // 'price', 'name', 'category', etc.
-                    var sortDirection = selectedVal.split("_")[1]; // 'asc' ou 'desc'
-
-                    // Atualizar os parâmetros de URL com a opção e direção de ordenação
-                    currentUrl.searchParams.set("sort_by", sortOption);
-                    currentUrl.searchParams.set("sort", sortDirection);
-
-                    // Atualizar a URL e recarregar a página com os novos parâmetros
-                    window.location.replace(currentUrl);
-                } else {
-                    // Se a opção de reset for selecionada, remover os parâmetros de ordenação da URL
-                    currentUrl.searchParams.delete("sort_by");
-                    currentUrl.searchParams.delete("sort");
-
-                    window.location.replace(currentUrl);
-                }
-            });
-        </script>
+    <script type="text/javascript">
+        $('.btt-link').click(function(e) {
+            window.scrollTo(0, 0);
+        });
+    
+        $('#sort-selector').change(function() {
+            var selector = $(this);
+            var currentUrl = new URL(window.location);
+    
+            var selectedVal = selector.val();
+            if (selectedVal !== "reset") { 
+                var sortOption = selectedVal.split("_")[0]; 
+                var sortDirection = selectedVal.split("_")[1];
+    
+                currentUrl.searchParams.set("sort_by", sortOption);
+                currentUrl.searchParams.set("sort", sortDirection);
+    
+                window.location.href = currentUrl.href;
+            } else {
+                currentUrl.searchParams.delete("sort_by");
+                currentUrl.searchParams.delete("sort");
+    
+                window.location.href = currentUrl.href;
+            }
+        });
+    </script>    
 {% endblock %}
 
 {% endblock %}

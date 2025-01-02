@@ -9,24 +9,24 @@ def all_products(request):
     """
     Returns all products and render main product page with filtering options.
     """
-    # Get query parameters
     search_term = request.GET.get('q', '').lower()
     dietary_category_filter = request.GET.get('dietary_category', '').lower()
     cooking_process_filter = request.GET.get('cooking_process', '').lower()
-    sort_direction = request.GET.get('sort', 'asc')  # Default to ascending
-    sort_option = request.GET.get('sort_by', 'name')  # Default to sorting by 'name'
+    offer_filter = request.GET.get('offer', None)
+    sort_direction = request.GET.get('sort', 'asc')
+    sort_key = request.GET.get('sort_by', 'name')
 
-    # Fetch products
     products = Product.objects.prefetch_related('batches', 'dietary_categories')
 
-    # Apply filters
+    # Filters
     if search_term:
         products = products.filter(
             Q(name__icontains=search_term) |
             Q(full_name__icontains=search_term) |
             Q(short_widget_name__icontains=search_term) |
             Q(description__icontains=search_term) |
-            Q(ingredients__icontains=search_term)
+            Q(ingredients__icontains=search_term) |
+            Q(dietary_categories__name__icontains=search_term)
         )
 
     if dietary_category_filter:
@@ -35,39 +35,58 @@ def all_products(request):
         )
 
     if cooking_process_filter:
-        products = products.filter(
-            cooking_process__iexact=cooking_process_filter
-        )
+        COOKING_PROCESS_MAP = {
+            'baking': 1,
+            'frying': 2,
+            'frying or baking': 3,
+        }
+        cooking_process_value = COOKING_PROCESS_MAP.get(cooking_process_filter)
+        if cooking_process_value:
+            products = products.filter(cooking_process=cooking_process_value)
 
-    # Apply sorting logic
-    if sort_option == 'price_asc':
-        products = products.order_by('sale_price')
-    elif sort_option == 'price_desc':
-        products = products.order_by('-sale_price')
-    elif sort_option == 'name_asc':
-        products = products.order_by('name')
-    elif sort_option == 'name_desc':
-        products = products.order_by('-name')
-    elif sort_option == 'category_asc':
-        products = products.order_by('dietary_categories__name')
-    elif sort_option == 'category_desc':
-        products = products.order_by('-dietary_categories__name')
+    if offer_filter:
+        products = products.filter(batches__offer=offer_filter)
 
-    # Prepare products with additional data
+    # Ordering
+    if sort_key == 'sale_price':
+        if sort_direction == 'asc':
+            products = products.order_by('sale_price')
+        else:
+            products = products.order_by('-sale_price')
+    elif sort_key == 'name':
+        if sort_direction == 'asc':
+            products = products.order_by('name')
+        else:
+            products = products.order_by('-name')
+
+    # Set current sorting for use in the template
+    current_sorting = f"{sort_key}_{sort_direction}"
+
     for product in products:
-        product.discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
-        product.original_price_batch = product.batches.filter(quantity__gt=0).first()
+        # Apply the price logic here (discount and original prices)
+        discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
+        if discount_price_batch:
+            product.discount_price_batch = discount_price_batch.sale_price
+        else:
+            product.discount_price_batch = None
+
+        original_price_batch = product.batches.filter(quantity__gt=0).first()
+        if original_price_batch:
+            product.original_price_batch = original_price_batch.sale_price
+        else:
+            product.original_price_batch = None
+
+        # Get dietary categories names
         product.dietary_categories_names = product.dietary_categories.values_list('name', flat=True)
 
     context = {
         'products': products,
         'cooking_process_choices': COOKING_PROCESS_CHOICES,
         'dietary_categories': DietaryCategory.objects.all(),
-        'current_sorting': sort_option
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'products/products.html', context)
-
 
 def product_detail(request, product_id):
     """ A view to show individual product details """
@@ -78,10 +97,26 @@ def product_detail(request, product_id):
 
     # Gets the offer batch for sale first (qty > 0 and offer = 2)
     discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
-    original_price_batch = product.batches.filter(quantity__gt=0).first()
+    if discount_price_batch:
+        discount_price_batch = discount_price_batch.sale_price  # Use the calculated sale_price
+    else:
+        discount_price_batch = None
 
-    # Gets dietaries categories for each products
+    # Gets the original price batch (qty > 0)
+    original_price_batch = product.batches.filter(quantity__gt=0).first()
+    if original_price_batch:
+        original_price_batch = original_price_batch.sale_price  # Use the calculated sale_price
+    else:
+        original_price_batch = None
+
+
+    # Gets dietary categories names
     dietary_categories_names = product.dietary_categories.values_list('name', flat=True)
+
+    print(f"Discount Price: {discount_price_batch}, Original Price: {original_price_batch}")
+
+    if not product.batches.exists():
+        print("No batches found for this product")
 
     context = {
         'product': product,

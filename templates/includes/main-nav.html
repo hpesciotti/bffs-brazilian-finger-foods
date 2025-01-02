@@ -37,6 +37,7 @@
                 Special Offers
             </a>
             <ul class="dropdown-menu border-0" aria-labelledby="offers-link">
+                <li><a href="{% url 'products' %}?offer=2&sort_by=name&sort=asc" class="dropdown-item">All Products</a></li>
                 <li><a href="{% url 'products' %}?offer=2&dietary_category=vegan&sort_by=name&sort=asc" class="dropdown-item">Vegan</a></li>
                 <li><a href="{% url 'products' %}?offer=2&dietary_category=dairy-free&sort_by=name&sort=asc" class="dropdown-item">Dairy-Free</a></li>
                 <li><a href="{% url 'products' %}?offer=2&dietary_category=gluten-free&sort_by=name&sort=asc" class="dropdown-item">Gluten-Free</a></li>
