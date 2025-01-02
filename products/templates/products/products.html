@@ -19,8 +19,8 @@
                 <div class="sort-select-wrapper w-50">
                     <select id="sort-selector" name="sort_by" class="sort-box border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-                        <option value="sale_price_asc" {% if current_sorting == 'sale_price_asc' %}selected{% endif %}>Price (low to high)</option>
-                        <option value="sale_price_desc" {% if current_sorting == 'sale_price_desc' %}selected{% endif %}>Price (high to low)</option>
+                        <option value="min_price_asc" {% if current_sorting == 'min_price_asc' %}selected{% endif %}>Price (low to high)</option>
+                        <option value="min_price_desc" {% if current_sorting == 'min_price_desc' %}selected{% endif %}>Price (high to low)</option>
                         <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
                         <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
                     </select>

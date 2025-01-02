@@ -22,10 +22,10 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Batch)
 class BatchAdmin(admin.ModelAdmin):
     list_display = ("batch_number", "get_product_short_widget_name",
-        "expiry_date", "quantity", "offer", "discount_percentage")
-    search_fields = ("batch_number", "product__short_widget_name")
-    list_filter = ("expiry_date", "offer")
-    ordering = ("expiry_date",)
+        "expiry_date", "quantity", "offer", "discount_percentage", "sale_price")
+    search_fields = ("batch_number", "product__short_widget_name", "sale_price")
+    list_filter = ("expiry_date", "offer", "sale_price")
+    ordering = ("sale_price", )
 
     def get_product_short_widget_name(self, obj):
         return obj.product.short_widget_name
