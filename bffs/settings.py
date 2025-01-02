@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'products',
+    'bag',
 
     # Others
     'crispy_forms',
@@ -83,7 +84,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                # 'bag.context.bag_contents',
+                'bag.context.bag_contents',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -192,3 +193,7 @@ if 'USE_AWS' in os.environ:
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Bag
+FREE_DELIVERY_THRESHOLD = 35.00
+STANDARD_DELIVERY_FEE = 10.00
