@@ -14,6 +14,7 @@ def all_products(request):
     dietary_category_filter = request.GET.get('dietary_category', '').lower()
     cooking_process_filter = request.GET.get('cooking_process', '').lower()
     sort_direction = request.GET.get('sort', 'asc')  # Default to ascending
+    sort_option = request.GET.get('sort_by', 'name')  # Default to sorting by 'name'
 
     # Fetch products
     products = Product.objects.prefetch_related('batches', 'dietary_categories')
@@ -38,11 +39,19 @@ def all_products(request):
             cooking_process__iexact=cooking_process_filter
         )
 
-    # Sort products based on sort direction
-    sort_key = request.GET.get('sort_by', 'name')  # Default to sorting by 'name'
-    if sort_direction == 'desc':
-        sort_key = f"-{sort_key}"
-    products = products.order_by(sort_key)
+    # Apply sorting logic
+    if sort_option == 'price_asc':
+        products = products.order_by('sale_price')
+    elif sort_option == 'price_desc':
+        products = products.order_by('-sale_price')
+    elif sort_option == 'name_asc':
+        products = products.order_by('name')
+    elif sort_option == 'name_desc':
+        products = products.order_by('-name')
+    elif sort_option == 'category_asc':
+        products = products.order_by('dietary_categories__name')
+    elif sort_option == 'category_desc':
+        products = products.order_by('-dietary_categories__name')
 
     # Prepare products with additional data
     for product in products:
@@ -50,11 +59,11 @@ def all_products(request):
         product.original_price_batch = product.batches.filter(quantity__gt=0).first()
         product.dietary_categories_names = product.dietary_categories.values_list('name', flat=True)
 
-
     context = {
         'products': products,
         'cooking_process_choices': COOKING_PROCESS_CHOICES,
         'dietary_categories': DietaryCategory.objects.all(),
+        'current_sorting': sort_option
     }
 
     return render(request, 'products/products.html', context)

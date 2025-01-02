@@ -181,7 +181,6 @@ a.category-badge > span.badge:hover {
     color: #fff !important;
 }
 
-
 .card-long-img {
     width: 100%;
     height: 100%;
@@ -191,10 +190,7 @@ a.category-badge > span.badge:hover {
     aspect-ratio: 16 / 9;
 }
 
-
 .card-long {
-    /* height: fit-content;
-    width: fit-content; */
     padding: 1em;
     flex-shrink: 0;
     width: fit-content;
@@ -206,9 +202,11 @@ a.category-badge > span.badge:hover {
     overflow-wrap: break-word;
 }
 
+.card-long a:hover {
+    color:#e55125;
+}
+
 .card {
-    /* height: fit-content;
-    width: fit-content; */
     flex-shrink: 0;
     width: 350px;
     height: 550px;
@@ -218,6 +216,19 @@ a.category-badge > span.badge:hover {
 
 .card-text {
     font-family: 'Opens Sans', sans-serif;
+}
+
+.sort-box {
+    height: 2.5em;
+    font-family: 'Opens Sans', sans-serif;
+    font-size: 1em;
+    color: #555;
+    background-color: white;
+    border-radius: calc(.25rem - 1px);
+}
+
+.border-info {
+    border-color: #e55125 !important;
 }
 
 .card-img-top {

@@ -13,10 +13,36 @@
 
 {% block content %}
 <div class="row justify-content-center my-4">
-    <div class="col-xl-8 col-12">
+    <div class="product-container col-8">
+        <div class="row mt-1 mb-2">
+            <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+                <div class="sort-select-wrapper w-50">
+                    <select id="sort-selector"
+                        class="sort-box border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                        <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                        <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                        <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                        <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                        <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                        <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                        <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 order-md-first">
+                <p class="text-muted fs-4 mt-3 text-center text-md-left">
+                    {% if search_term or current_categories or current_sorting != 'None_None' %}
+                    <span class="small"><a href="{% url 'products' %}">Home</a> |
+                    {% endif %}
+                    {{ products|length }} Products{% if search_term %} found for
+                    "{{ search_term }}"{% endif %}</span>
+                </p>
+            </div>   
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-8 col-12">
         <!-- Cards on large screens -->
         <div class="mx-5 d-none d-md-block">
-            <h1 class="text-center pb-1">All Products</h1>
             {% for product in products %}
             <div class="card-long my-2">
                 <div class="card-long-body">
@@ -24,7 +50,7 @@
                         <div class="col-5">
                             <img src="{{ product.image_large.url }}" class="card-long-img" alt="{{ product.short_widget_name }}">
                         </div>
-                        <div class="col-7 px-2">
+                        <div class="col-7 px-4">
                             <h4 class="mt-2"><a href="{% url 'product_detail' product.product_id %}">{{ product.full_name }}</a></h4>
                             {% if "Vegan" in product.dietary_categories_names and "Gluten-Free" in product.dietary_categories_names %}
                                     <p class="fs-4"><span class="text-green">Vegan</span> | Gluten-Free</p>
@@ -57,7 +83,6 @@
     
         <!-- Cards on small screens -->
         <div class="mx-2 d-block d-md-none">
-            <h1 class="text-center pb-1">All Products</h1>
             {% for product in products %}
             <div class="card mx-auto mb-3">
                 <div class="card-body text-center">
@@ -91,8 +116,40 @@
 </div>
 
 
-
 {% block postloadjs %}
+    {{ block.super }}
+        <script type="text/javascript">
+            // Ao clicar no botão, a página será movida para o topo
+            $('.btt-link').click(function(e) {
+                window.scrollTo(0, 0);
+            });
+
+            // Função para lidar com mudanças no seletor de ordenação
+            $('#sort-selector').change(function() {
+                var selector = $(this);
+                var currentUrl = new URL(window.location);
+
+                var selectedVal = selector.val(); // O valor selecionado no seletor
+                if (selectedVal != "reset") {
+                    // Dividir o valor selecionado para obter a opção de ordenação e a direção
+                    var sortOption = selectedVal.split("_")[0]; // 'price', 'name', 'category', etc.
+                    var sortDirection = selectedVal.split("_")[1]; // 'asc' ou 'desc'
+
+                    // Atualizar os parâmetros de URL com a opção e direção de ordenação
+                    currentUrl.searchParams.set("sort_by", sortOption);
+                    currentUrl.searchParams.set("sort", sortDirection);
+
+                    // Atualizar a URL e recarregar a página com os novos parâmetros
+                    window.location.replace(currentUrl);
+                } else {
+                    // Se a opção de reset for selecionada, remover os parâmetros de ordenação da URL
+                    currentUrl.searchParams.delete("sort_by");
+                    currentUrl.searchParams.delete("sort");
+
+                    window.location.replace(currentUrl);
+                }
+            });
+        </script>
 {% endblock %}
 
 {% endblock %}
