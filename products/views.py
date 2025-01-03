@@ -1,13 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Q
-from django.db.models import Min
+from django.db.models import Min, F, Q
 from django.db.models.functions import Lower
 from django.db import connection
+from django.db.models import Min, FloatField
+from django.db.models.functions import Cast
 from .models import Product, Batch, DietaryCategory, COOKING_PROCESS_CHOICES
 
 # Create your views here.
-
-from django.db.models import Min, F, Q
 
 def all_products(request):
     """
@@ -53,22 +52,15 @@ def all_products(request):
         products = products.filter(batches__offer=offer_filter)
 
     # Annotate each product with the minimum sale_price from its related batches
-    # Filter batches to only include those with quantity > 0 and a valid sale_price
-    products = products.annotate(min_price=Min('batches__sale_price'))
+    products = products.annotate(min_price=Cast(Min('batches__sale_price'), FloatField()))
 
-    # Verificar se o cálculo está correto, talvez filtrando lotes inválidos
-    products = products.filter(
-        batches__quantity__gt=0,  # Garantir que os lotes têm quantidade
-        batches__sale_price__isnull=False  # Garantir que o sale_price não seja nulo
-    )
-
-    # Ordering the products based on the selected criteria
-    if sort_key == 'min_price':
+    # Sorting by the selected criteria
+    if sort_key == 'batches__sale_price':  # Ordenar por sale_price de Batch
         if sort_direction == 'asc':
-            products = products.order_by('min_price')
+            products = products.order_by('min_price')  # Ordenação crescente pelo preço mínimo
         else:
-            products = products.order_by('-min_price')
-    elif sort_key == 'name':
+            products = products.order_by('-min_price')  # Ordenação decrescente pelo preço mínimo
+    elif sort_key == 'name':  # Ordenar por nome do produto
         if sort_direction == 'asc':
             products = products.order_by('name')
         else:
@@ -102,11 +94,6 @@ def all_products(request):
         'dietary_categories': DietaryCategory.objects.all(),
         'current_sorting': current_sorting,
     }
-
-    # Debugging - Output the SQL query
-    for product in products:
-        print(f"Product: {product.name}, Min Price: {product.min_price}")
-        print(f"SQL Query: {connection.queries[-1]['sql']}")
 
     return render(request, 'products/products.html', context)
 

@@ -116,30 +116,42 @@
 {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript">
-        $('.btt-link').click(function(e) {
-            window.scrollTo(0, 0);
-        });
-    
-        $('#sort-selector').change(function() {
-            var selector = $(this);
-            var currentUrl = new URL(window.location);
-    
-            var selectedVal = selector.val();
-            if (selectedVal !== "reset") { 
-                var sortOption = selectedVal.split("_")[0]; 
-                var sortDirection = selectedVal.split("_")[1];
-    
-                currentUrl.searchParams.set("sort_by", sortOption);
-                currentUrl.searchParams.set("sort", sortDirection);
-    
-                window.location.href = currentUrl.href;
-            } else {
-                currentUrl.searchParams.delete("sort_by");
-                currentUrl.searchParams.delete("sort");
-    
-                window.location.href = currentUrl.href;
+     $('#sort-selector').change(function() {
+        var selector = $(this);
+        var currentUrl = new URL(window.location);
+
+        var selectedVal = selector.val();
+        if (selectedVal !== "reset") { 
+            var sortOption;
+            var sortDirection;
+
+            // Mapeando as opções para o formato desejado
+            if (selectedVal === 'min_price_asc') {
+                sortOption = 'batches__sale_price';
+                sortDirection = 'asc';
+            } else if (selectedVal === 'min_price_desc') {
+                sortOption = 'batches__sale_price';
+                sortDirection = 'desc';
+            } else if (selectedVal === 'name_asc') {
+                sortOption = 'name';
+                sortDirection = 'asc';
+            } else if (selectedVal === 'name_desc') {
+                sortOption = 'name';
+                sortDirection = 'desc';
             }
-        });
+
+            // Atualizando os parâmetros corretamente
+            currentUrl.searchParams.set("sort_by", sortOption);
+            currentUrl.searchParams.set("sort", sortDirection);
+
+            window.location.href = currentUrl.href;
+        } else {
+            currentUrl.searchParams.delete("sort_by");
+            currentUrl.searchParams.delete("sort");
+
+            window.location.href = currentUrl.href;
+        }
+    });
     </script>    
 {% endblock %}
 

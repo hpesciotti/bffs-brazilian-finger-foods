@@ -83,9 +83,10 @@ class Batch(models.Model):
     The model is comprised of unique batch numbers,
     expiry dates, stock quantities, and potential discounts.
     """
+
     product = models.ForeignKey(
-        Product, to_field='product_id', on_delete=models.CASCADE,
-         related_name="batches")
+        Product, on_delete=models.CASCADE, related_name="batches"
+    )
     batch_number = models.CharField(max_length=100, unique=True)
     expiry_date = models.DateField()
     quantity = models.PositiveIntegerField()
@@ -109,6 +110,6 @@ class Batch(models.Model):
             super().save(*args, **kwargs)
 
     class Meta:
-        ordering = ["expiry_date"]
+        ordering = ["sale_price"]
         verbose_name = "Batch"
         verbose_name_plural = "Batches"
