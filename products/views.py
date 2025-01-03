@@ -105,6 +105,10 @@ def product_detail(request, product_id):
         'batches', 'dietary_categories'
     ), pk=product_id)
 
+    batch = get_object_or_404(Batch.objects.prefetch_related('product'),
+        product__product_id=product.product_id  # Use o campo correto
+    )
+
     # Gets the offer batch for sale first (qty > 0 and offer = 2)
     discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
     if discount_price_batch:
@@ -133,6 +137,7 @@ def product_detail(request, product_id):
         'discount_price_batch': discount_price_batch,
         'original_price_batch': original_price_batch,
         'dietary_categories_names': dietary_categories_names,
+        'batch': batch,
     }
 
     return render(request, 'products/product_detail.html', context)
