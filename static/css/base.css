@@ -12,15 +12,6 @@ a {
     text-decoration: none;
 }
 
-/* from Bulma */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
-}
-
 .row {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;

@@ -45,24 +45,9 @@
                     </p>
                 {% else %}
                     <p class="card-text">Out of Stock</p>
-                {% endif %}
+                {% endif %}         
 
-                <p>Product ID: {{ batch.product.product_id }}</p>
-
-                {% if discount_price_batch %}
-                <p>Discount Price Batch: {{ discount_price_batch.batch_number }}</p>
-                {% if discount_price_batch.product %}
-                    <p>Product ID: {{ discount_price_batch.product.product_id }}</p>
-                {% else %}
-                    <p>No product associated with this batch.</p>
-                {% endif %}
-                {% else %}
-                <p>No discount price batch found.</p>
-                {% endif %}
-                
-                    
-
-                <!-- <form class="form" action="{}" method="POST">
+                <form class="form" action="{% url 'add_to_bag' batch.product.product_id %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="col-12">
@@ -70,7 +55,7 @@
                             <div class="form-group w-50">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <button class="decrement-qty btn btn-dk-orange round-0" data-item_id="{{ batch.product.product_id }}" id="decrement-qty_{{ batch.product.product_id }}">
+                                        <button class="decrement-qty btn btn-dk-orange rounded-0" data-item_id="{{ batch.product.product_id }}" id="decrement-qty_{{ batch.product.product_id }}">
                                             <span class="icon">
                                                 <i class="fas fa-minus"></i>
                                             </span>
@@ -79,7 +64,7 @@
                                     <input class="form-control qty_input" type="number"
                                         name="quantity" value="1" min="1" max="{{ batch.product.product_id }}" data-item_id="{{ batch.product.product_id }}" id="id_qty_{{ batch.product.product_id }}">
                                     <div class="input-group-append">
-                                        <button class="increment-qty btn btn-dk-orange round-0"
+                                        <button class="increment-qty btn btn-dk-orange rounded-0"
                                             data-item_id="{{ batch.product.product_id }}" id="increment-qty_{{ batch.product.product_id }}">
                                             <span class="icon">
                                                 <i class="fas fa-plus"></i>
@@ -97,6 +82,45 @@
                         </div>
                     </div>
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    <input type="hidden" name="name" value="{{ product.short_widget_name }}">
+                </form>
+
+                <!-- <form class="form" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-12">
+                            <p class="f-pdetail">Quantity:</p>
+                            <div class="form-group w-50">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-dk-orange rounded-0" data-item_id="{{ batch.product.product_id }}" id="decrement-qty_{{ batch.product.product_id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control qty_input" type="number"
+                                        name="quantity" value="1" min="1" max="{{ batch.product.product_id }}" data-item_id="{{ batch.product.product_id }}" id="id_qty_{{ batch.product.product_id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-dk-orange rounded-0"
+                                            data-item_id="{{ batch.product.product_id }}" id="increment-qty_{{ batch.product.product_id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3 mx-auto">
+                            <a href="{% url 'products' %}" class="btn fs-4 btn-invert-orange">
+                                <span class="fs-4"><i class="fas fa-chevron-left"></i> Keep Shopping</span>
+                            </a>
+                            <button type="submit" class="btn fs-4 btn-dk-orange">Add to Cart</button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    <input type="hidden" name="name" value="{{ product.name }}">
                 </form> -->
             </div>
         </div>
