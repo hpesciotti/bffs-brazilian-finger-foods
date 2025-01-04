@@ -49,7 +49,7 @@
                                     <td class="align-middle py-3 px-1 px-md-2 ">
                                         <p class="my-0">&euro; {{ item.batch.sale_price }}</p>
                                     </td>
-                                    <td class="align-middle py-3 px-1 px-md-2 w-25 w-sm-35">
+                                    <td class="align-middle py-3 px-1 px-md-2 w-input">
                                         <form class="form update-form" method="POST" action="">
                                             {% csrf_token %}
                                             <div class="form-group">
@@ -62,7 +62,7 @@
                                                             </span>
                                                         </button>
                                                     </div>
-                                                    <input class="form-control form-control-sm qty_input" type="number"
+                                                    <input class="form-control form-control-sm qty_input text-center w-input" type="number"
                                                         name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.batch.quantity }}"
                                                         data-item_id="{{ item.item_id }}"
                                                         id="id_qty_{{ item.item_id }}">

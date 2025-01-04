@@ -451,6 +451,11 @@ footer a:hover {
     overflow-y: auto;
 }
 
+.w-input {
+    max-width: 20% !important;
+    min-width: 15% !important;
+  }
+
 /* -------------------------------- Media Queries */
 
 
@@ -635,7 +640,7 @@ input[type="number"] {
         height: fit-content;
     }
 
-    .w-sm-35 {
-        width: 35% !important;
+    .w-input {
+        min-width: 35% !important;
     }
 }
