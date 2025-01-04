@@ -337,6 +337,10 @@ input[name='q']::placeholder {
     background-color: #ffa60b !important;
 }
 
+.img-fluid-60pc {
+    max-width: 60%;
+}
+
 /* Footer */
 .text-white-footer {
     color: #fafafafa;
@@ -609,4 +613,7 @@ footer a:hover {
         height: fit-content;
     }
 
+    .w-sm-35 {
+        width: 35% !important;
+    }
 }
