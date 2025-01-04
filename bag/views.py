@@ -14,25 +14,51 @@ def view_bag(request):
 def add_to_bag(request, item_id):
     """ Add a quantity of the specified batch to the shopping cart """
     
+    name = request.POST.get('name')
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
+    
+    # Obtenção do dicionário 'bag' da sessão
     bag = request.session.get('bag', {})
 
     # Verifica se o item já está no carrinho
     if item_id in bag:
-        # Verifica se o valor atual é um número (inteiro)
-        if isinstance(bag[item_id], int):
-            bag[item_id] += quantity
-        else:
-            # Caso o valor não seja um número, reinicializa o valor para a quantidade
-            bag[item_id] = quantity
+        # Se o item for um dicionário, atualize o 'quantity'
+        if isinstance(bag[item_id], dict):
+            bag[item_id]['quantity'] += quantity
+        # Se o item for um inteiro (caso de item sem nome ainda), converta para o formato esperado
+        elif isinstance(bag[item_id], int):
+            bag[item_id] = {'quantity': bag[item_id] + quantity, 'name': name}
     else:
         # Adiciona um novo item ao carrinho
-        bag[item_id] = quantity
+        bag[item_id] = {'quantity': quantity, 'name': name}
     
+    # Atualiza a sessão com o carrinho modificado
     request.session['bag'] = bag
-    print(request.session['bag'])  # Para fins de depuração
+
+    # Mensagem de sucesso
+    messages.success(request, f'Added {name} (x{quantity}) to your bag.')
+
     return redirect(redirect_url)
+
+# def add_to_bag(request, item_id):
+#     """ Add a quantity of the specified batch to the shopping cart """
+    
+#     quantity = int(request.POST.get('quantity'))
+#     redirect_url = request.POST.get('redirect_url')
+#     bag = request.session.get('bag', {})
+
+#     if item_id in bag:
+#         if isinstance(bag[item_id], int):
+#             bag[item_id] += quantity
+#         else:
+#             bag[item_id] = quantity
+#     else:
+#         bag[item_id] = quantity
+    
+#     request.session['bag'] = bag
+#     print(request.session['bag'])
+#     return redirect(redirect_url)
 
 
 
