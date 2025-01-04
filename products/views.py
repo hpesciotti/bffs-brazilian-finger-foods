@@ -107,10 +107,6 @@ def product_detail(request, product_id):
     
     batch = Batch.objects.filter(product__product_id=product.product_id).order_by('expiry_date').first()
 
-    # batch = get_object_or_404(Batch.objects.prefetch_related('product'),
-    #     product__product_id=product.product_id
-    # )
-
     # Gets the offer batch for sale first (qty > 0 and offer = 2)
     discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
     if discount_price_batch:
