@@ -511,6 +511,28 @@ footer a:hover {
     border-radius: 0;
 }
 
+/* Input field arrows Chrome, Safari e Edge */
+input[type="number"],
+input[type="range"],
+input[type="search"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+}
+
+/* Input field arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]:disabled::-webkit-outer-spin-button,
+input[type="number"]:disabled::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 1600px) {
     #carouselHero {
