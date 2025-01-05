@@ -452,9 +452,13 @@ footer a:hover {
 }
 
 .w-input {
-    max-width: 20% !important;
+    min-width: 25% !important;
+}
+
+.w-input-50 {
+    max-width: 50% !important;
     min-width: 15% !important;
-  }
+}
 
 /* -------------------------------- Media Queries */
 
@@ -640,7 +644,8 @@ input[type="number"] {
         height: fit-content;
     }
 
-    .w-input {
-        min-width: 35% !important;
+    .w-input,
+    .w-input-50 {
+        min-width: 25% !important;
     }
 }

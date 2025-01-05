@@ -45,11 +45,12 @@
                                     </td>
                                     <td class="align-middle py-3 px-1 px-md-2">
                                         <p class="my-0"><strong>{{ item.product.short_widget_name }}</strong></p>
+                                        <p class="my-0 mute">500g package</p>
                                     </td>
                                     <td class="align-middle py-3 px-1 px-md-2 ">
                                         <p class="my-0">&euro; {{ item.batch.sale_price }}</p>
                                     </td>
-                                    <td class="align-middle py-3 px-1 px-md-2 w-input">
+                                    <td class="align-middle py-3 px-1 px-md-2 w-input-50">
                                         <form class="form update-form" method="POST" action="">
                                             {% csrf_token %}
                                             <div class="form-group">
@@ -78,7 +79,7 @@
                                             </div>
                                         </form>
                                         <a class="update-link text-info"><small>Update</small></a>
-                                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
+                                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                                     </td>
                                     <td class="align-middle py-3 px-1 px-md-2">
                                         <p class="my-0">&euro; {{ item.batch.sale_price | calc_subtotal:item.quantity }}</p>
