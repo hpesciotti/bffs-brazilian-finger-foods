@@ -5,7 +5,7 @@
                 All Products
             </a>
             <ul class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <li><a href="{% url 'products' %}?sort=price&direction=desc" class="dropdown-item">By Price</a></li>
+                <li><a href="{% url 'products' %}?sort=asc&direction=desc&sort_by=batches__sale_price" class="dropdown-item">By Price</a></li>
                 <li><a href="{% url 'products' %}?cooking_process=frying&sort_by=name&sort=asc" class="dropdown-item">Deep Fried Delights</a></li>
                 <li><a href="{% url 'products' %}?cooking_process=baking&sort_by=name&sort=asc" class="dropdown-item">Oven Bites</a></li>
                 <li><a href="{% url 'products' %}" class="dropdown-item">All Products</a></li>

@@ -40,6 +40,14 @@ def adjust_bag(request, item_id):
     name = request.POST.get('name')
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
+    max_quantity = request.POST.get('max_quantity') # Fetches the max from the form
+
+    max_quantity = int(max_quantity)
+
+    # Limits the user to update to only the max quantity avaible of the batch.
+    if quantity > max_quantity:
+        messages.error(request, f'Cannot add more than {max_quantity} units of {name}.')
+        return redirect(reverse('view_bag'))
 
     if quantity > 0:
         bag[item_id] = quantity
@@ -69,4 +77,3 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
- 
