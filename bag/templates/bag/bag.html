@@ -45,13 +45,13 @@
                                     </td>
                                     <td class="align-middle py-3 px-1 px-md-2">
                                         <p class="my-0"><strong>{{ item.product.short_widget_name }}</strong></p>
-                                        <p class="my-0 mute">500g package</p>
+                                        <p class="my-0 text-mute">500g package</p>
                                     </td>
                                     <td class="align-middle py-3 px-1 px-md-2 ">
                                         <p class="my-0">&euro; {{ item.batch.sale_price }}</p>
                                     </td>
                                     <td class="align-middle py-3 px-1 px-md-2 w-input-50">
-                                        <form class="form update-form" method="POST" action="">
+                                        <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                                             {% csrf_token %}
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -117,13 +117,15 @@
                         </table>
                     </div>
                 {% else %}
-                    <p class="lead mb-5">Your bag is empty.</p>
-                    <a href="{% url 'products' %}" class="btn btn-invert-orange rounded-0 btn-lg">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="text-uppercase">Keep Shopping</span>
-                    </a>
+                    <div class="mb-auto">
+                        <p class="lead mb-5">Your bag is empty.</p>
+                        <a href="{% url 'products' %}" class="btn btn-invert-orange rounded-0 btn-lg">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="text-uppercase mb-3">Keep Shopping</span>
+                        </a>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -143,14 +145,20 @@
 
     // Remove item and reload on click
     $('.remove-item').click(function(e) {
+        e.preventDefault();
+        
         var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/bag/remove/${itemId}/`;
+        var itemId = $(this).attr('id').split('remove_')[1]; 
+        var url = `/bag/remove/${itemId}/`; 
+
+        var data = {
+            csrfmiddlewaretoken: csrfToken
+        };
 
         $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
+            .done(function() {
+                location.reload();
+            })
+    });
 </script>
 {% endblock %}
