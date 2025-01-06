@@ -19,18 +19,18 @@ def index(request):
     # Gets the offer batch for sale first (qty > 0 and offer = 2)
     for product in offer_products:
         product.discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
-        
+
         # original price
         product.original_price_batch = product.batches.filter(quantity__gt=0).first()
-        
+
         product.dietary_categories_names = product.dietary_categories.values_list('name', flat=True)
 
     for product in best_seller_products:
         product.discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
-        
+
         # original price
         product.original_price_batch = product.batches.filter(quantity__gt=0).first()
-        
+
         product.dietary_categories_names = product.dietary_categories.values_list('name', flat=True)
 
 

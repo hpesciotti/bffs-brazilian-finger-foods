@@ -134,6 +134,7 @@
                 </div>
             </div>
         </header>
+
         {% block page_header %}
         {% endblock %}
 
@@ -165,6 +166,11 @@
         {% include 'includes/footer.html' %}
 
         {% block postloadjs %}
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.toast').toast('show');
+            });
+        </script>
         {% endblock %}
     </body>
 

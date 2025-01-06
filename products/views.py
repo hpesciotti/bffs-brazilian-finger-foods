@@ -55,12 +55,12 @@ def all_products(request):
     products = products.annotate(min_price=Cast(Min('batches__sale_price'), FloatField()))
 
     # Sorting by the selected criteria
-    if sort_key == 'batches__sale_price':  # Ordenar por sale_price de Batch
+    if sort_key == 'batches__sale_price':
         if sort_direction == 'asc':
-            products = products.order_by('min_price')  # Ordenação crescente pelo preço mínimo
+            products = products.order_by('min_price')
         else:
-            products = products.order_by('-min_price')  # Ordenação decrescente pelo preço mínimo
-    elif sort_key == 'name':  # Ordenar por nome do produto
+            products = products.order_by('-min_price')
+    elif sort_key == 'name':
         if sort_direction == 'asc':
             products = products.order_by('name')
         else:
@@ -104,8 +104,9 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product.objects.prefetch_related(
         'batches', 'dietary_categories'
     ), pk=product_id)
-    
-    batch = Batch.objects.filter(product__product_id=product.product_id).order_by('expiry_date').first()
+
+    batch = Batch.objects.filter(
+        product__product_id=product.product_id).order_by('expiry_date').first()
 
     # Gets the offer batch for sale first (qty > 0 and offer = 2)
     discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
@@ -124,8 +125,6 @@ def product_detail(request, product_id):
 
     # Gets dietary categories names
     dietary_categories_names = product.dietary_categories.values_list('name', flat=True)
-
-    print(f"Discount Price: {discount_price_batch}, Original Price: {original_price_batch}")
 
     if not product.batches.exists():
         print("No batches found for this product")

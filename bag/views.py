@@ -50,7 +50,7 @@ def adjust_bag(request, item_id):
         return redirect(reverse('view_bag'))
 
     if quantity > 0:
-        bag[item_id] = quantity
+        bag[item_id] = {'quantity': quantity, 'name': name}
         messages.success(request, f'Updated size {name} quantity to (x{quantity})')
     else:
         bag.pop(item_id)
