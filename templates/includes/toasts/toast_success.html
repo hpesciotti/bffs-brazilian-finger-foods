@@ -1,10 +1,8 @@
-<div class="toast custom-toast rounded-0 border-top-0" data-autohide="false">
+<div class="toast custom-toast rounded-0 border-top-0" data-bs-autohide="true" data-bs-delay="45000000">
     <div class="w-100 toast-capper bg-success"></div>
     <div class="toast-header bg-white text-dark">
-        <strong class="mr-auto">Success!</strong>
-        <button type="button" class="ml-2 mb-1 close text-dark" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <strong class="mr-auto fs-5 text-success"><i class="fa-solid fa-cart-shopping"></i> Success!</strong>
+        <button type="button" class="ml-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body bg-white">
         <div class="row">
@@ -13,30 +11,29 @@
                 <hr class="mt-1 mb-3">
             </div>
         </div>
-    </div>
-</div>
-        <!-- {% if grand_total and not on_profile_page %}
+        <div class="row">
+            {% if grand_total and not on_profile_page %}
             <p class="logo-font bg-white text-black py-1">Your Bag ({{ product_count }})</p>
             <div class="bag-notification-wrapper">
                 {% for item in bag_items %}
                     <div class="row">
                         <div class="col-3 my-1">
-                            {% if item.product.image %}
+                            {% if item.product.image_widget.url %}
                             <img class="w-100" src="{{ product.image_widget.url }}" alt="{{ product.short_widget_name }}">
                             {% else %}
                             <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
                             {% endif %}
                         </div>
                         <div class="col-9">
-                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                            <p class="my-0"><strong>{{ item.product.short_widget_name }}</strong></p>
                             <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                         </div>
                     </div>
                 {% endfor %}
             </div>
             <div class="row">
-                <div class="col">
-                    <strong><p class="mt-3 mb-1 text-black">
+                <div class="col d-flex flex-column">
+                    <strong><p class="mt-3 mb-1">
                         Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: 
                         <span class="float-right">${{ total|floatformat:2 }}</span>
                     </p></strong>
@@ -45,7 +42,7 @@
                             Spend <strong>${{ free_delivery_delta }}</strong> more to get free next day delivery!
                         </p>
                     {% endif %}
-                    <a href="{% url 'view_bag' %}" class="btn btn-black btn-block rounded-0">
+                    <a href="{% url 'view_bag' %}" class="btn btn-dk-orange rounded-0 m-1b justify-content-center">
                         <span class="text-uppercase">Go To Secure Checkout</span>
                         <span class="icon">
                             <i class="fas fa-lock"></i>
@@ -53,6 +50,7 @@
                     </a>
                 </div>
             </div>
-        {% endif %} -->
+        {% endif %}
+        </div>
     </div>
 </div>
