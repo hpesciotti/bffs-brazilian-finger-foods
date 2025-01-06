@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     # Others
     'crispy_forms',
+    'crispy_bootstrap5',
     'storages',
 ]
 
@@ -76,6 +77,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth'),
+            os.path.join(BASE_DIR, 'path_to_crispy_bootstrap5_templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -89,12 +91,10 @@ TEMPLATES = [
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
-                # 'crispy_forms.templatetags.crispy_forms_fields',
             ]
         },
     },
 ]
-
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 ## Added by Alauth Setup 1
