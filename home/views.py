@@ -40,3 +40,16 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+def custom_403_view(request, exception):
+    return render(request, '403.html', status=403)
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
+
+def custom_500_view(request, exception=None):
+    return render(request, '500.html', status=500)
+
+def contacts(request):
+    """Contatcs view with static information"""
+    return render(request, 'home/contacts.html')

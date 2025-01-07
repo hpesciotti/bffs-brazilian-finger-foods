@@ -575,6 +575,10 @@ input[type="number"] {
     overflow-y: auto;
 }
 
+.expand-sm {
+    height: 100vh;
+}
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 1600px) {
     #carouselHero {
@@ -663,7 +667,7 @@ input[type="number"] {
 }
 
 @media (max-width: 561px) {
-    
+
     .header-container {
         padding-top: 63px;
     }

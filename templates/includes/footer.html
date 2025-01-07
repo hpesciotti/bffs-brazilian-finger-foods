@@ -27,11 +27,10 @@
                 <div>
                     <h4 class="text-white-footer">Information</h4>
                     <ul class="list-unstyled">
-                        <li><a href="/" class="footer-links">Home</a></li>
-                        <li><a href="/products/" class="footer-links">Shop</a></li>
+                        <li><a href="{% url 'home' %}" class="footer-links">Home</a></li>
+                        <li><a href="{% url 'products' %}" class="footer-links">Shop</a></li>
                         <li><a href="/#faq" class="footer-links">FAQ</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#contactModal" class="footer-links">Contact
-                                Us</a></li>
+                        <li><a href="{% url 'contacts' %}" class="footer-links">Contact Us</a></li>
                         <li><a href="https://www.freeprivacypolicy.com/live/8d082c4d-78cf-425d-beb6-182e5dddac93" target="_blank" class="footer-links">Privacy
                                 Policy</a></li>
                         <li><a href="/static/docs/terms_and_conditions.pdf" target="_blank" class="footer-links">Terms &amp; Conditions</a></li>
@@ -50,7 +49,7 @@
                 <!-- Social Media Icons -->
                 <h4 class="text-white-footer">Join us on social media!</h4>
                 <div>
-                    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Visit our Facebook page (opens in a new tab)" title="Visit our Facebook page">
+                    <a href="https://www.facebook.com/people/BFFs-Brazilian-Finger-Foods/61571720907799/" target="_blank" rel="noopener" aria-label="Visit our Facebook page (opens in a new tab)" title="Visit our Facebook page">
                         <i class="fa-brands fa-facebook icon-footer fs-2" aria-hidden="true"></i>
                     </a>
                     <a href="https://github.com/hpesciotti" target="_blank" rel="noopener" aria-label="Visit our GitHub profile (opens in a new tab)" title="Visit our GitHub profile" class="mx-3">

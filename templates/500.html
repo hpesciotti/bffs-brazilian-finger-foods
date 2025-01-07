@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="overlay"></div>
+<div class="container mt-5">
+    <div class="row expand-sm">
+        <div class="col text-center my-auto">
+            <h3 class="my-2 text-center text-dk-orange">500 - Internal Server Error</h3>
+            <h5 class="my-2 text-center">Sorry, something went wrong. This will be fixed soon.</h5>
+            <div class="my-4">
+                <div>
+                    <a href="{% url 'home' %}" class="btn btn-dk-orange p-2 text-uppercase py-2">
+                        <strong class="fs-5">Return Home</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
