@@ -1,3 +1,7 @@
+a:hover {
+  color: #ffa60b;
+}
+
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
@@ -32,8 +36,8 @@
 
 #payment-form .form-control,
 #card-element {
-  color: #000;
-  border: 1px solid #000;
+  color: #b7b7b7;
+  border: 1px solid #b7b7b7;
 }
 
 select,
