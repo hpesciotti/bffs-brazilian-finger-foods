@@ -74,7 +74,7 @@
             {% else %}
                 <p class="card-text">Out of Stock</p>
             {% endif %}    
-            <a href="#" class="btn btn-dk-orange">Add to Cart</a>
+            <a href="{% url 'product_detail' product.product_id %}" class="btn btn-dk-orange">View More</a>
           </div>
         </div>
         {% endfor %}
@@ -111,7 +111,7 @@
             {% else %}
                 <p class="card-text">Out of Stock</p>
             {% endif %} 
-            <a href="#" class="btn btn-dk-orange">Add to Cart</a>
+            <a href="{% url 'product_detail' product.product_id %}" class="btn btn-dk-orange">View More</a>
           </div>
         </div>
         {% endfor %}
