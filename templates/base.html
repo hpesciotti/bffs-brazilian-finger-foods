@@ -169,12 +169,18 @@
 
         {% block postloadjs %}
         <script type="text/javascript">
-            $(document).ready(function() {
-                $('.toast').toast('show');
-            });
+            jQuery.noConflict();
+
+            (function($) {
+                $(document).ready(function() {
+                    $('.toast').toast('show');
+                });
+            })
+            (jQuery);
         </script>
         <script type="text/javascript">
-        (function($) {
+            var mce_jQuery = jQuery.noConflict();
+            (function($) {
             window.fnames = new Array();
             window.ftypes = new Array();
             fnames[0] = 'EMAIL';
@@ -191,8 +197,7 @@
             ftypes[5] = 'birthday';
             fnames[6] = 'COMPANY';
             ftypes[6] = 'text';
-        })(jQuery);
-        var $mcj = jQuery.noConflict(true);
+            })(mce_jQuery);
         </script>
         {% endblock %}
     </body>
