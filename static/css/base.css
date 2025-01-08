@@ -12,6 +12,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+  color: #ffa60b;
+}
+
 .row {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
@@ -19,6 +23,11 @@ a {
 
 .logo {
     height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .logo-font {
