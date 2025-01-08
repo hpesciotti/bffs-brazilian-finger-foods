@@ -16,6 +16,8 @@ def add_to_bag(request, item_id):
 
     name = request.POST.get('name')
     quantity = int(request.POST.get('quantity'))
+    # Fetches batch_id for further update stock functions
+    batch_id = request.POST.get('batch_id')
     redirect_url = request.POST.get('redirect_url')
 
     bag = request.session.get('bag', {})
@@ -24,12 +26,21 @@ def add_to_bag(request, item_id):
         if isinstance(bag[item_id], dict):
             bag[item_id]['quantity'] += quantity
         elif isinstance(bag[item_id], int):
-            bag[item_id] = {'quantity': bag[item_id] + quantity, 'name': name}
+            bag[item_id] = {
+                'quantity': bag[item_id] + quantity,
+                'name': name,
+                'batch_id': batch_id,
+            }
     else:
-        bag[item_id] = {'quantity': quantity, 'name': name}
+        bag[item_id] = {
+            'quantity': quantity,
+            'name': name,
+            'batch_id': batch_id,
+        }
 
     request.session['bag'] = bag
 
+    print(bag)
     messages.success(request, f'Added {name} (x{quantity}) to your bag.')
 
     return redirect(redirect_url)
@@ -39,22 +50,25 @@ def adjust_bag(request, item_id):
 
     name = request.POST.get('name')
     quantity = int(request.POST.get('quantity'))
+    batch_id = request.POST.get('batch_id')  # Fetch batch_id from the request
+    max_quantity = int(request.POST.get('max_quantity'))  # Fetch max_quantity
+
     bag = request.session.get('bag', {})
-    max_quantity = request.POST.get('max_quantity') # Fetches the max from the form
 
-    max_quantity = int(max_quantity)
-
-    # Limits the user to update to only the max quantity avaible of the batch.
     if quantity > max_quantity:
         messages.error(request, f'Cannot add more than {max_quantity} units of {name}.')
         return redirect(reverse('view_bag'))
 
     if quantity > 0:
-        bag[item_id] = {'quantity': quantity, 'name': name}
-        messages.success(request, f'Updated size {name} quantity to (x{quantity})')
+        if item_id in bag and isinstance(bag[item_id], dict):
+            bag[item_id]['quantity'] = quantity
+        else:
+            bag[item_id] = {'quantity': quantity, 'name': name, 'batch_id': batch_id}
+
+        messages.success(request, f'Updated {name} quantity to (x{quantity}).')
     else:
-        bag.pop(item_id)
-        messages.success(request, f'Removed {name} quantity to (x{quantity})')
+        bag.pop(item_id, None)
+        messages.success(request, f'Removed {name} from your bag.')
 
     print(bag)
 

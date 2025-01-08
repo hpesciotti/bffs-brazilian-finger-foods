@@ -111,7 +111,7 @@ def product_detail(request, product_id):
     # Gets the offer batch for sale first (qty > 0 and offer = 2)
     discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
     if discount_price_batch:
-        discount_price_batch = discount_price_batch.sale_price 
+        discount_price_batch = discount_price_batch.sale_price
     else:
         discount_price_batch = None
 
