@@ -156,6 +156,10 @@ a:hover {
     color: #000 !important;
 }
 
+.text-grey {
+    color: #373737 !important;
+}
+
 .text-dk-orange {
     color: #e55125;
 }
@@ -585,7 +589,7 @@ input[type="number"] {
 }
 
 .expand-sm {
-    height: 100vh;
+    height: 70vh;
 }
 
 /* fixed top navbar only on medium and up */
