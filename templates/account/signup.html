@@ -7,16 +7,83 @@
 {% block inner_content %}
 <h2 class="mb-4">{% trans "Sign Up" %}</h2>
 
-<p class="fs-3">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<p class="fs-3">{% blocktrans %}Already have an account? Then please <strong class="text-dk-orange"><a href="{{ login_url }}">Sign In</a></strong>.{% endblocktrans %}</p>
 
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+
+  <!-- Email -->
+  <div class="form-group mb-3">
+    <label for="id_email">Email</label>
+    {{ form.email }}
+    {% if form.email.help_text %}
+      <small class="form-text text-muted">{{ form.email.help_text }}</small>
+    {% endif %}
+    {% for error in form.email.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <!-- Email Confirmation -->
+  <div class="form-group mb-3">
+    <label for="id_email2">Email (again)</label>
+    {{ form.email2 }}
+    {% if form.email2.help_text %}
+      <small class="form-text text-muted">{{ form.email2.help_text }}</small>
+    {% endif %}
+    {% for error in form.email2.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <!-- Username -->
+  <div class="form-group mb-3">
+    <label for="id_username">Username</label>
+    {{ form.username }}
+    {% if form.username.help_text %}
+      <small class="form-text text-muted">{{ form.username.help_text }}</small>
+    {% endif %}
+    {% for error in form.username.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <!-- Password -->
+  <div class="form-group mb-3">
+    <label for="id_password1">Password</label>
+    {{ form.password1 }}
+    {% for error in form.password1.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  <!-- Password Confirmation -->
+  <div class="form-group mb-3">
+    <label for="id_password2">Password (again)</label>
+    {{ form.password2 }}
+    {% for error in form.password2.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+
+  {% if form.password1.help_text %}
+  <small class="form-text text-muted">{{ form.password1.help_text }}</small>
   {% endif %}
-  <a class="btn btn-invert-orange" href="{% url 'account_login' %}">Back to Login</a>
-  <button class="btn btn-dk-orange" type="submit">{% trans "Sign Up" %}</button>
+  {% if form.password2.help_text %}
+  <small class="form-text text-muted">{{ form.password2.help_text }}</small>
+  {% endif %}
+
+  <!-- Redirect Field -->
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+  {% endif %}
+
+  <!-- Buttons -->
+  <div class="d-flex justify-content-center">
+    <a class="btn btn-invert-orange mx-3 my-3" href="{% url 'account_login' %}">Back to Login</a>
+    <button class="btn btn-dk-orange mx-3 my-3" type="submit">{% trans "Sign Up" %}</button>
+  </div>
 </form>
+
 
 {% endblock %}
