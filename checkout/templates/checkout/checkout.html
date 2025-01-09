@@ -98,7 +98,7 @@
                     <div class="px-3 mb-5">
                         <div class="form-check form-check-inline float-right mr-0">
                             <label class="form-check-label" for="terms-and-conditions">I agree to the <a href="/static/docs/terms_and_conditions.pdf" target="_blank" class="text-dk-orange">Terms &amp; Conditions</a></label>
-                        <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="terms-and-conditions-checkbox" name="save-info" checked>
                         </div>
                     </div>
                     <fieldset class="px-3">
@@ -110,6 +110,11 @@
                         <!-- Pass the client secret to the view so we can get the payment intent id -->
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
+
+                    <!-- Checkbox error message -->
+                    <div id="terms-error-message" class="mb-3 px-3 text-danger icon" style="display: none;">
+                        <span></span><i class="fas fa-times" aria-hidden="true"></i> In order to proceed, you have to agree with the <strong>Terms and Conditions</strong> (checkbox).</span>
+                    </div>
 
                     <div class="submit-button text-center text-md-right mt-5 mb-md-2 mb-4">                    
 						<a href="{% url 'view_bag' %}" class="btn btn-invert-orange">

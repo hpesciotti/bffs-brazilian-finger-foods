@@ -6,6 +6,7 @@
     https://stripe.com/docs/stripe-js
 */
 
+// Lógica existente
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);
@@ -28,7 +29,7 @@ var style = {
 var card = elements.create('card', {style: style});
 card.mount('#card-element');
 
-// // Handle realtime validation errors on the card element
+// Handle realtime validation errors on the card element
 card.addEventListener('change', function(event) {
     var errorDiv = document.getElementById('card-errors');
     if (event.error) {
@@ -44,12 +45,26 @@ card.addEventListener('change', function(event) {
     }
 });
 
-// // Handle form submit
+// Handle form submit with terms and conditions check
 var form = document.getElementById('payment-form');
-
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
-    card.update({ 'disabled': true});
+
+    // Listens if terms and conditions checkbox is not checked
+    var termsChecked = document.getElementById('terms-and-conditions-checkbox').checked;
+    var errorMessage = document.getElementById('terms-error-message');
+
+    if (!termsChecked) {
+        // Shows error message, if checkbox is not checked
+        errorMessage.style.display = 'block';
+        return; // Interrupts the form submition 
+    } else {
+        // Hides error checkbox error message
+        errorMessage.style.display = 'none';
+    }
+
+    // Disables submit button, if terms and conditions checkbox is not checked
+    card.update({ 'disabled': true });
     $('#submit-button').attr('disabled', true);
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
@@ -72,7 +87,7 @@ form.addEventListener('submit', function(ev) {
                     name: $.trim(form.full_name.value),
                     phone: $.trim(form.phone_number.value),
                     email: $.trim(form.email.value),
-                    address:{
+                    address: {
                         line1: $.trim(form.street_address1.value),
                         line2: $.trim(form.street_address2.value),
                         postal_code: $.trim(form.eircode.value),
@@ -99,7 +114,7 @@ form.addEventListener('submit', function(ev) {
                 $(errorDiv).html(html);
                 $('#payment-form').fadeToggle(100);
                 $('#loading-overlay').fadeToggle(100);
-                card.update({ 'disabled': false});
+                card.update({ 'disabled': false });
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
@@ -110,5 +125,5 @@ form.addEventListener('submit', function(ev) {
     }).fail(function () {
         // just reload the page, the error will be in django messages
         location.reload();
-    })
+    });
 });
