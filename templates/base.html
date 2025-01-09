@@ -8,6 +8,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Metatags for engine search optmization -->
+        <meta name="description" content="Taste the best Brazilian finger foods in Dublin. Delivered frozen to your doorstep, our comfort foods are perfect for parties and events and as a quick snack.">
+        <meta name="keywords" content="Brazilian appetizers, frozen Brazilian snacks, finger foods from Brazil, Brazilian cuisine Dublin, party appetizers Dublin, Brazilian snacks Dublin">
         {% comment %} Favicon {% endcomment %}
         <link rel="apple-touch-icon" sizes="180x180" href="{{ MEDIA_URL }}/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ MEDIA_URL }}/favicon/favicon-32x32.png">
@@ -93,7 +96,7 @@
                                 {% if request.user.is_superuser %}
                                 <a href="" class="dropdown-item">Product Management</a>
                                 {% endif %}
-                                <a href="" class="dropdown-item">My Profile</a>
+                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                                 {% else %}
                                 <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
