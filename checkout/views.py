@@ -14,20 +14,21 @@ from bag.context import bag_contents
 import stripe
 import json
 
-# @require_POST
-# def cache_checkout_data(request):
-#     try:
-#         pid = request.POST.get('client_secret').split('_secret')[0]
-#         stripe.api_key = settings.STRIPE_SECRET_KEY
-#         stripe.PaymentIntent.modify(pid, metadata={
-#             'bag': json.dumps(request.session.get('bag', {})),
-#             'save_info': request.POST.get('save_info'),
-#             'username': request.user,
-#         })
-#         return HttpResponse(status=200)
-#     except Exception as e:
-#         messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
-#         return HttpResponse(content=e, status=400)
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
@@ -94,15 +95,22 @@ def checkout(request):
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
+            metadata={
+                "bag": json.dumps(bag),
+                "save_info": request.session.get("save_info", False),
+                "username": (
+                    request.user.username 
+                    if request.user.is_authenticated 
+                    else "AnonymousUser"
+                ),
+            }
         )
 
         ######################### Início da parte do perfil de usuário
         # Dependendo da implementação do perfil do usuário
         # if request.user.is_authenticated:
         #     try:
-        #         # Aqui você obteria o perfil do usuário, que ainda não foi implementado
         #         profile = UserProfile.objects.get(user=request.user)
-        #         # Preenche o formulário de pedido com os dados do perfil do usuário
         #         order_form = OrderForm(initial={
         #             'full_name': profile.user.get_full_name(),
         #             'email': profile.user.email,
@@ -112,7 +120,6 @@ def checkout(request):
         #             'street_address2': profile.default_street_address2,
         #         })
         #     except UserProfile.DoesNotExist:
-        #         # Caso o perfil não exista, cria um formulário vazio
         #         order_form = OrderForm()
         # else:
         #     order_form = OrderForm()
