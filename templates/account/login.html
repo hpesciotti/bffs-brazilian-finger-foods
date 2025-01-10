@@ -54,4 +54,14 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   </p>
 </form>
 
+{% if form.non_field_errors %}
+  <div>
+    <ul class="no-decoration">
+      {% for error in form.non_field_errors %}
+        <li class="text-danger"><i class="fa-solid fa-x"></i> {{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
 {% endblock %}

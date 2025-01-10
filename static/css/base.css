@@ -592,6 +592,12 @@ input[type="number"] {
     height: 70vh;
 }
 
+.no-decoration {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 1600px) {
     
