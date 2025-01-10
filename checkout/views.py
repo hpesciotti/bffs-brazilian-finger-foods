@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -7,8 +8,8 @@ from .forms import OrderForm
 from .models import Order, OrderLineItem
 
 from products.models import Product, Batch
-# from profiles.models import UserProfile
-# from profiles.forms import UserProfileForm
+from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
 from bag.context import bag_contents
 
 import stripe
@@ -55,10 +56,8 @@ def checkout(request):
             order.original_bag = json.dumps(bag)
             order.save()
 
-            
             for item_id, item_data in bag.items():
                 try:
-                    
                     batch = Batch.objects.get(id=item_data['batch_id'])
 
                     order_line_item = OrderLineItem(
@@ -74,7 +73,6 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_bag'))
 
-            # Salva as informações no perfil do usuário
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
@@ -106,26 +104,23 @@ def checkout(request):
             }
         )
 
-        ######################### Início da parte do perfil de usuário
-        # Dependendo da implementação do perfil do usuário
-        # if request.user.is_authenticated:
-        #     try:
-        #         profile = UserProfile.objects.get(user=request.user)
-        #         order_form = OrderForm(initial={
-        #             'full_name': profile.user.get_full_name(),
-        #             'email': profile.user.email,
-        #             'phone_number': profile.default_phone_number,
-        #             'eircode': profile.default_eircode,
-        #             'street_address1': profile.default_street_address1,
-        #             'street_address2': profile.default_street_address2,
-        #         })
-        #     except UserProfile.DoesNotExist:
-        #         order_form = OrderForm()
-        # else:
-        #     order_form = OrderForm()
-        ######################### Fim da parte do perfil de usuário
+        order_form = None
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
 
-    order_form = OrderForm()
+                order_form = OrderForm(initial={
+                    'full_name': request.user.get_full_name(),
+                    'email': request.user.email,
+                    'phone_number': profile.default_phone_number,
+                    'eircode': profile.default_eircode,
+                    'street_address1': profile.default_street_address1,
+                    'street_address2': profile.default_street_address2,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderForm()
+        if not order_form:
+            order_form = OrderForm()
 
     template = 'checkout/checkout.html'
     context = {
@@ -144,32 +139,26 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
-    ######################### Início da parte do perfil de usuário
-    # Parte comentada, pois depende da implementação do perfil do usuário
-    # if request.user.is_authenticated:
-    #     try:
-    #         # Aqui você obteria o perfil do usuário, que ainda não foi implementado
-    #         profile = UserProfile.objects.get(user=request.user)
-    #         # Associar o perfil do usuário ao pedido
-    #         order.user_profile = profile
-    #         order.save()
 
-    #         # Salvar as informações do usuário, se a opção for selecionada
-    #         if save_info:
-    #             profile_data = {
-    #                 'default_phone_number': order.phone_number,
-    #                 'default_eircode': order.eircode,
-    #                 'default_street_address1': order.street_address1,
-    #                 'default_street_address2': order.street_address2,
-    #             }
-    #             user_profile_form = UserProfileForm(profile_data, instance=profile)
-    #             if user_profile_form.is_valid():
-    #                 user_profile_form.save()
+    if request.user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+            order.user_profile = profile
+            order.save()
 
-    #     except UserProfile.DoesNotExist:
-    #         # Caso o perfil do usuário não exista, não associa nada
-    #         pass
-    ######################### Fim da parte do perfil de usuário
+            if save_info:
+                profile_data = {
+                    'default_phone_number': order.phone_number,
+                    'default_eircode': order.eircode,
+                    'default_street_address1': order.street_address1,
+                    'default_street_address2': order.street_address2,
+                }
+                user_profile_form = UserProfileForm(profile_data, instance=profile)
+                if user_profile_form.is_valid():
+                    user_profile_form.save()
+
+        except UserProfile.DoesNotExist:
+            pass
 
     messages.success(
         request, 

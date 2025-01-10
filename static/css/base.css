@@ -594,6 +594,11 @@ input[type="number"] {
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 1600px) {
+    
+    .expand-sm {
+        height: 100vh;
+    }
+    
     #carouselHero {
         background-color: #e55125;
     }

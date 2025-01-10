@@ -16,15 +16,15 @@
 
 {% block content %}
     <div class="overlay"></div>
-    <div class="container">
+    <div class="container mb-5 mt-md-3 mt-5">
         <div class="row">
             <div class="col">
-                <h4 class="text-center my-4">Shopping Cart</h4>
+                <h4 class="text-center">Shopping Cart</h4>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-12 col-lg-6 order-lg-last mb-5">
+            <div class="col-12 col-lg-6 order-lg-last mb-3">
                 <p class="text-muted text-center">Order Summary ({{ product_count }})</p>
                 <div class="row">
                     <div class="col-7 offset-2">
@@ -72,7 +72,7 @@
                 <p class="text-muted">Please fill out the form below to complete your order</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
-                    <fieldset class="rounded px-3 mb-5">
+                    <fieldset class="rounded px-3 mb-3">
                         <legend class="fieldset-label small px-2 w-auto">Details</legend>
                         {{ order_form.full_name | as_crispy_field:"bootstrap5" }}
                         {{ order_form.email | as_crispy_field:"bootstrap5" }}
@@ -95,7 +95,7 @@
 							{% endif %}
 						</div>
                     </fieldset>
-                    <div class="px-3 mb-5">
+                    <div class="px-3 mb-3">
                         <div class="form-check form-check-inline float-right mr-0">
                             <label class="form-check-label" for="terms-and-conditions">I agree to the <a href="/static/docs/terms_and_conditions.pdf" target="_blank" class="text-dk-orange">Terms &amp; Conditions</a></label>
                             <input class="form-check-input ml-2 mr-0" type="checkbox" id="terms-and-conditions-checkbox" name="save-info" checked>
@@ -112,11 +112,11 @@
                     </fieldset>
 
                     <!-- Checkbox error message -->
-                    <div id="terms-error-message" class="mb-3 px-3 text-danger icon" style="display: none;">
+                    <div id="terms-error-message" class="mb-1 px-3 text-danger icon" style="display: none;">
                         <span><i class="fas fa-times" aria-hidden="true"></i> In order to proceed, you have to agree with the <strong>Terms and Conditions</strong> (checkbox).</span>
                     </div>
 
-                    <div class="submit-button text-center text-md-right mt-5 mb-md-2 mb-4">                    
+                    <div class="submit-button text-center text-md-right m-2">                    
 						<a href="{% url 'view_bag' %}" class="btn btn-invert-orange">
 							<span class="icon">
 								<i class="fas fa-chevron-left"></i>
