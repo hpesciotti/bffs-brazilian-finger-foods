@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center my-sm-5 my-3 my-lg-4 expand-sm" style="align-content: start;">
+    <div class="col-12">
+        <h3 class="text-center">Batch Manage</h3>
+    </div>
+    <!-- Search Form -->
+    <div class="col-12 col-md-6 col-lg-4 my-4 py-1 py-lg-0">
+        <form method="GET">
+            <div class="input-group w-100">
+                <input class="form-control border border-dk-orange rounded-0" type="text" name="q" value="{{ search_query }}"
+                    placeholder="Search Batch">
+                <div class="input-group-append">
+                    <button class="form-control btn btn-dk-orange border border-dk-orange rounded-0" type="submit">
+                        <span class="icon">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>       
+    </div>
+
+    <!-- Batch Table -->
+    <div class="col-12 col-lg-10">
+        <div class="table-responsive" style="max-height: 600px; overflow-y: scroll;">
+            <table class="table">
+                <thead style="position: sticky; top: 0; background-color: #e55125; z-index: 1;">
+                    <tr class="text-white fs-6">
+                        <th><a
+                                href="?sort_by=product__short_widget_name&sort_order={% if sort_by == 'product__name' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Product</a>
+                        </th>
+                        <th><a
+                                href="?sort_by=batch_number&sort_order={% if sort_by == 'batch_number' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Batch
+                                Number</a></th>
+                        <th><a
+                                href="?sort_by=expiry_date&sort_order={% if sort_by == 'expiry_date' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Expiry
+                                Date</a></th>
+                        <th><a
+                                href="?sort_by=quantity&sort_order={% if sort_by == 'quantity' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Quantity</a>
+                        </th>
+                        <th><a
+                                href="?sort_by=offer&sort_order={% if sort_by == 'offer' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Offer</a>
+                        </th>
+                        <th><a
+                                href="?sort_by=discount_percentage&sort_order={% if sort_by == 'discount_percentage' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Discount
+                                Percentage</a>
+                            </th>
+                        <th><a
+                                href="?sort_by=sale_price&sort_order={% if sort_by == 'sale_price' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Sale
+                                Price</a>
+                            </th>
+                        <th>
+                            Add
+                            Discount
+                        </th>
+                        <th>
+                            Edit
+                        </th>
+                        <th>
+                            Delete
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for batch in batches %}
+                    <tr>
+                        <td>{{ batch.product.short_widget_name }}</td>
+                        <td>{{ batch.batch_number }}</td>
+                        <td>{{ batch.expiry_date }}</td>
+                        <td>{{ batch.quantity }}</td>
+                        <td>{{ batch.get_offer_display }}</td>
+                        <td>{{ batch.discount_percentage }}</td>
+                        <td>{{ batch.sale_price }}</td>
+                        <td><a href="{% url 'add_batch' %}" class="btn btn-success round-0"><i class="fa-solid fa-percent"></i></a></td>
+                        <td><a href="{% url 'add_batch' %}" class="btn btn-warning round-0"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td><a href="{% url 'add_batch' %}" class="btn btn-danger round-0"><i class="fa-solid fa-delete-left"></i></a></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8">No batches found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block postloadjs %}
+{{ block.super }}
+{% endblock %}

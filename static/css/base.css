@@ -598,6 +598,24 @@ input[type="number"] {
     padding: 0;
 }
 
+.btn-success:hover {
+    color:#198754 !important;
+    background-color:white !important;
+    border: 1px solid #198754 !important; 
+}
+
+.btn-warning:hover {
+    color:#ffc107 !important;
+    background-color:white !important;
+    border: 1px solid #ffc107 !important;
+}
+
+.btn-danger:hover {
+    color:#dc3545 !important;
+    background-color:white !important;
+    border: 1px solid #dc3545 !important;
+}
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 1600px) {
     
