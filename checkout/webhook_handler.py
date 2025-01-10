@@ -5,7 +5,7 @@ from django.conf import settings
 
 from .models import Order, OrderLineItem
 from products.models import Product
-# from profiles.models import UserProfile
+from profiles.models import UserProfile
 
 import stripe
 import json
@@ -72,14 +72,14 @@ class StripeWH_Handler:
         # Update profile information if save_info was checked
         profile = None
         username = intent.metadata.username
-        # if username != 'AnonymousUser':
-        #     profile = UserProfile.objects.get(user__username=username)
-        #     if save_info:
-        #         profile.default_phone_number = shipping_details.phone
-        #         profile.default_eircode = shipping_details.eircode
-        #         profile.default_street_address1 = shipping_details.address.line1
-        #         profile.default_street_address2 = shipping_details.address.line2
-        #         profile.save()
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
+            if save_info:
+                profile.default_phone_number = shipping_details.phone
+                profile.default_eircode = shipping_details.eircode
+                profile.default_street_address1 = shipping_details.address.line1
+                profile.default_street_address2 = shipping_details.address.line2
+                profile.save()
 
         order_exists = False
         attempt = 1
@@ -87,7 +87,7 @@ class StripeWH_Handler:
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
-                    # user_profile=profile,
+                    user_profile=profile,
                     email__iexact=billing_details.email,
                     phone_number__iexact=shipping_details.phone,
                     eircode__iexact=shipping_details.address.get('postal_code', ''), # Using postal_code for eircode
@@ -114,7 +114,7 @@ class StripeWH_Handler:
                 # Create order and save postal_code as eircode
                 order = Order.objects.create(
                     full_name=shipping_details.name,
-                    # user_profile=profile,
+                    user_profile=profile,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
                     eircode=shipping_details.address.get('postal_code', ''), # Save postal_code as eircode
