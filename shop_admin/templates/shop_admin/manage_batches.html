@@ -38,7 +38,7 @@
     <div class="col-12 col-lg-10">
         <div class="table-responsive" style="max-height: 600px; overflow-y: scroll;">
             <table class="table">
-                <thead style="position: sticky; top: 0; background-color: #e55125; z-index: 1;">
+                <thead style="position: sticky; top: 0; background-color: #373737; z-index: 1;">
                     <tr class="text-white fs-6">
                         <th><a
                                 href="?sort_by=product__short_widget_name&sort_order={% if sort_by == 'product__name' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Product</a>
@@ -85,7 +85,7 @@
                         <td>{{ batch.get_offer_display }}</td>
                         <td>{{ batch.discount_percentage }}</td>
                         <td>{{ batch.sale_price }}</td>
-                        <td><a href="{% url 'add_batch' %}" class="btn btn-success round-0"><i class="fa-solid fa-percent"></i></a></td>
+                        <td><a href="{% url 'apply_discount' batch_id=batch.id %}" class="btn btn-success round-0"><i class="fa-solid fa-percent"></i></a></td>
                         <td><a href="{% url 'add_batch' %}" class="btn btn-warning round-0"><i class="fa-solid fa-pen-to-square"></i></a></td>
                         <td><a href="{% url 'add_batch' %}" class="btn btn-danger round-0"><i class="fa-solid fa-delete-left"></i></a></td>
                     </tr>
@@ -96,6 +96,11 @@
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
+        <div class="col-12 m-4">
+            <div class="text-center">
+                <a href="{% url 'shop_admin' %}" class="btn btn-invert-orange"><i class="fas fa-chevron-left"></i>Go back to Shop Admin</a>
+            </div>
         </div>
     </div>
 </div>

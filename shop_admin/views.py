@@ -1,13 +1,13 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Min, F, Q
 from django.db.models.functions import Lower
 from django.db import connection
 from django.db.models import Min, FloatField
 from django.db.models.functions import Cast
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from products.models import Product, Batch, DietaryCategory, COOKING_PROCESS_CHOICES
-from .forms import BatchForm
-
+from products.models import Product, Batch
+from .forms import BatchForm, BatchDiscountForm
 
 # Create your views here.
 
@@ -29,7 +29,7 @@ def manage_batches(request):
                        'expiry_date', 'quantity', 'offer', 
                        'discount_percentage', 'sale_price']
 
-    sort_by = request.GET.get('sort_by', 'expiry_date')  # Default sort by 'id'
+    sort_by = request.GET.get('sort_by', 'expiry_date')
     sort_order = request.GET.get('sort_order', 'asc')
 
     if sort_by not in sortable_fields:
@@ -79,7 +79,8 @@ def add_batch(request):
             messages.success(request, 'Successfully added batch!')
             return redirect(reverse('batch_detail', args=[batch.id]))
         else:
-            messages.error(request, 'Failed to add batch. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add batch. Please ensure' 
+                           'the form is valid.')
     else:
         form = BatchForm()
 
@@ -88,3 +89,40 @@ def add_batch(request):
     }
 
     return render(request, 'shop_admin/add_batch.html', context)
+
+
+@login_required
+def apply_discount(request, batch_id):
+    """Apply a discount to a batch"""
+
+    batch = Batch.objects.get(id=batch_id)
+    batches = Batch.objects.all()
+
+    if request.method == 'POST':
+        form = BatchDiscountForm(request.POST)
+        if form.is_valid():
+            offer = 2
+            discount_percentage = form.cleaned_data['discount_percentage']
+
+            batch.offer = offer
+            batch.discount_percentage = discount_percentage
+            batch.save()
+
+            messages.success(request, 'Discount applied successfully!')
+
+            return redirect('/shop_admin/manage_batches/')
+        else:
+            messages.error(
+                request,
+                'Failed to apply discount. Ensure the discount is valid.'
+            )
+    else:
+        form = BatchDiscountForm()
+
+    context = {
+        'batches': batches,
+        'form': form,
+        'batch': batch,
+    }
+
+    return render(request, 'shop_admin/apply_discount.html', context)
