@@ -76,7 +76,7 @@ class StripeWH_Handler:
             profile = UserProfile.objects.get(user__username=username)
             if save_info:
                 profile.default_phone_number = shipping_details.phone
-                profile.default_eircode = shipping_details.eircode
+                profile.default_eircode = shipping_details.address.get('postal_code', ''), # Using postal_code for eircode
                 profile.default_street_address1 = shipping_details.address.line1
                 profile.default_street_address2 = shipping_details.address.line2
                 profile.save()
