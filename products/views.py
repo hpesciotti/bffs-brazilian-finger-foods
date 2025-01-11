@@ -7,7 +7,7 @@ from django.db.models import Min, FloatField
 from django.db.models.functions import Cast
 from .models import Product, Batch, DietaryCategory, COOKING_PROCESS_CHOICES
 
-# Create your views here.
+# Create your views here
 
 def all_products(request):
     """
@@ -21,7 +21,9 @@ def all_products(request):
     sort_key = request.GET.get('sort_by', 'name')
 
     # Prefetching related batches and dietary categories to avoid repeated queries
-    products = Product.objects.prefetch_related('batches', 'dietary_categories')
+    products = Product.objects.prefetch_related(
+        'batches', 'dietary_categories')
+    dietary_categories = DietaryCategory.objects.all()
 
     # Filters
     if search_term:
@@ -53,7 +55,8 @@ def all_products(request):
         products = products.filter(batches__offer=offer_filter)
 
     # Annotate each product with the minimum sale_price from its related batches
-    products = products.annotate(min_price=Cast(Min('batches__sale_price'), FloatField()))
+    products = products.annotate(min_price=Cast(
+        Min('batches__sale_price'), FloatField()))
 
     # Sorting by the selected criteria
     if sort_key == 'batches__sale_price':
@@ -73,7 +76,8 @@ def all_products(request):
     # Process each product to get discount and original prices
     for product in products:
         # Apply the price logic here (discount and original prices)
-        discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
+        discount_price_batch = product.batches.filter(
+            quantity__gt=0, offer=2).first()
         if discount_price_batch:
             product.discount_price_batch = discount_price_batch.sale_price
         else:
@@ -86,13 +90,14 @@ def all_products(request):
             product.original_price_batch = None
 
         # Get dietary categories names
-        product.dietary_categories_names = product.dietary_categories.values_list('name', flat=True)
+        product.dietary_categories_names = product.dietary_categories.values_list(
+            'name', flat=True)
 
     # Prepare context for rendering
     context = {
         'products': products,
         'cooking_process_choices': COOKING_PROCESS_CHOICES,
-        'dietary_categories': DietaryCategory.objects.all(),
+        'dietary_categories': dietary_categories,
         'current_sorting': current_sorting,
     }
 
@@ -110,7 +115,8 @@ def product_detail(request, product_id):
         product__product_id=product.product_id).order_by('expiry_date').first()
 
     # Gets the offer batch for sale first (qty > 0 and offer = 2)
-    discount_price_batch = product.batches.filter(quantity__gt=0, offer=2).first()
+    discount_price_batch = product.batches.filter(
+        quantity__gt=0, offer=2).first()
     if discount_price_batch:
         discount_price_batch = discount_price_batch.sale_price
     else:
@@ -123,9 +129,9 @@ def product_detail(request, product_id):
     else:
         original_price_batch = None
 
-
     # Gets dietary categories names
-    dietary_categories_names = product.dietary_categories.values_list('name', flat=True)
+    dietary_categories_names = product.dietary_categories.values_list(
+        'name', flat=True)
 
     if not product.batches.exists():
         print("No batches found for this product")

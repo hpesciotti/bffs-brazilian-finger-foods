@@ -2,6 +2,12 @@
 {% load static %}
 {% load custom_filters %}
 
+{% block extra_meta %}
+  <!-- Metatags for engine search optmization -->
+  <meta name="description" content="Delicious {{ product.short_widget_name }}">
+  <meta name="keywords" content="{% if 'Vegan' in dietary_categories_names and 'Gluten-Free' in dietary_categories_names %}Vegan, Gluten-Free{% elif 'Vegan' in dietary_categories_names %}Vegan{% else %}{{ dietary_categories_names|join:', ' }}{% endif %}, {{ product.full_name }}, {{ product.allergens }}">
+{% endblock %}
+
 {% block page_header %}
 <div class="container header-container">
   <div class="row">
@@ -16,6 +22,8 @@
 <div class="row justify-content-center my-sm-5 my-3 my-lg-4">
 
     <h3 class="text-center mb-2">{{ product.short_widget_name }}</h3>
+
+    <p>{{ product.dietary_categories_names }}</p>
 
     <div class="col-xl-8 col-12">
         <div class="row justify-content-center">
