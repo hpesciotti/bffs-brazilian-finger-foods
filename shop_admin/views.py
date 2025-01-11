@@ -77,7 +77,7 @@ def add_batch(request):
         if form.is_valid():
             batch = form.save()
             messages.success(request, 'Successfully added batch!')
-            return redirect(reverse('batch_detail', args=[batch.id]))
+            return redirect('/shop_admin/manage_batches/')
         else:
             messages.error(request, 'Failed to add batch. Please ensure' 
                            'the form is valid.')

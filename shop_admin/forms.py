@@ -1,5 +1,7 @@
 from django import forms
-from products.models import Product, Batch, DietaryCategory
+from django.forms.widgets import DateInput
+from products.models import Batch
+from datetime import date
 
 class BatchForm(forms.ModelForm):
     """Generates form to create and update batches"""
@@ -7,12 +9,18 @@ class BatchForm(forms.ModelForm):
     class Meta:
         model = Batch
         fields = ['product', 'batch_number', 'expiry_date', 'quantity', 
-                  'offer', 'discount_percentage', 'sale_price']
+                  'offer', 'discount_percentage']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
+
+        self.fields['expiry_date'].widget = DateInput(attrs={
+            'class': 'form-control',
+            'type': 'date',
+            'min': date.today().strftime('%Y-%m-%d'),
+        })
 
     def check_discount_percentage(self):
         """Makes discount_percentage mandatory if `offer = 2`"""
@@ -21,7 +29,9 @@ class BatchForm(forms.ModelForm):
 
         if discount_percentage is not None:
             if discount_percentage <= 0 or discount_percentage >= 100:
-                raise forms.ValidationError("Discount percentage must be greater than 0 and less than 100.")
+                raise forms.ValidationError(
+                    "Discount percentage must be"
+                    "greater than 0 and less than 100.")
 
         return discount_percentage    
 
@@ -54,13 +64,16 @@ class BatchDiscountForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
     def clean_discount_percentage(self):
-        """Sets Discount percentage to be greater than 0 and lesser than 100."""
+        """
+        Sets Discount percentage to be greater than 0 and lesser than 100.
+        """
         discount_percentage = self.cleaned_data.get('discount_percentage')
 
         if discount_percentage is None:
             raise forms.ValidationError("Discount percentage is required.")
 
         if discount_percentage <= 0 or discount_percentage >= 100:
-            raise forms.ValidationError("Discount percentage must be greater than 0 and lesser than 100.")
+            raise forms.ValidationError("Discount percentage must be"
+                                        "greater than 0 and lesser than 100.")
 
         return discount_percentage
