@@ -87,7 +87,7 @@
                         <td>{{ batch.sale_price }}</td>
                         <td><a href="{% url 'apply_discount' batch_id=batch.id %}" class="btn btn-success round-0"><i class="fa-solid fa-percent"></i></a></td>
                         <td><a href="{% url 'edit_batch' batch_id=batch.id %}" class="btn btn-warning round-0"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                        <td><a href="{% url 'edit_batch' batch_id=batch.id %}" class="btn btn-danger round-0"><i class="fa-solid fa-delete-left"></i></a></td>
+                        <td><a href="{% url 'delete_batch' batch_id=batch.id %}" class="btn btn-danger round-0"><i class="fa-solid fa-delete-left"></i></a></td>
                     </tr>
                     {% empty %}
                     <tr>
@@ -99,7 +99,7 @@
         </div>
         <div class="col-12 m-4">
             <div class="text-center">
-                <a href="{% url 'shop_admin' %}" class="btn btn-invert-orange"><i class="fas fa-chevron-left"></i>Go back to Shop Admin</a>
+                <a href="{% url 'manage_batches' %}" class="btn btn-invert-orange"><i class="fas fa-chevron-left"></i>Go back</a>
             </div>
         </div>
     </div>

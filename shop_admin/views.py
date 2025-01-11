@@ -71,6 +71,7 @@ def manage_batches(request):
 @login_required
 def add_batch(request):
     """ Add a batch to an existing product in the store """
+    
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -133,6 +134,8 @@ def apply_discount(request, batch_id):
 
 @login_required
 def edit_batch(request, batch_id):
+    """Edit an existing batch"""
+    
     batch = get_object_or_404(Batch, id=batch_id)
 
     if request.method == 'POST':
@@ -152,3 +155,21 @@ def edit_batch(request, batch_id):
     }
 
     return render(request, 'shop_admin/edit_batch.html', context)
+
+
+@login_required
+def delete_batch(request, batch_id):
+    """Deletes a batch"""
+    
+    batch = get_object_or_404(Batch, id=batch_id)
+
+    if request.method == 'POST':
+        batch.delete()
+        messages.success(request, 'Batch deleted successfully!')
+        return redirect('/shop_admin/manage_batches/')
+
+    context = {
+        'batch': batch,
+    }
+
+    return render(request, 'shop_admin/delete_batch.html', context)
