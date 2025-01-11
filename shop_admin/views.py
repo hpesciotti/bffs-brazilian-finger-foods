@@ -11,23 +11,24 @@ from .forms import BatchForm, BatchDiscountForm
 
 # Create your views here.
 
+
 @login_required
 def admin_panel(request):
     """ Displays all the shop managing options in a menu """
-    
+
     if not request.user.is_superuser:
         return render(request, '403.html')
-    
+
     return render(request, 'shop_admin/admin_panel.html')
 
 
 @login_required
 def manage_batches(request):
     """ View to display all batches ordered by batch.id with sorting and search """
-    
+
     # Sorting Fields
     sortable_fields = ['product__short_widget_name', 'batch_number',
-                       'expiry_date', 'quantity', 'offer', 
+                       'expiry_date', 'quantity', 'offer',
                        'discount_percentage', 'sale_price']
 
     sort_by = request.GET.get('sort_by', 'expiry_date')
@@ -70,7 +71,7 @@ def manage_batches(request):
 @login_required
 def add_batch(request):
     """ Add a batch to an existing product in the store """
-    
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -82,7 +83,7 @@ def add_batch(request):
             messages.success(request, 'Successfully added batch!')
             return redirect('/shop_admin/manage_batches/')
         else:
-            messages.error(request, 'Failed to add batch. Please ensure' 
+            messages.error(request, 'Failed to add batch. Please ensure'
                            'the form is valid.')
     else:
         form = BatchForm()
@@ -134,7 +135,7 @@ def apply_discount(request, batch_id):
 @login_required
 def edit_batch(request, batch_id):
     """Edit an existing batch"""
-    
+
     batch = get_object_or_404(Batch, id=batch_id)
 
     if request.method == 'POST':
@@ -159,7 +160,7 @@ def edit_batch(request, batch_id):
 @login_required
 def delete_batch(request, batch_id):
     """Deletes a batch"""
-    
+
     batch = get_object_or_404(Batch, id=batch_id)
 
     if request.method == 'POST':
@@ -177,7 +178,7 @@ def delete_batch(request, batch_id):
 @login_required
 def manage_products(request):
     """View to display all products ordered by name with sorting and search"""
-    
+
     # Sorting Fields
     sortable_fields = ['short_widget_name', 'best_seller', 'price']
 
@@ -209,7 +210,7 @@ def manage_products(request):
         'sort_order': sort_order,
         'search_query': search_query,
     }
-    
+
     return render(request, 'shop_admin/manage_products.html', context)
 
 
@@ -222,18 +223,18 @@ def best_seller(request, product_id):
         if product.best_seller:
             product.best_seller = False
             messages.success(
-                request, 
+                request,
                 f'"{
                     product.short_widget_name
-                    }" was removed from best-sellers!'
+                }" was removed from best-sellers!'
             )
         else:
             product.best_seller = True
             messages.success(
-                request, 
+                request,
                 f'"{
                     product.short_widget_name
-                    }" was added to best-sellers!'
+                }" was added to best-sellers!'
             )
 
         product.save()
@@ -243,31 +244,32 @@ def best_seller(request, product_id):
 
     return redirect('/shop_admin/manage_products/')
 
+
 @login_required
 def update_price(request, product_id):
     """Allow the shop owner to change the products prices"""
- 
+
     product = get_object_or_404(Product, product_id=product_id)
-    
+
     if request.method == 'POST':
         new_price = request.POST.get('new_price')
-        
+
         if new_price and new_price.replace('.', '', 1).isdigit():
             product.price = float(new_price)
             product.save()
-            
-            messages.success(request, 
+
+            messages.success(request,
                              f'The price of'
-                             f' {product.short_widget_name}' 
+                             f' {product.short_widget_name}'
                              f' has been updated to {new_price}.'
-                            )
-            
+                             )
+
             return redirect('/shop_admin/manage_products/')
         else:
-            messages.error(request, 
-                            "Invalid price."
-                            " Please enter a valid numeric value.")
-    
+            messages.error(request,
+                           "Invalid price."
+                           " Please enter a valid numeric value.")
+
     return render(
-        request, 
+        request,
         'shop_admin/update_price.html', {'product': product})

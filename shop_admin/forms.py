@@ -3,12 +3,13 @@ from django.forms.widgets import DateInput
 from products.models import Batch
 from datetime import date
 
+
 class BatchForm(forms.ModelForm):
     """Generates form to create and update batches"""
-    
+
     class Meta:
         model = Batch
-        fields = ['product', 'batch_number', 'expiry_date', 'quantity', 
+        fields = ['product', 'batch_number', 'expiry_date', 'quantity',
                   'offer', 'discount_percentage']
 
     def __init__(self, *args, **kwargs):
@@ -33,7 +34,7 @@ class BatchForm(forms.ModelForm):
                     "Discount percentage must be"
                     "greater than 0 and less than 100.")
 
-        return discount_percentage    
+        return discount_percentage
 
     def check_expiry_date(self):
         """Only allows user to set expiry date to a future date"""
@@ -47,13 +48,13 @@ class BatchForm(forms.ModelForm):
             raise forms.ValidationError(
                 "Expiry date is required and must be a future date."
             )
-        
+
         return expiry_date
-    
+
 
 class BatchDiscountForm(forms.ModelForm):
     """Applies a discount to a Batch"""
-    
+
     class Meta:
         model = Batch
         fields = ['discount_percentage']
