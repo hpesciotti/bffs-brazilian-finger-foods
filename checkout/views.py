@@ -15,8 +15,10 @@ from bag.context import bag_contents
 import stripe
 import json
 
+
 @require_POST
 def cache_checkout_data(request):
+    """Handles payment checkout data and interfaces with Stripe."""
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -33,6 +35,7 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """Handles shipping data and interfaces with Stripe."""
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -63,27 +66,30 @@ def checkout(request):
                     order_line_item = OrderLineItem(
                         order=order,
                         batch=batch,
-                        quantity=item_data['quantity'], 
+                        quantity=item_data['quantity'],
                     )
                     order_line_item.save()
                 except Batch.DoesNotExist:
                     messages.error(request, (
-                        "One of the batches in your bag wasn't found in our database. "
-                        "Please call us for assistance!"))
+                        "One of the batches in your \
+                        bag wasn't found in our database. \
+                        Please call us for assistance!"))
                     order.delete()
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(
+                reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(
-                request, 
-                'There was an error with your form. Please double check your information.'
+                request, "There was an error with your form."
+                "Please double check your information."
             )
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(
+                request, "There's nothing in your bag at the moment")
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
@@ -97,8 +103,8 @@ def checkout(request):
                 "bag": json.dumps(bag),
                 "save_info": request.session.get("save_info", False),
                 "username": (
-                    request.user.username 
-                    if request.user.is_authenticated 
+                    request.user.username
+                    if request.user.is_authenticated
                     else "AnonymousUser"
                 ),
             }
@@ -134,7 +140,7 @@ def checkout(request):
 
 def checkout_success(request, order_number):
     """
-    Handle successful checkouts
+    Handles successful checkouts
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
@@ -161,15 +167,14 @@ def checkout_success(request, order_number):
         except UserProfile.DoesNotExist:
             pass
 
-    #Update stock after purchase
+    # Update stock after purchase
     bag = request.session.get('bag', {})
-    
+
     for item_id, item_data in bag.items():
         batch_id = item_data.get('batch_id')
         quantity = item_data.get('quantity', 0)
         name = item_data.get('name', '')
 
-        
         try:
             batch = Batch.objects.get(id=batch_id)
             if batch.product.short_widget_name == name:
