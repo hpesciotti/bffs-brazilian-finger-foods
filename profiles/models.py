@@ -16,17 +16,7 @@ class UserProfile(models.Model):
     default_phone_number = models.CharField(max_length=20, null=True, blank=True)
     default_street_address1 = models.CharField(max_length=80, null=True, blank=True)
     default_street_address2 = models.CharField(max_length=80, null=True, blank=True)
-    default_eircode = models.CharField(
-        max_length=7,
-        null=True,
-        blank=True,
-        validators=[
-            RegexValidator(
-                regex=r'^[A-Za-z0-9]{3}[A-Za-z0-9]{4}$',
-                message="Enter a valid Eircode (e.g., A65F4E2).",
-            )
-        ],
-    )
+    default_eircode = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.user.username

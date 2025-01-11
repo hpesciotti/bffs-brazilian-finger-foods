@@ -18,17 +18,7 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
-    eircode = models.CharField(
-        max_length=7,
-        null=True,
-        blank=True,
-        validators=[
-            RegexValidator(
-                regex=r'^[A-Za-z0-9]{3}[A-Za-z0-9]{4}$',
-                message="Enter a valid Eircode (e.g., A65F4E2).",
-            )
-        ],
-    )
+    eircode = models.CharField(max_length=255, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
