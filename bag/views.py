@@ -1,10 +1,16 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import (
+    get_object_or_404,
+    HttpResponse,
+    redirect,
+    render,
+    reverse,
+)
 from django.http import HttpResponse
 from django.contrib import messages
 from decimal import Decimal
 from products.models import Product, Batch
 
-# Create your views here.
+
 def view_bag(request):
     """ A view that renders the cart contents page """
 
@@ -39,42 +45,49 @@ def add_to_bag(request, item_id):
         }
 
     print(bag)
-    
+
     request.session['bag'] = bag
 
     messages.success(request, f'Added {name} (x{quantity}) to your bag.')
 
     return redirect(redirect_url)
 
+
 def adjust_bag(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
 
     name = request.POST.get('name')
     quantity = int(request.POST.get('quantity'))
-    batch_id = request.POST.get('batch_id')  # Fetch batch_id from the request
-    max_quantity = int(request.POST.get('max_quantity'))  # Fetch max_quantity
+    # Fetch batch_id from the request
+    batch_id = request.POST.get('batch_id')
+    # Fetch max_quantity
+    max_quantity = int(request.POST.get('max_quantity'))
 
     bag = request.session.get('bag', {})
 
     if quantity > max_quantity:
-        messages.error(request, f'Cannot add more than {max_quantity} units of {name}.')
+        messages.error(request, f'Cannot add more than {
+                       max_quantity} units of {name}.')
         return redirect(reverse('view_bag'))
 
     if quantity > 0:
         if item_id in bag and isinstance(bag[item_id], dict):
             bag[item_id]['quantity'] = quantity
         else:
-            bag[item_id] = {'quantity': quantity, 'name': name, 'batch_id': batch_id}
+            bag[item_id] = {'quantity': quantity,
+                            'name': name, 'batch_id': batch_id}
 
-        messages.success(request, f'Updated {name} quantity to (x{quantity}).')
+        messages.success(
+            request, f'Updated {name}quantity to (x{quantity}).')
     else:
         bag.pop(item_id, None)
         messages.success(request, f'Removed {name} from your bag.')
 
     print(bag)
-    
+
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
+
 
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
