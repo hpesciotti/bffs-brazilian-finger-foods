@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /admin/
+Disallow: /bag/
+Disallow: /checkout/
+Disallow: /profiles/
+Disallow: /shop_admin/
+Sitemap: https://bffs-brazilian-finger-foods-99657e2a95f1.herokuapp.com/sitemap.xml
