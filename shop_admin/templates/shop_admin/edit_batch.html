@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center my-sm-5 my-3 my-lg-4">
+    <div class="col-12">
+        <h3 class="text-center p-3">Admin Panel</h3>
+    </div>
+    <div class="col-12 col-md-8 col-lg-5 px-2 py-2">
+        <div>
+            <h4 class="text-center text-dk-orange p-3">Edit Batch: {{ batch.batch_number }}</h4>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-dk-orange"><i class="fa-solid fa-check"></i> Update Data</button>
+            </form>
+        </div>
+        <div class="text-center mt-4 mb-1 my-lg-2">
+            <a href="{% url 'shop_admin' %}" class="btn btn-invert-orange"><i class="fas fa-chevron-left"></i>Go back to Shop Admin</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block postloadjs %}
+{{ block.super }}
+{% endblock %}

@@ -86,8 +86,8 @@
                         <td>{{ batch.discount_percentage }}</td>
                         <td>{{ batch.sale_price }}</td>
                         <td><a href="{% url 'apply_discount' batch_id=batch.id %}" class="btn btn-success round-0"><i class="fa-solid fa-percent"></i></a></td>
-                        <td><a href="{% url 'add_batch' %}" class="btn btn-warning round-0"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                        <td><a href="{% url 'add_batch' %}" class="btn btn-danger round-0"><i class="fa-solid fa-delete-left"></i></a></td>
+                        <td><a href="{% url 'edit_batch' batch_id=batch.id %}" class="btn btn-warning round-0"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td><a href="{% url 'edit_batch' batch_id=batch.id %}" class="btn btn-danger round-0"><i class="fa-solid fa-delete-left"></i></a></td>
                     </tr>
                     {% empty %}
                     <tr>

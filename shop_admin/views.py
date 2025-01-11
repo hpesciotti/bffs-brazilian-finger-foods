@@ -11,6 +11,7 @@ from .forms import BatchForm, BatchDiscountForm
 
 # Create your views here.
 
+
 @login_required
 def admin_panel(request):
     """ Displays all the shop managing options in a menu """
@@ -19,6 +20,7 @@ def admin_panel(request):
         return render(request, '403.html')
     
     return render(request, 'shop_admin/admin_panel.html')
+
 
 @login_required
 def manage_batches(request):
@@ -64,6 +66,7 @@ def manage_batches(request):
         'search_query': search_query,
     }
     return render(request, 'shop_admin/manage_batches.html', context)
+
 
 @login_required
 def add_batch(request):
@@ -126,3 +129,26 @@ def apply_discount(request, batch_id):
     }
 
     return render(request, 'shop_admin/apply_discount.html', context)
+
+
+@login_required
+def edit_batch(request, batch_id):
+    batch = get_object_or_404(Batch, id=batch_id)
+
+    if request.method == 'POST':
+        form = BatchForm(request.POST, instance=batch)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Batch updated successfully!')
+            return redirect('/shop_admin/manage_batches/')
+        else:
+            messages.error(request, 'There was an error updating the batch.')
+    else:
+        form = BatchForm(instance=batch)
+
+    context = {
+        'form': form,
+        'batch': batch,
+    }
+
+    return render(request, 'shop_admin/edit_batch.html', context)
