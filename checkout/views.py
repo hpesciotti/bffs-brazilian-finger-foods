@@ -82,7 +82,6 @@ def checkout(request):
             )
     else:
         bag = request.session.get('bag', {})
-        print = (bag)
         if not bag:
             messages.error(request, "There's nothing in your bag at the moment")
             return redirect(reverse('products'))
@@ -164,28 +163,21 @@ def checkout_success(request, order_number):
 
     #Update stock after purchase
     bag = request.session.get('bag', {})
-    print(f"Bag contents: {bag}")
     
     for item_id, item_data in bag.items():
         batch_id = item_data.get('batch_id')
         quantity = item_data.get('quantity', 0)
         name = item_data.get('name', '')
 
-        print(f"Processing item: batch_id={batch_id}, quantity={quantity}, name={name}")
         
         try:
             batch = Batch.objects.get(id=batch_id)
-            print(f"Found Batch: id={batch.id}, current quantity={batch.quantity}, product name={batch.product.name}")
             if batch.product.short_widget_name == name:
                 batch.quantity -= quantity
                 if batch.quantity < 0:
                     batch.quantity = 0
                 batch.save()
-                print(f"Updated Batch: id={batch.id}, new quantity={batch.quantity}")  # Debugging after update
-            else:
-                print(f"Product name mismatch: batch.product.name={batch.product.name}, bag name={name}")
         except Batch.DoesNotExist:
-            print(f"Batch not found for batch_id={batch_id}")  # Debugging missing batch
             pass
 
     messages.success(
