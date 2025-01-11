@@ -1,6 +1,7 @@
 from django import forms
 from .models import UserProfile
 
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
@@ -22,6 +23,10 @@ class UserProfileForm(forms.ModelForm):
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if field in placeholders:
-                placeholder = f"{placeholders[field]} *" if self.fields[field].required else placeholders[field]
+                placeholder = (
+                    f"{placeholders[field]} *"
+                    if self.fields[field].required
+                    else placeholders[field]
+                )
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
