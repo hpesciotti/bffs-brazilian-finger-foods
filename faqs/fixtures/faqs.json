@@ -1,0 +1,58 @@
+[
+    {
+        "model": "faqs.faqs",
+        "pk": 1,
+        "fields": {
+            "question": "What types of delivery are available?",
+            "answer": "<p><strong>1. Local Delivery (Direct Delivery)</strong></p><p>Description: The company directly sends this to the customer using its fleet or third-party couriers.</p><p>Example: A frozen food company sends products directly to the customer's home on the same day or a scheduled date.</p><p><strong>2. Scheduled Delivery</strong></p><p>Description: The delivery is scheduled for a specific date and time, usually for the customer's convenience. Depending on consumer demand, it can be weekly, bi-weekly, or monthly.</p><p>Example: A subscription service for frozen meals with scheduled delivery, where the customer regularly receives their orders.</p>"
+        }
+    },
+    {
+        "model": "faqs.faqs",
+        "pk": 2,
+        "fields": {
+            "question": "What payment methods are available?",
+            "answer": "<p>We currently accept payments only via credit card. You can securely pay with your Visa, MasterCard, or American Express credit card at checkout. Unfortunately, we do not support other payment methods at this time.</p>"
+        }
+    },
+    {
+        "model": "faqs.faqs",
+        "pk": 3,
+        "fields": {
+            "question": "How can I track my order?",
+            "answer": "<p>Once your order is complete, you will receive a confirmation email containing all the details. Unfortunately, we do not currently provide a tracking service. However, if you have any questions or concerns about your order, please feel free to contact our customer service team, and we will be happy to assist you.</p>"
+        }
+    },
+    {
+        "model": "faqs.faqs",
+        "pk": 4,
+        "fields": {
+            "question": "What is your delivery policy?",
+            "answer": "<p>We currently offer delivery exclusively within Dublin. All orders placed within this area will be processed and delivered to your specified address. Unfortunately, we do not offer delivery outside of Dublin at this time.</p>"
+        }
+    },
+    {
+        "model": "faqs.faqs",
+        "pk": 5,
+        "fields": {
+            "question": "How do I prepare my suitable for baking BFFs?",
+            "answer": "<p>If it is a baking product, do not defrost before preparing the product. If the product is not suitable for frying, do not fry it in hot oil. Baking products should not be placed in hot oil.</p><p><strong>For Electric or Gas Oven:</strong></p><ol><li>Preheat the oven to 200°C (390°F).</li><li>Place the product on a baking sheet; no greasing is needed.</li><li>Bake for about 10 minutes.</li><li>Take it out of the oven, let it rest for 2 minutes, and serve.</li></ol><p><strong>For Air Fryer:</strong></p><ol><li>Set the air fryer to 180°C (356°F).</li><li>Place the product in the air fryer basket.</li><li>Heat for about 8 minutes.</li><li>Remove it, let it rest for 2 minutes, and serve.</li></ol>"
+        }
+    },
+    {
+        "model": "faqs.faqs",
+        "pk": 6,
+        "fields": {
+            "question": "How do I prepare my suitable for frying BFFs?",
+            "answer": "<p>There is no requirement to defrost the product prior to preparation. Please open the packaging and remove only the quantity of the product that you intend to consume. It is recommended that any remaining portions be returned to the freezer.</p><ol><li><strong>Preheat the Oil:</strong> Heat your oil to 350–375°F (175–190°C). Use a thermometer for accuracy if you have one. If not, drop a small piece of bread into the oil; it should sizzle and turn golden in about 30 seconds.</li><li>Fry your BFFs by carefully lowering the frozen appetizers into the hot oil using tongs or a slotted spoon.</li><li>Fry them for 3–5 minutes or until they are golden brown and crispy. Turn them occasionally, even when frying, if you're using a skillet.</li><li><strong>Drain Excess Oil:</strong> Remove them and place them on a plate lined with paper towels.</li><li>Let the croquettes cool slightly, then enjoy your BFFs.</li></ol>"
+        }
+    },
+    {
+        "model": "faqs.faqs",
+        "pk": 7,
+        "fields": {
+            "question": "How long does my BFFs package stay open in the freezer?",
+            "answer": "<p>Once a product package is opened, it should last about 1 to 3 months in the freezer, depending on the temperature consistency of your freezer or the expiry date printed on the packaging. To maintain texture and taste, reseal the package. To enjoy the quality of our products, try to consume opened packages within a couple of months for the best taste and texture.</p>"
+        }
+    }
+]

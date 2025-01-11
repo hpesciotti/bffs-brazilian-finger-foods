@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center my-sm-5 my-3 my-lg-4">
+
+    <h3 class="text-center m-3">FAQs - Frequently Asked Questions</h3>
+    
+    <div class="col-xl-8 col-md-10 col-12 mb-4 p-1">
+        <div class="accordion" id="InfoAccordion">
+            {% for faq in faqs %}
+            <div class="accordion-item">
+                <h5 class="accordion-header" id="heading{{ forloop.counter }}">
+                    <button class="p-2 accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ forloop.counter }}">
+                        {{ faq.question |safe }}
+                    </button>
+                </h5>
+                <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#InfoAccordion">
+                    <div class="px-3 py-1 accordion-body">
+                        <p>{{ faq.answer |safe }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% block postloadjs %}
+{% endblock %}
+
+{% endblock %}

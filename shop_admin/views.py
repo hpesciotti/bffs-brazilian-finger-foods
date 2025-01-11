@@ -11,7 +11,6 @@ from .forms import BatchForm, BatchDiscountForm
 
 # Create your views here.
 
-
 @login_required
 def admin_panel(request):
     """ Displays all the shop managing options in a menu """
@@ -257,7 +256,6 @@ def update_price(request, product_id):
             product.price = float(new_price)
             product.save()
             
-            # Success message
             messages.success(request, 
                              f'The price of'
                              f' {product.short_widget_name}' 
@@ -266,7 +264,6 @@ def update_price(request, product_id):
             
             return redirect('/shop_admin/manage_products/')
         else:
-            # Error message for invalid price
             messages.error(request, 
                             "Invalid price."
                             " Please enter a valid numeric value.")
