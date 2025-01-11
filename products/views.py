@@ -9,6 +9,7 @@ from .models import Product, Batch, DietaryCategory, COOKING_PROCESS_CHOICES
 
 # Create your views here
 
+
 def all_products(request):
     """
     Returns all products and render main product page with filtering options.
@@ -20,7 +21,10 @@ def all_products(request):
     sort_direction = request.GET.get('sort', 'asc')
     sort_key = request.GET.get('sort_by', 'name')
 
-    # Prefetching related batches and dietary categories to avoid repeated queries
+    """ 
+    Prefetching related batches and dietary categories
+    to avoid repeated queries
+    """
     products = Product.objects.prefetch_related(
         'batches', 'dietary_categories')
     dietary_categories = DietaryCategory.objects.all()
@@ -47,14 +51,17 @@ def all_products(request):
             'frying': 2,
             'frying or baking': 3,
         }
-        cooking_process_value = COOKING_PROCESS_MAP.get(cooking_process_filter)
+        cooking_process_value = COOKING_PROCESS_MAP.get(
+            cooking_process_filter)
         if cooking_process_value:
             products = products.filter(cooking_process=cooking_process_value)
 
     if offer_filter:
         products = products.filter(batches__offer=offer_filter)
 
-    # Annotate each product with the minimum sale_price from its related batches
+    """
+    Annotate each product with the minimum sale_price from its related batches
+    """
     products = products.annotate(min_price=Cast(
         Min('batches__sale_price'), FloatField()))
 
@@ -90,8 +97,10 @@ def all_products(request):
             product.original_price_batch = None
 
         # Get dietary categories names
-        product.dietary_categories_names = product.dietary_categories.values_list(
+        product.dietary_categories_names = (
+            product.dietary_categories.values_list(
             'name', flat=True)
+        )
 
     # Prepare context for rendering
     context = {
@@ -112,7 +121,8 @@ def product_detail(request, product_id):
     ), pk=product_id)
 
     batch = Batch.objects.filter(
-        product__product_id=product.product_id).order_by('expiry_date').first()
+        product__product_id=product.product_id).order_by(
+            'expiry_date').first()
 
     # Gets the offer batch for sale first (qty > 0 and offer = 2)
     discount_price_batch = product.batches.filter(

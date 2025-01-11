@@ -14,13 +14,14 @@ OFFER_CHOICES = [
     (2, "Discount"),
 ]
 
+
 # Part of Product model dietary_categories field
 class DietaryCategory(models.Model):
     """
     This model is responsible for maintaining the possible dietary categories.
-    The model was created to add more than one unique dietary 
+    The model was created to add more than one unique dietary
     category to a product. Initially, the dietary categories were an integer
-    choice field, which would not make it possible to add more than one 
+    choice field, which would not make it possible to add more than one
     dietary category to a product.
     """
     name = models.CharField(max_length=100, unique=True)
@@ -33,6 +34,7 @@ class DietaryCategory(models.Model):
         verbose_name = "Dietary Category"
         verbose_name_plural = "Dietary Categories"
 
+
 # Main Model
 class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
@@ -42,7 +44,7 @@ class Product(models.Model):
     full_name = models.CharField(max_length=255)
     short_widget_name = models.CharField(max_length=255)
     dietary_categories = models.ManyToManyField("DietaryCategory",
-     related_name="products")
+                                                related_name="products")
     energy_kj = models.DecimalField(max_digits=7, decimal_places=2)
     energy_kcal = models.DecimalField(max_digits=7, decimal_places=2)
     fat = models.DecimalField(max_digits=5, decimal_places=2)
@@ -53,19 +55,20 @@ class Product(models.Model):
     salt = models.DecimalField(max_digits=5, decimal_places=2)
     fiber = models.DecimalField(max_digits=5, decimal_places=2)
     cooking_process = models.IntegerField(choices=COOKING_PROCESS_CHOICES,
-     default=1)
+                                          default=1)
     allergens = models.CharField(
         max_length=255,
-        help_text="Enter allergens separated by commas. Example: Dairy, Eggs, Nuts",
+        help_text="Enter allergens separated by commas."
+        "Example: Dairy, Eggs, Nuts",
     )
     description = models.TextField()
     ingredients = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     best_seller = models.BooleanField(default=False)
     image_large = models.ImageField(upload_to="products/large/",
-     blank=True, null=True)
+                                    blank=True, null=True)
     image_widget = models.ImageField(upload_to="products/widgets/",
-     blank=True, null=True)
+                                     blank=True, null=True)
 
     def __str__(self):
         return self.short_widget_name
@@ -73,6 +76,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
+
 
 # Batch model
 class Batch(models.Model):
@@ -94,12 +98,19 @@ class Batch(models.Model):
         choices=OFFER_CHOICES, default=1)
     discount_percentage = models.DecimalField(
         max_digits=5, decimal_places=2, default=0.0)
-    sale_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    sale_price = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0)
 
     def calculate_sale_price(self):
-        if self.offer == 2 and self.quantity > 0 and self.discount_percentage > 0:
+        if (
+            self.offer == 2
+            and self.quantity > 0
+            and self.discount_percentage > 0
+        ):
             discount = (self.product.price * self.discount_percentage) / 100
-            return Decimal(self.product.price - discount).quantize(Decimal('0.00'))
+            return Decimal(
+                self.product.price - discount).quantize(Decimal('0.00'))
+
         return Decimal(self.product.price).quantize(Decimal('0.00'))
 
     def save(self, *args, **kwargs):
