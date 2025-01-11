@@ -26,6 +26,11 @@
 
 <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
 
+<div class="d-flex justify-content-center">
+    <a class="btn btn-invert-orange mx-3 my-3" href="{% url 'account_login' %}">Back to Login</a>
+    <a class="btn btn-dk-orange mx-3 my-3" href="{% url 'home' %}">Go Home</button>
+</div>
+
 {% endif %}
 
 {% endblock %}
