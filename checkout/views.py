@@ -140,7 +140,6 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
-
     if request.user.is_authenticated:
         try:
             profile = UserProfile.objects.get(user=request.user)
@@ -155,19 +154,48 @@ def checkout_success(request, order_number):
                     'default_street_address1': order.street_address1,
                     'default_street_address2': order.street_address2,
                 }
-                user_profile_form = UserProfileForm(profile_data, instance=profile)
+                user_profile_form = UserProfileForm(
+                    profile_data, instance=profile)
                 if user_profile_form.is_valid():
                     user_profile_form.save()
 
         except UserProfile.DoesNotExist:
             pass
 
+    #Update stock after purchase
+    bag = request.session.get('bag', {})
+    print(f"Bag contents: {bag}")
+    
+    for item_id, item_data in bag.items():
+        batch_id = item_data.get('batch_id')
+        quantity = item_data.get('quantity', 0)
+        name = item_data.get('name', '')
+
+        print(f"Processing item: batch_id={batch_id}, quantity={quantity}, name={name}")
+        
+        try:
+            batch = Batch.objects.get(id=batch_id)
+            print(f"Found Batch: id={batch.id}, current quantity={batch.quantity}, product name={batch.product.name}")
+            if batch.product.short_widget_name == name:
+                batch.quantity -= quantity
+                if batch.quantity < 0:
+                    batch.quantity = 0
+                batch.save()
+                print(f"Updated Batch: id={batch.id}, new quantity={batch.quantity}")  # Debugging after update
+            else:
+                print(f"Product name mismatch: batch.product.name={batch.product.name}, bag name={name}")
+        except Batch.DoesNotExist:
+            print(f"Batch not found for batch_id={batch_id}")  # Debugging missing batch
+            pass
+
     messages.success(
-        request, 
-        f'Order successfully processed! Your order number is {order_number}. '
+        request,
+        f'Order successfully processed! '
+        f'Your order number is {order_number}. '
         f'A confirmation email will be sent to {order.email}.'
     )
-    
+
+    # Remove bag from the session
     if 'bag' in request.session:
         del request.session['bag']
 
