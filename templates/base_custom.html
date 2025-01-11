@@ -1,0 +1,187 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        {% block meta %}
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Metatags for engine search optmization -->
+        <meta name="description" content="Taste the best Brazilian finger foods in Dublin. Delivered frozen to your doorstep, our comfort foods are perfect for parties and events and as a quick snack.">
+        <meta name="keywords" content="Brazilian appetizers, frozen Brazilian snacks, finger foods from Brazil, Brazilian cuisine Dublin, party appetizers Dublin, Brazilian snacks Dublin">
+        {% comment %} Favicon {% endcomment %}
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ MEDIA_URL }}/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ MEDIA_URL }}/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ MEDIA_URL }}/favicon/favicon-16x16.png">
+        <link rel="manifest" href="{{ MEDIA_URL }}/favicon/site.webmanifest">
+        {% endblock %}
+
+        {% block extra_meta %}
+        {% endblock %}
+
+        {% block corecss %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <!-- Google Fonts CSS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+         rel="stylesheet">
+        {% endblock %}
+
+        {% block extra_css %}
+        {% endblock %}
+
+        {% block corejs %}
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/73bb3e796f.js" crossorigin="anonymous"></script>
+        <!-- Boostrap Separate Popper and JS -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" 
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+        </script>
+        <!-- Stripe -->
+        <script src="https://js.stripe.com/v3/"></script>
+        <!-- Mailchimp -->
+        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+        {% endblock %}
+
+        {% block extra_js %}
+        {% endblock %}
+
+        <title>BFFs - Brazilian Finger Foods</title>
+    </head>
+
+    <body class="d-flex flex-column h-100">
+        <header class="container-fluid fixed-top px-0 mx-0">
+            <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-flex justify-content-center align-items-center">
+                    <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                        <img src="{{ MEDIA_URL }}logo/bffs-logo.webp" alt="BFFs Logo" class="logo m-0 p-0"/>
+                    </a>
+                </div>
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                    <form method="GET" action="{% url 'products' %}">
+                        <div class="input-group w-100">
+                            <input class="form-control border border-dk-orange rounded-0" type="text" name="q"
+                                placeholder="Search our site">
+                            <div class="input-group-append">
+                                <button class="form-control btn btn-dk-orange border border-dk-orange rounded-0" type="submit">
+                                    <span class="icon">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                    <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                        <li class="list-inline-item dropdown">
+                            <a class="text-dk-orange nav-link" href="#" id="user-options" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div class="text-center">
+                                    <div><i class="fas fa-user fa-lg"></i></div>
+                                    <p class="fs-6 my-0"><strong>My Account</strong></p>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}
+                                <a href="{% url 'shop_admin' %}" class="dropdown-item">Shop Admin</a>
+                                {% endif %}
+                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                {% else %}
+                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-dk-orange{% endif %} nav-link"
+                                href="{% url 'view_bag' %}">
+                                <div class="text-center">
+                                    <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
+                                    <p class="fs-6 my-0">
+                                        <strong>
+                                            {% if grand_total %}
+                                            &euro;{{ grand_total|floatformat:2 }}
+                                            {% else %}
+                                            &euro; 0.00
+                                            {% endif %}
+                                        </strong>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row bg-white">
+                <nav class="navbar navbar-expand-lg navbar-light w-100 px-3">
+                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="text-center"><i aria-hidden="true" class="fa-solid fa-bars text-dk-orange fs-2 py-auto"></i></span>
+                    </button>
+                    {% include 'includes/mobile-top-header.html' %}
+                    {% include 'includes/main-nav.html' %}
+                </nav>
+            </div>
+            <div id="delivery-banner" class="row text-center px-0 mx-0">
+                <div class="col bg-gray text-black">
+                    <h6 class="logo-font my-1"><i class="fa-solid fa-truck-fast fa-sm"></i> Enjoy free delivery on orders above &euro;{{ free_delivery_threshold }}! Only available in County Dublin. <i class="fa-solid fa-location-dot fa-sm"></i></h6>
+                </div>
+            </div>
+        </header>
+
+        {% block page_header %}
+        {% endblock %}
+
+        {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+            {% with message.level as level %}
+            {% if level == 40 %}
+            {% include 'includes/toasts/toast_error.html' %}
+            {% elif level == 30 %}
+            {% include 'includes/toasts/toast_warning.html' %}
+            {% elif level == 25 %}
+            {% include 'includes/toasts/toast_success.html' %}
+            {% else %}
+            {% include 'includes/toasts/toast_info.html' %}
+            {% endif %}
+            {% endwith %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Main -->
+        <main class="header-container container-fluid d-flex px-0 mx-0">
+        {% block content %}
+        {% endblock %}
+        </main>
+        
+        <!-- Footer -->
+        {% include 'includes/footer_custom.html' %}
+
+        {% block postloadjs %}
+        <script type="text/javascript">
+            jQuery.noConflict();
+
+            (function($) {
+                $(document).ready(function() {
+                    $('.toast').toast('show');
+                });
+            })
+            (jQuery);
+        </script>
+        {% endblock %}
+    </body>
+    
+</html>

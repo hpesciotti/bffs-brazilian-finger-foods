@@ -243,3 +243,34 @@ def best_seller(request, product_id):
         messages.error(request, 'Product not found.')
 
     return redirect('/shop_admin/manage_products/')
+
+@login_required
+def update_price(request, product_id):
+    """Allow the shop owner to change the products prices"""
+ 
+    product = get_object_or_404(Product, product_id=product_id)
+    
+    if request.method == 'POST':
+        new_price = request.POST.get('new_price')
+        
+        if new_price and new_price.replace('.', '', 1).isdigit():
+            product.price = float(new_price)
+            product.save()
+            
+            # Success message
+            messages.success(request, 
+                             f'The price of'
+                             f' {product.short_widget_name}' 
+                             f' has been updated to {new_price}.'
+                            )
+            
+            return redirect('/shop_admin/manage_products/')
+        else:
+            # Error message for invalid price
+            messages.error(request, 
+                            "Invalid price."
+                            " Please enter a valid numeric value.")
+    
+    return render(
+        request, 
+        'shop_admin/update_price.html', {'product': product})
