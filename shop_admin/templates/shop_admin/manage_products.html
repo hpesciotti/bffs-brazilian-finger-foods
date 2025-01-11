@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center my-sm-5 my-3 my-lg-4 expand-sm" style="align-content: start;">
+    <div class="col-12">
+        <h3 class="text-center">Manage Products</h3>
+    </div>
+    <!-- Search Form -->
+    <div class="col-12 col-md-6 col-lg-4 my-4 py-1 py-lg-0">
+        <form method="GET">
+            <div class="input-group w-100">
+                <input class="form-control border border-dk-orange rounded-0" type="text" name="q" value="{{ search_query }}"
+                    placeholder="Search Product">
+                <div class="input-group-append">
+                    <button class="form-control btn btn-dk-orange border border-dk-orange rounded-0" type="submit">
+                        <span class="icon">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>       
+    </div>
+    <!-- Product Table -->
+    <div class="col-12 col-lg-10">
+        <div class="table-responsive" style="max-height: 600px; overflow-y: scroll;">
+            <table class="table">
+                <thead style="position: sticky; top: 0; background-color: #373737; z-index: 1;">
+                    <tr class="text-white fs-6">
+                        <th><a href="?sort_by=short_widget_name&sort_order={% if sort_by == 'short_widget_name' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Product</a></th>
+                        <th><a href="?sort_by=best_sellers&sort_order={% if sort_by == 'best_seller' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Sale Best Sellers</a></th>
+                        <th><a href="?sort_by=price&sort_order={% if sort_by == 'price' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Price</a></th>
+                        <th>Edit Best-Seller</th>
+                        <th>Edit Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.short_widget_name }}</td>
+                            <td>{{ product.best_seller }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>
+                                {% if product.id %}
+                                    <a href="{% url 'best_seller' product.product_id %}" class="btn btn-success round-0">
+                                        <i class="fa-solid fa-clipboard"></i>
+                                    </a>
+                                {% else %}
+                                <a href="{% url 'best_seller' product.product_id %}" class="btn btn-success round-0">
+                                    <i class="fa-solid fa-clipboard"></i>
+                                </a>
+                                {% endif %}
+                            </td>
+                            <td><a href="" class="btn btn-danger round-0"><i class="fa-solid fa-euro-sign"></i></a></td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5">No products found.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-12 m-4">
+        <div class="text-center">
+            <a href="{% url 'shop_admin' %}" class="btn btn-invert-orange"><i class="fas fa-chevron-left"></i>Go back to Shop Admin</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block postloadjs %}
+{{ block.super }}
+{% endblock %}

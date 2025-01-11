@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid d-flex justify-content-center align-items-center expand-sm my-3 vh-100">
+        <div class="overlay"></div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-4">
+                <div class="text-center">
+                    <h3>Delete Batch</h3>
+                    <h5 class="text-danger">Are you sure you want to delete the batch <strong>{{ batch.batch_number }}</strong>?</h5>
+                    <p><strong>Product:</strong> {{ batch.product.short_widget_name }}</p>
+                    <p><strong>Expiry Date:</strong> {{ batch.expiry_date }}</p>
+                    <p class="mb-3"><strong>Quantity:</strong> {{ batch.quantity }}</p>
+                  
+                    <form method="POST">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger m-3"><i class="fa-solid fa-x"></i> Delete</button>
+                      <a href="{% url 'manage_batches' %}" class="btn btn-invert-orange m-3">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% endblock %}

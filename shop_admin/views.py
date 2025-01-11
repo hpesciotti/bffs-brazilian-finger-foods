@@ -173,3 +173,73 @@ def delete_batch(request, batch_id):
     }
 
     return render(request, 'shop_admin/delete_batch.html', context)
+
+
+@login_required
+def manage_products(request):
+    """View to display all products ordered by name with sorting and search"""
+    
+    # Sorting Fields
+    sortable_fields = ['short_widget_name', 'best_seller', 'price']
+
+    sort_by = request.GET.get('sort_by', 'product_id')
+    sort_order = request.GET.get('sort_order', 'asc')
+
+    if sort_by not in sortable_fields:
+        sort_by = 'product_id'
+
+    search_query = request.GET.get('q', '')
+
+    products = Product.objects.all()
+
+    if search_query:
+        products = products.filter(
+            Q(short_widget_name__icontains=search_query) |
+            Q(price__icontains=search_query) |
+            Q(best_seller__icontains=search_query)
+        )
+
+    if sort_order == 'desc':
+        products = products.order_by(f'-{sort_by}')
+    else:
+        products = products.order_by(sort_by)
+
+    context = {
+        'products': products,
+        'sort_by': sort_by,
+        'sort_order': sort_order,
+        'search_query': search_query,
+    }
+    
+    return render(request, 'shop_admin/manage_products.html', context)
+
+
+@login_required
+def best_seller(request, product_id):
+    """Toggle products best-seller status"""
+    try:
+        product = Product.objects.get(product_id=product_id)
+
+        if product.best_seller:
+            product.best_seller = False
+            messages.success(
+                request, 
+                f'"{
+                    product.short_widget_name
+                    }" was removed from best-sellers!'
+            )
+        else:
+            product.best_seller = True
+            messages.success(
+                request, 
+                f'"{
+                    product.short_widget_name
+                    }" was added to best-sellers!'
+            )
+
+        product.save()
+
+    except Product.DoesNotExist:
+        messages.error(request, 'Product not found.')
+
+    return redirect('/shop_admin/manage_products/')
