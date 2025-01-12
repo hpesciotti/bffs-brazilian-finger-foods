@@ -435,13 +435,19 @@ Although the design is simple, comparing the final result with the wireframes de
 
 #### Datbase Schema
 
-The cave registration system was structured using a relational database schema which the models are: User, Profile, Cave, and Report. The models are connected by relationships defined through foreign key associations. User is structured by Django AllAuth, a set of applications that automate tasks related to addressing authentication, registration, and account management.
+### Data Model of the Web Application "BFFs"
 
-The Cave, which stores the main data collected by the website, is linked to the User model via a foreign key, establishing that each cave entry is created and managed by a specific user, ensuring ownership of cave records. The Cave model includes fields like cave_name, latitude, longitude, elevation, length, depth, area, and volume, each with specific validation constraints to ensure consistency in data entry.
+The data model of the web application **BFFs**, as shown in the following diagram, is centered around the **Batch** model, which serves as the link between **Product** and **Order**. The connection between these three databases ensures the main flow of the e-commerce platform, which is as follows: a **Product** is chosen (with attributes such as images, price, names – both short widget and full), and its quantity and sale price are managed by the **Batch** model. The information, stored in a session dictionary called **bag**, is then passed to the **Order** model. The **Order** model establishes a simplified connection with the **Stripe API**, generating the order and processing the payment.
 
-The Profile model, in turn, is associated with the User model through a one-to-one relationship established by the user. This allows each user to have a detailed profile while maintaining the core authentication provided by Django All Auth. Additionally, the Profile model handles user information, allowing them to edit their profile and access the website's main functions, like adding a cave, provided the user provides an email_for_contact, bio, and display name, which are not mandatory fields. This relationship ensures the integrity of user data, connecting it back to cave entries and reports through consistent foreign key relationships across the models.
+It is important to note that after the connection is established between the **Order** and **Stripe**, and the confirmation email is sent, the temporary **bag** instance is used to decrement the quantity of the product in the **Batch** database.
 
-Finally, The Report model captures the relationship between users and cave entries in terms of data inconsistencies. A report gathers info about the reporting user, the cave being reported, the cave owner, and the inconsistency. This is managed through foreign keys that ensure each report correctly maps out the cave and the users involved. 
+It is emphasized that in the case of **BFFs**, the **Product** model does not represent an actual product but rather a category or even a product typology that only passes immutable data to the frontend. The connection between **Batch** and **Product** is achieved via a **ForeignKey**, allowing multiple **Batch** elements to reference the same **Product**. This connection was chosen due to the perishable nature of the products, where multiple production batches might be available to the buyer.
+
+The **Product** model is also linked to **DietaryCategories** through a **many-to-many** relationship. This occurs because a vegan product might also be gluten-free, dairy-free, or ovo-lacto-vegetarian. This relationship enables consumers to find products that fit their dietary preferences. This connection facilitates the categorization displayed in the site's navigation menu and allows direct searches by dietary categories via the **Search Bar** (q).
+
+User validation is handled by **Django AllAuth**, which connects to the **UserProfile** model and allows for the recording of personal and delivery information. During checkout, this information can be saved by passing data between **Order**, **Stripe Webhook**, and **UserProfile**.
+
+Finally, the **Faq** model manages the data displayed on the **FAQs** page. Using a **for loop**, the questions and answers are passed to the frontend and presented to the user through an accordion. This database does not connect with any other databases in the web application.
 
 ![BFFs - Data Schema](documentation/showcase/bffs.drawio.png)
 
