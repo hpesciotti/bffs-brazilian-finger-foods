@@ -1,9 +1,9 @@
-<ul class="w3c-nav d-lg-none col-10 col-md-11 d-flex justify-content-around">
+<ul class="w3c-nav d-lg-none col-8 col-sm-10 col-md-11 d-flex justify-content-around">
     <li class="list-inline-item">
         <a class="text-dk-orange nav-link d-block d-lg-none" href="#" id="mobile-search" data-bs-toggle="dropdown" aria-expanded="false">
             <div class="text-center">
                 <div><i class="fas fa-search fa-lg"></i></div>
-                <p class="fs-6 my-0"><strong>Search</strong></p>
+                <p class="fs-6 my-0 d-none d-sm-block"><strong>Search</strong></p>
             </div>
         </a>
         <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
@@ -21,7 +21,7 @@
         <a class="text-dk-orange nav-link d-block d-lg-none" href="{% url 'profile' %}" id="user-options-mobile" data-bs-toggle="dropdown" aria-expanded="false">
             <div class="text-center">
                 <div><i class="fas fa-user fa-lg"></i></div>
-                <p class="fs-6 my-0"><strong>My Account</strong></p>
+                <p class="fs-6 my-0 d-none d-sm-block"><strong>My Account</strong></p>
             </div>
         </a>
         <div class="dropdown-menu border-0" aria-labelledby="user-options-mobile">
@@ -41,7 +41,7 @@
         <a class="{% if grand_total %}text-primary fw-bold{% else %}text-dk-orange{% endif %} nav-link d-block d-lg-none" href="{% url 'view_bag' %}">
             <div class="text-center">
                 <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-                <p class="fs-6 my-0">
+                <p class="fs-6 my-0 d-none d-sm-block">
                     <strong>
                         {% if grand_total %}
                             &euro; {{ grand_total|floatformat:2 }}
