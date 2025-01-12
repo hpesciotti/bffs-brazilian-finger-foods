@@ -125,94 +125,279 @@ From the client’s perspective, it was important to feature engaging text, appe
 
 ### **2.2. User Stories**
 
-1. User Story (main ideia of the app):
-As an admin, I want to create a platform that would provide basic cave metrics to speleologists, conservationists, environmental consultancy companies, public agencies, academics, and cave enthusiasts so that I can centralize and make public and transparent the acquisition of cave metrics data in the Quadrilátero Ferrífero region.
-Acceptance Criteria:
- - The platform allows input, update, display, and storage of cave metrics data.
- - Cave metrics should be accessible by all listed stakeholders.
- - To provide a user-friendly dashboard to the users, displaying cave metrics specific to the Quadrilátero Ferrífero region.
+User Stories management was conducted in accordance with Agile planning methodologies to ensure project completion. Through [GitHub Projects](https://github.com/users/hpesciotti/projects/5), user stories were created as issues and organized into boards. Groups of user stories were assigned to a Sprint and their respective milestones. The use of labels helped to define epics and their associated tasks.
 
-2. User Story:
-As a user, I want to consult the database, so that I can check on the mean relevance metrics of the Quadrilátero Ferrífero Speleological unit and its Geomorphological Units.
-Acceptance Criteria:
- - Provide a user-friendly dashboard on the index page to the users.
- - Display in feature manner cave metrics specific to the Quadrilátero Ferrífero region (All Data) and the Geomorphological Unit that make up the aforementioned speleological unit (filter by a field)
- - Clear representation of metrics through charts, tables, etc.
-Specific parameters can filter data (e.g., cave name, size).
+Furthermore, the user stories were categorized according to the **MoSCoW Prioritization Method** as follows:
+- **Must Haves**: Essential for the MVP (Minimum Viable Product).
+- **Should Haves**: Important but not critical for the MVP.
+- **Could Haves**: Nice to have if time allows it.
+- **Won’t Haves**: Initially brainstormed but, abandoned due to time limitations.
 
-3. User Story:
-As a user, I want to consult data and general info of a cave, so that I can quickly collect relevant cave information for conservation/environmental licensing purposes.
-Acceptance Criteria:
- - Users can search for caves by name, location, or other identifiers.
- - Users can access a specific info page, “/cavename,” displaying all the collected data available about said cave.
- - The cave info page provides relevant data: location/coordinates, physical dimensions, and other textual data.
- - Downloadable cave maps (PDF) and images (jpg, png, etc) are available.
+It is important to point out that time was a significant limiting factor, and bugs considerably delayed the project, ultimately resulting in a scope change. As a result, all **Could Have** features and User Stories are not currently implemented and have been set as **Future Features**.
 
-4. User Story:
-As a user, I want to consult the listing of all caves in the database using filters, so that I can access data according to my own needs, given that it has several different criteria.
- - A summary page listing the database caves for quick consultation.
- - Allow user to request data through filters such as dimension criteria, author, Geomorphological Unit
+The complete list of User Stories is available at [GitHub Projects](https://github.com/users/hpesciotti/projects/5).
 
-5. User Story:
-As a user, I want to know in which class of percentile my (or a particular) cave is classified according to percentiles of cave metrics, so that I can have some pointers on the cave’s relevance according to its metrics.
-Acceptance Criteria:
- - The info page will display a score for cave metrics regarding the speleological and geomorphological units.
- - The percentiles must be up to date with the last insertion/deletion of registered caves.
+[Back to top](#readme---table-of-contents)
 
-6. User Story:
-As a user, I want to verify caves near a target area through a map interface, so that I can spatially assess existing caves quickly and easily.
-Acceptance Criteria:
- - A map interface must be implemented where users can search for caves by navigating the map frame.
- - The map should provide clickable cave icons that would display summarised cave data.
- - Display the Geomorphological and Speleological Units.
+#### User Story #1 - Epic: Home - Must Have
 
-7. User Story:
-As a user, I want to, through the map, open the cave info page, so that I can quickly gather info from the clicked feature.
-Acceptance Criteria:
- - Clicking on a cave marker in the map interface opens the specific cave info page.
- - The info page should not stop the navigation in the map interface.
+As a **Customer**, I want to be able to **navigate the site's home page** so that I can **familiarize myself with the type of products and services offered, identify clearance items and special offers.**
 
-8. User Story:
-As a user, I want to register caves that I have surveyed, so that I can add to the overall metrics and contribute to the speleological knowledge of the region.
-Acceptance Criteria:
-Users can submit new cave entries through a form that includes required fields, as stablished by the database model.
- - Admin reviews and approves user-submitted cave data before it is added to the public database.
- - The users are notified upon successful submission and approval.
- - Users can upload cave maps (PDF) and images during registration.
+##### Acceptance Criteria  
+- **AC 1:** The home page displays a straightforward navigation menu with links to product categories, special offers, and the clearance section.  
+- **AC 2:** A search bar is available and functional for quick access to the various links and categories of the products.  
+- **AC 3:** A carousel container with appealing images of finger foods, summarized descriptions, and persuasive call-to-action phrases encouraging product purchases.  
+- **AC 4:** A card-carousel container displaying featured products, clearance, and most sold items.
 
-9. User Story:
-As a user, I want to check the data input on my registered caves, so that I can ensure the entered data is correct and up to date.
-Acceptance Criteria:
- - Users have access to a personal dashboard listing the caves they have registered.
- - Users can review and edit data on their registered caves.
- - Any edits or updates to registered caves must be approved by an admin before incorporation of data to the database.
+### User Story #2  - Epic: All Products/Home - Must Have
 
-10. User Story:
-As a user, I want to report inconsistent data (typos) or suggest updates on the data of caves not registered by me, so that I can contribute to the overall quality of the database.
-Acceptance Criteria:
- - Users can flag inconsistent data or suggest updates on any cave information.
- - A notification is sent to admins for review and approval of suggestions.
- - Users receive confirmation regarding the status of their reports.
- - A comment area and submit button should be available on each cave info page for submitting such reports.
+As a **Customer**, I want to be able to **view deals, clearance products, and special offers** so that I can **take advantage of special prices on products.**
 
-11. User Story:
-As a user, I want to get in touch with other users, so that I can message them directly and ask for further material or information about a cave.
-Acceptance Criteria:
- - The platform provides user profile pages.
- - The platform offers private messaging or contact functionality between users.
- - Users must share contact details for further communication.
+#### Acceptance Criteria  
+- **AC 1:** The product pages consist of sections pre-filtered by main categories in the navigation bar or a category menu.  
+- **AC 2:** Clicking on a category filters the product database list to display only the selected type.  
 
-12. User Story:
-As an admin, I want to follow up via external notification (email) with report inconsistency requests by users, so that I can guarantee the current update and maintain a consistent database.
-Acceptance Criteria:
- - Admins receive notifications of flagged or reported data inconsistencies via email.
 
-13. User Story:
-As an admin, I want to manage user accounts, especially disabling user profiles due to misuse of the website functionalities, so that I can maintain control over the information provided by the website.
-Acceptance Criteria:
- - Admin can view and manage user profiles from the admin panel.
- - Admins can disable, delete, or temporarily suspend user accounts based on misuse.
- - The admin can restore disabled accounts and track account management history.
+### User Story #3  - Epic: All Products/Home - Must Have
+
+As a **Customer**, I want to be able to **browse the products advertised** so that I can **get general information, such as product image, price, allergens, and ingredients.**
+
+#### Acceptance Criteria  
+- **AC 1:** Product pages, listed by categories, feature products displayed in a grid or list format with images, names, and prices.  
+- **AC 2:** Clicking on a product redirects the user to a detailed product page.  
+
+
+### User Story #4 - Epic: All Products - Must Have
+
+As a **Customer**, I want to be able to **effortlessly find products that cater to a dietary preference or condition** so that I can **sort the available products to filter the desired appetizer (gluten-free, dairy-free, vegan) or regarding the cooking process (fried/baked) or assorted bundles.**
+
+#### Acceptance Criteria  
+- **AC 1:** A filter menu is available on the product listing page with options for:  
+  - Gluten-free  
+  - Dairy-free  
+  - Vegan  
+  - Fried  
+  - Baked  
+  - Assorted Bundles  
+- **AC 2:** A sorting feature includes options for prices.  
+- **AC 3:** Selected filters dynamically update the displayed products.  
+
+
+### User Story #5 - Epic: All Products - Must Have
+
+As a **Customer**, I want to be able to **view a product page with general information of a selected appetizer** so that I can **see ingredients, dietary information, history, and the region of Brazil.**
+
+#### Acceptance Criteria  
+- **AC 1:** The product page includes:  
+  - Full-size product image  
+  - Ingredients list  
+  - Dietary information table  
+  - Product description, including history and origin in Brazil  
+- **AC 2:** The information should be presented in a responsive layout like an accordion.  
+
+
+### User Story #6 - Epic: FAQ - Should Have
+
+As a **Customer**, I want to be able to **know about storage, cooking information, and general frequently asked questions** so that I can **read about any possible doubts regarding the offered products.**
+
+#### Acceptance Criteria  
+- **AC 1:** The About page includes the following:  
+  - Storage instructions  
+  - Cooking or preparation guidelines  
+  - A FAQ section  
+- **AC 2:** The FAQ section answers common questions like shelf life, freezing compatibility, and preparation methods.  
+- **AC 3:** The information is easy to navigate and clear for comprehension.
+
+
+### User Story #7 - Epic: Customer Profile Page - Must Have
+
+As a **Customer**, I want to be able to **easily create/register a user account** so that I can **manage key user information, such as address and personal details.**
+
+#### Acceptance Criteria  
+- **AC 1:** The registration page is accessible from the home page via a "Sign Up" button.  
+- **AC 2:** Error messages are displayed for invalid inputs.  
+- **AC 3:** Registration is handled by Django Allauth. 
+
+
+### User Story #8 - Epic: Customer Profile Page - Must Have
+
+As a **Customer**, I want to be able to **manage my account through a user profile** so that I can **manage my order history and personal information.**
+
+#### Acceptance Criteria  
+- **AC 1:** Users can access their profile via a "My Account" link in the navigation bar.  
+- **AC 2:** The user profile page includes sections for:  
+  - Personal details (e.g., name, email)  
+  - Address details  
+  - Order history (sortable by date and status)  
+- **AC 3:** Users can update their information and save changes.
+
+### User Story #9  - Epic: Customer Profile Page - Must Have
+
+As a **Customer**, I want to be able to **effortlessly log in/ logout of my account** so that I can **efficiently access my account**
+
+#### Acceptance Criteria  
+- **AC 1:** The login page is accessible from the home page via a "Log In" button.  
+- **AC 2:** Users can log in using their registered email and password.  
+- **AC 3:** A "Log Out" button is always visible when the user is logged in.  
+- **AC 4:** Error messages are displayed for invalid login attempts (e.g., incorrect email or password).  
+
+
+### User Story #10 - Epic: All Products Pages / Checkout - Must Have
+
+As a **Customer**, I want to be able to **easily select the quantity of products** so that I can **ensure I am purchasing the right quantity before checkout.**
+
+#### Acceptance Criteria  
+- **AC 1:** Each product page includes a quantity selector (e.g., dropdown or input field with "+" and "-" buttons).  
+- **AC 2:** The quantity selector defaults to 1 but allows users to increase or decrease the quantity.  
+- **AC 3:** If the quantity exceeds the available stock, an error message or alert is displayed.  
+
+
+### User Story #11 - Epic: Checkout - Must Have
+
+As a **Customer**, I want to be able to **manage my shopping bag** so that I can **check if the products selected are being added and monitor my spending.**
+
+#### Acceptance Criteria  
+- **AC 1:** The shopping bag is accessible via a cart icon in the navigation bar.  
+- **AC 2:** The shopping bag displays the list of added products (names and selected quantities).  
+- **AC 3:** The subtotal, taxes, and grand total are calculated and displayed.
+
+
+### User Story #12 - Epic: Checkout - Should Have
+
+As a **Customer**, I want to be able to **view notifications indicating addition, reduction and removal of items in my shopping bag** so that I can **know immediately if my actions are reflected on my shopping bag**
+
+#### Acceptance Criteria  
+- **AC 1:** A toast notification appears after any action (e.g., item added, quantity updated, item removed).
+- **AC 2:** Notifications are visible for a few seconds before fading automatically.
+
+
+### User Story #13 - Epic: Checkout - Should Have
+
+As a **Customer**, I want to be able to **check out safely, entering my payment information** so that I can **be certain my personal and payment data are secure.**
+
+#### Acceptance Criteria  
+- **AC 1:** The checkout page requires users to be logged in.
+- **AC 2:** Payment data is encrypted and processed securely.
+- **AC 3:** An order summary (products, prices, and totals) is displayed before payment submission. 
+- **AC 4:** Errors in payment details prompt a clear error message.
+
+
+### User Story #14 - Epic: Checkout - Must Have
+
+As a **Customer**, I want to be able to**visualise an order confirmation after checkout** so that I can **verify the order details and be certain that all steps of purchase were concluded with success**
+
+#### Acceptance Criteria  
+- **AC 1:** The checkout page includes fields for shipping and billing details.  
+- **AC 2:** Fields include validation for required inputs (e.g., address, city, zip code).  
+- **AC 3:** Payment is processed securely via Stripe integration.
+
+
+### User Story #15 - Epic: Checkout - Must Have
+
+As a **Customer**, I want to be able to **receive an email with the confirmation of my order** so that I can **be reassured that my order was confirmed.
+
+#### Acceptance Criteria  
+- **AC 1:** Upon successful payment, the system sends a confirmation email with order details.  
+- **AC 2:** The email includes the order number, list of items, total amount, and delivery information.
+
+
+#### User Story #16 - Epic: All Products / Customer Profile - Could Have - Future Feature
+
+As a **Customer**, I want to be able to **read reviews of appetizers posted by other customers** so that I can **make informed purchasing decisions**.
+
+##### Acceptance Criteria
+- **AC 1:**Each product page includes a section displaying customer reviews.
+- **AC 2:**Reviews include the customer’s name and comment.
+
+
+### User Story #17 - Epic: All Products / Customer Profile - Could Have - Future Feature
+
+As a **Customer**, I want to be able to **read reviews of appetizers posted by other customers** so that I can **make informed purchasing decisions.**
+
+#### Acceptance Criteria  
+- **AC 1:** Each product page includes a section displaying customer reviews.  
+- **AC 2:** Reviews include the customer’s name, rating, and comment.  
+- **AC 3:** Reviews are sorted by date, with the most recent appearing first.  
+
+
+### User Story #18 - Epic: Admin Panel - Should Have
+
+As a **Store Owner**, I want to be able to** Add a new product (finger food or appetizer)** so that I can **use the website to present the customers with a new product**
+
+#### Acceptance Criteria  
+- **AC 1:** The admin panel has a dedicated section for adding new products.
+- **AC 2:** The product creation form includes fields from the product model.
+- **AC 3:** Validation ensures all required fields are completed before submission.
+
+
+### User Story #19 - Epic: Admin Panel - Should Have
+
+As a **Store Owner**, I want to be able to **Add a new batch of an existing product** so that I can **keep records of expiry dates and quantities and maintain picture and general information of an existing product**
+
+#### Acceptance Criteria  
+- **AC 1:** The admin panel allows batch management for existing products
+- **AC 2:** Store owners can add a new batch by selecting an existing product.
+- **AC 3:** The batch creation form includes fields for the batch number and expiry date.
+- **AC 4:** **Changed** Expired batches are flagged and excluded from active stock.
+
+
+### User Story #20 - Epic: Admin Panel - Could Have - Future Feature
+
+As a **Store Owner**, I want to be able to **Use the expiry dates or quantities to create special offers** so that I can **maintain stock control and reduce food waste and financial loss. **
+
+#### Acceptance Criteria  
+- **AC 1:** The admin panel includes a feature to create special offers for specific products, considering approaching expiry dates and overstocked products.  
+- **AC 2:** Notifications alerting the store owner to create offers for products nearing expiry.
+- **AC 3:** Discounted products are highlighted on the customer-facing product page with labels (e.g., "Clearance" or "Special Offer").
+
+
+### User Story #21 - Epic: Admin Panel - Could Have - Future Feature
+
+As a **Site Admin**, I want to be able to **view and manage customer orders** so that I can **track sales and ensure timely delivery.**
+
+#### Acceptance Criteria  
+- **AC 1:** Admins can view a list of all customer orders in the admin panel.  
+- **AC 2:** Each order includes details like customer name, items, total, and status.  
+- **AC 3:** Admins can update the order status (e.g., "Processing," "Shipped," "Delivered").  
+
+### User Story #22 - Epic: Admin Panel - Could Have - Future Feature
+
+As a **Store Owner**, I want to be able to**A monthly/weekly inventory of the sales sorted by products ** so that I can **plan the production of new batches or increment or decrease the batches of a particular product.**
+
+#### Acceptance Criteria  
+- **AC 1:** The admin panel provides an inventory report accessible by date range (weekly/monthly). 
+- **AC 2:** The reports include:
+                      - Product name.
+                      - Total units sold.
+                      - Revenue per product.
+
+
+#### User Story #23 - Epic: Checkout - Should Have
+
+As a **Store Owner**, I want to be able to **Have a policy page with terms and conditions** so that I can **present to the customer the general legal terms of online shopping.**
+
+##### Acceptance Criteria
+- **AC 1:** A policy page is accessible from the website footer with a link labelled "Terms and Conditions."
+- **AC 2:** A checkbox confirming customer acceptance of terms is included at checkout.
+
+
+#### User Story #24 - Epic: Checkout - Could Have - Future Feature
+
+As a **Customer**, I want to be able to **apply discount codes during checkout** so that **I can redeem special offers and save money**.
+
+##### Acceptance Criteria
+- **AC 1:** The checkout page includes a field for entering discount codes.
+- **AC 2:** Valid discount codes reduce the total amount.
+- **AC 3:** An error message is displayed for invalid or expired codes.
+
+
+#### User Story #25 - Epic: Marketing - Must Have
+
+As a **Store Owner**, I want to be able to **have a social media presence** so that I can **promote BFFs products on social media**.
+
+##### Acceptance Criteria
+- **AC 1:** Make the brand know through Facebook Business and other relevant Social Media.
+- **AC 2:** Create an newsletter.
 
 [Back to top](#readme---table-of-contents)
 
@@ -220,94 +405,29 @@ Acceptance Criteria:
 
 #### Wireframes
 
-The wireframes were created using Balsamiq. At this stage, along with the user stories, it was possible to identify the functionalities, pages, and data to be presented in later phases. 
+The wireframes were created using **Balsamiq**. At this stage, alongside the user stories, it was possible to identify the functionalities, pages, and data to be presented in later phases.
 
-Although the design is simple, comparing the final result with the wireframes shows that the production phase successfully implemented what was proposed at the outset.
+Although the design is simple, comparing the final result with the wireframes demonstrates that the production phase successfully implemented what was proposed at the outset.
 
 <details>
-<summary>Home Desktop</summary>
+<summary>Home Desktop/Mobile</summary>
 
 ![Home Desktop](documentation/wireframes/index.png)
 
 </details>
 
-<details>
-<summary>Home Mobile</summary>
-
-![Home Mobile](documentation/wireframes/index_mobile.png)
-
-</details>
-
 
 <details>
-<summary>Profile Desktop</summary>
+<summary>Products Page Desktop/Mobile</summary>
 
-![Profile Desktop](documentation/wireframes/user_profile.png)
+![About Mobile](documentation/wireframes/products.png)
 
 </details>
 
 <details>
-<summary>Profile Mobile</summary>
+<summary>Admin Panel</summary>
 
-![Profile Mobile](documentation/wireframes/profile_mobile.png)
-
-</details>
-
-
-<details>
-<summary>About Desktop</summary>
-
-![About Desktop](documentation/wireframes/about.png)
-
-</details>
-
-<details>
-<summary>About Mobile</summary>
-
-![About Mobile](documentation/wireframes/about_mobile.png)
-
-</details>
-
-<details>
-<summary>Map Search Desktop</summary>
-
-![Map Search  Desktop](documentation/wireframes/map_search.png)
-
-</details>
-
-<details>
-<summary>Map Search Mobile</summary>
-
-![Map Search Mobile](documentation/wireframes/cave_map_mobile.png)
-
-</details>
-
-<details>
-<summary>Table Search Desktop</summary>
-
-![Table Search  Desktop](documentation/wireframes/cave_search.png)
-
-</details>
-
-<details>
-<summary>Table Search Mobile</summary>
-
-![Table Search Mobile](documentation/wireframes/cave_search_mobile.png)
-
-</details>
-
-
-<details>
-<summary>Add cave Desktop</summary>
-
-![Add cave  Desktop](documentation/wireframes/add_cave.png)
-
-</details>
-
-<details>
-<summary>Add cave Mobile</summary>
-
-![Add cave Mobile](documentation/wireframes/add_cave_mobile.png)
+![About Mobile](documentation/wireframes/admin_panel.png)
 
 </details>
 
@@ -315,43 +435,47 @@ Although the design is simple, comparing the final result with the wireframes sh
 
 #### Datbase Schema
 
-The cave registration system was structured using a relational database schema which the models are: User, Profile, Cave, and Report. The models are connected by relationships defined through foreign key associations. User is structured by Django AllAuth, a set of applications that automate tasks related to addressing authentication, registration, and account management.
+### Data Model of the Web Application "BFFs"
 
-The Cave, which stores the main data collected by the website, is linked to the User model via a foreign key, establishing that each cave entry is created and managed by a specific user, ensuring ownership of cave records. The Cave model includes fields like cave_name, latitude, longitude, elevation, length, depth, area, and volume, each with specific validation constraints to ensure consistency in data entry.
+The data model of the web application **BFFs**, as shown in the following diagram, is centered around the **Batch** model, which serves as the link between **Product** and **Order**. The connection between these three databases ensures the main flow of the e-commerce platform, which is as follows: a **Product** is chosen (with attributes such as images, price, names – both short widget and full), and its quantity and sale price are managed by the **Batch** model. The information, stored in a session dictionary called **bag**, is then passed to the **Order** model. The **Order** model establishes a simplified connection with the **Stripe API**, generating the order and processing the payment.
 
-The Profile model, in turn, is associated with the User model through a one-to-one relationship established by the user. This allows each user to have a detailed profile while maintaining the core authentication provided by Django All Auth. Additionally, the Profile model handles user information, allowing them to edit their profile and access the website's main functions, like adding a cave, provided the user provides an email_for_contact, bio, and display name, which are not mandatory fields. This relationship ensures the integrity of user data, connecting it back to cave entries and reports through consistent foreign key relationships across the models.
+It is important to note that after the connection is established between the **Order** and **Stripe**, and the confirmation email is sent, the temporary **bag** instance is used to decrement the quantity of the product in the **Batch** database.
 
-Finally, The Report model captures the relationship between users and cave entries in terms of data inconsistencies. A report gathers info about the reporting user, the cave being reported, the cave owner, and the inconsistency. This is managed through foreign keys that ensure each report correctly maps out the cave and the users involved. 
+It is emphasized that in the case of **BFFs**, the **Product** model does not represent an actual product but rather a category or even a product typology that only passes immutable data to the frontend. The connection between **Batch** and **Product** is achieved via a **ForeignKey**, allowing multiple **Batch** elements to reference the same **Product**. This connection was chosen due to the perishable nature of the products, where multiple production batches might be available to the buyer.
 
-![Speleometrics - Data Schema](documentation/speleometrics_data_model.png)
+The **Product** model is also linked to **DietaryCategories** through a **many-to-many** relationship. This occurs because a vegan product might also be gluten-free, dairy-free, or ovo-lacto-vegetarian. This relationship enables consumers to find products that fit their dietary preferences. This connection facilitates the categorization displayed in the site's navigation menu and allows direct searches by dietary categories via the **Search Bar** (q).
+
+User validation is handled by **Django AllAuth**, which connects to the **UserProfile** model and allows for the recording of personal and delivery information. During checkout, this information can be saved by passing data between **Order**, **Stripe Webhook**, and **UserProfile**.
+
+Finally, the **Faq** model manages the data displayed on the **FAQs** page. Using a **for loop**, the questions and answers are passed to the frontend and presented to the user through an accordion. This database does not connect with any other databases in the web application.
+
+![BFFs - Data Schema](documentation/showcase/bffs.drawio.png)
 
 [Back to top](#readme---table-of-contents)
 
 ### **2.4. Design** 
 
-For the page design, I drew inspiration from the interface I used most often while preparing environmental impact reports, which in this case was Microsoft Word. The blank page in the centre with grey borders would bring comfort to the centred content and familiarity to users, most of whom share a similar professional background to mine.
+The colour scheme plays an important role in evoking a "food craving feel." The choice of main colours was inspired by some prominent Brazilian traditional food brands, such as:
 
-As for the logo, it went through several versions and colours. After testing a few possibilities, one of which was my user profile photo, I decided on something more elemental and simple. The capital greek letter omega is commonly used as a cartographic symbol to designate a cave, and this was present in several versions of the logo. Regarding the colour, I chose orange, as it resembles the soil developed from the rocks of the Quadrilátero Ferrífero.
+- [Boca do Forno](http://bocadoforno.com.br/)
+- [Swift](https://www.swift.com.br/) – A significant source of inspiration for UX, as it is very well-structured.
+- [Sodiê Doces](https://sodiedoces.com.br/)
+- [Fujiyama](https://fujiyamapastelaria.com/)
 
-<details>
-<summary>Orange Soil</summary>
 
-![Orange Soil](documentation/orange.png)
 
-</details>
-
-<details>
-<summary>Word Blank Page</summary>
-
-![Word Blank Page](documentation/word_blank_page.png)
-
-</details>
 
 [Back to top](#readme---table-of-contents)
 
 #### Colour Scheme
 
-I chose a palette that would ornate with orange, white, and grey for the colour scheme that inspired the site's design. Since much of the content will be presented through text and tables, to maintain a clean appearance, I decided to choose a dark tone for the text. To that end, I checked the accessibility of a dark blue shade and a white tone. I opted out of shades of grey or black for this purpose, as I found the dark blue tone more elegant.
+The colour scheme plays an important role in evoking a "food craving feel." The choice of main colours was inspired by some prominent Brazilian traditional food brands, such as:
+
+- [Boca do Forno](http://bocadoforno.com.br/)
+- [Swift](https://www.swift.com.br/) – A significant source of inspiration for UX, as it is very well-structured.
+- [Sodiê Doces](https://sodiedoces.com.br/)
+- [Fujiyama](https://fujiyamapastelaria.com/)
+
 
 
 ![Colour Palette](documentation/color_palette.png)
