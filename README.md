@@ -56,6 +56,8 @@ For access to Shop Admin panel in the frontend view with relevant sign-in creden
 
     2.5. [Agile and Project Managing](#25-agile-and-project-managing)
 
+    2.5. [Marketing Techniques](#26-marketing-techniques)
+
 3. [Features](#3-features)
 
     3.1. [User View](#31-user-view)
@@ -120,6 +122,13 @@ Overall, the primary objective of this project was to develop an e-commerce stor
 I have some experience in the catering industry, where stock control was one of my responsibilities as a catering assistant. Drawing from this experience, I implemented a few ideas in the Shop Admin section within the limited time available to develop the platform. Additionally, during the creation of user stories, having completed the mock project Boutique Ado—which successfully covers most customer/user experiences—I found it interesting to add some additional nuance to the shop owner functionalities. Unfortunately, I was unable to implement all the planned features, opting to exclude some "could-have" stories (as per the MoSCoW prioritisation method) from the MVP.
 
 From the client’s perspective, it was important to feature engaging text, appealing images, and a design that would entice users to “crave” the products. Through benchmarking several Brazilian brands, I identified the key elements they use to promote similar products and incorporated them into the website. Furthermore, a primary UX goal for the web application was to convey trustworthiness, ensuring that end users would feel confident and safe when making a purchase.
+
+#### E-Commerce Business Model for BFFs
+
+BFFs operates as a Business-to-Consumer (B2C) platform, designed to bring authentic Brazilian appetisers directly to customers in Dublin. The primary purpose of the application is to offer a seamless and accessible online shopping experience for frozen Brazilian finger foods, catering to the growing Brazilian community and Ireland's diverse population. The platform enables customers to explore, order, and have their favourite appetisers delivered conveniently, emphasising high-quality products and excellent service.
+
+The core business intent of BFFs is to provide a reliable e-commerce solution that promotes Brazilian culinary culture while addressing the operational challenges of running a small food business. By focusing on frozen products, the business ensures longevity and reduces waste, enabling better stock management. The online model allows BFFs to eliminate the need for a physical store, minimising overhead costs and extending reach to a broader audience. Key features include automated billing, real-time stock updates, and user-friendly order management for both customers and the shop admin.
+
 
 [Back to top](#readme---table-of-contents)
 
@@ -474,21 +483,31 @@ Image credits: https://www.minhareceita.com.br/receita/coxinha-de-frango-assada/
 
 #### Colour Scheme
 
-The colour scheme plays an important role in evoking a "food craving feel." The choice of main colours was inspired by some prominent Brazilian traditional food brands, such as:
+As mentioned, the primary colours of the site are inspired by the interior and exterior colours of a coxinha. These shades were applied consistently throughout the site on buttons, accordions, checkboxes, headers, and other elements. Hover effects incorporated colour inversions, while focus effects used transparency variations. The page background utilised shades of grey, with white employed in areas where text is more abundant.
 
-- [Boca do Forno](http://bocadoforno.com.br/)
-- [Swift](https://www.swift.com.br/) – A significant source of inspiration for UX, as it is very well-structured.
-- [Sodiê Doces](https://sodiedoces.com.br/)
-- [Fujiyama](https://fujiyamapastelaria.com/)
+### Colour Palette:
+- #e55125 - Primary colour  
+- #ffa60b - Secondary colour  
+- #555555 - Text on white background  
+- #373737 - Small text on grey background  
+- #B7B7B7 - Free delivery section background and footer  
+- #ffffff - Main element background  
+
+Since most pages in the web application have a limited number of buttons, the primary and secondary colours were used for these elements. However, in the shop admin section, where buttons are more numerous, and in user notifications, the default Bootstrap colours were adopted to ensure clearer differentiation:
+
+### Default Bootstrap Colours:
+- **Success:** #198754  
+- **Danger:** #dc3545  
+- **Primary:** #0d6efd  
+- **Warning:** #ffc107  
 
 
-
-![Colour Palette](documentation/color_palette.png)
+![Colour Palette](documentation/showcase/colour_palette.png)
 
 <details>
-<summary>Colour Text</summary>
+<summary>Colour Contrast Grid</summary>
 
-![Colour Text](documentation/color_text_contrast.png)
+![Colour Grid](documentation/showcase/contrast_grid.png)
 
 </details>
 
@@ -496,24 +515,75 @@ The colour scheme plays an important role in evoking a "food craving feel." The 
 
 #### Font
 
-I chose Josefin Sans for the items in the nav-bar and Inter Sans for the rest of the text.
+Regarding the webapplication typography Opens Sans was chosen for the card elements and the nav-bar, while Roboto Condensed was used for the textual sections.
 
 ### **2.5. Agile and Project Managing** 
 
-I tried to implement Agile Methodology during the planning of my full stack framework project. The planning was conducted with [GitHub Project](https://github.com/users/hpesciotti/projects/3). I chose to limit my entries to Tasks, User Stories, linking them through GitHub interface. 
+I implemented Agile Methodology during the planning phase of my e-commerce project using the Django Framework. The planning process was managed through [GitHub Projects](https://github.com/users/hpesciotti/projects/5). However, bugs and other technical challenges significantly delayed my progress compared to the initial plan.
 
-I had initially around 30 days to execute the project, as suggest by the CI Scheduler. I would like to point out that was a very short time frame to develop a full-stack application and taking into account my learning curve with Django and Boostrap, I think the endproduct can achive the MVP status. 
+The sprint planning for BFFs was also organised using [GitHub Milestones](https://github.com/hpesciotti/bffs-brazilian-finger-foods/milestones). Each milestone represented a sprint with tasks directly associated with User Stories to ensure efficient project tracking and completion.
 
-Here is a draft of my initial planning divided um four sprints, tackling the various content involved on Speleometrics.
+<details>
+<summary>Milestones</summary>
 
-| Sprint | Start       | Finish      | Content                                    |
-|--------|-------------|-------------|--------------------------------------------|
-| 1      | 15/09/2024  | 21/09/2024  | Design, Wireframes, Sign-In (Django AllAuth) |
-| 2      | 22/09/2024  | 28/09/2024  | Defining the models, Profiles and Caves    |
-| 3      | 29/09/2024  | 05/10/2024  | Statistics, Reports, Maps and Frontend Development |
-| 4      | 06/10/2024  | 13/10/2024  | Styling/Testing/Documentation               |
+![Milestones](documentation/showcase/milestones.png)
+
+</details>
 
 [Back to top](#readme---table-of-contents)
+
+### **2.6. Marketing Techniques**
+
+BFFs employs a digital techniques for marketing. The website integrates SEO principles to enhance visibility, while a [Facebook Businnes Page](https://www.facebook.com/profile.php?id=61571720907799) are used to build brand awareness and promotional future campaigns. The main goal of the marketing strategy was to benchmark against popular Brazilian food brands, to come up with a product with a design evokes a sense of craving and comfort, using keywords, appealing images and colours that resonate with the target audience. Regarding the facebook an initial call to action post was published with appealing images from the sold products.
+
+![Facebook Post](documentation/showcase/facebook_post.png)
+
+<details>
+<summary>Facebook Heading</summary>
+
+![Facebook Heading](documentation/showcase/facebook_heading.png)
+
+</details>
+
+Regarding **SEO** (Search Engine Optimization), it's a good practice to create a list of **keywords** that can improve your site's visibility on search engines. To avoid keyword stuffing (excessive use of keywords), you've carefully reviewed and revised them, which is essential to keep the content relevant and natural. Using these keywords in meta tags, headings, and alt attributes for images, such as the carousel-hero element on the homepage, is an effective strategy.
+
+The innovation of using **dynamic Django tags** for product pages is an excellent approach. By including product variables, such as name and dietary category, in the meta tags, you ensure that search engines index these pages in a personalized and dynamic way, which can improve the ranking and relevance for each item in your catalogue.
+
+Using **WordTracker** ([link to WordTracker](https://www.wordtracker.com)) to evaluate keywords is a useful tool. Although the tool provided an analysis focused on the USA, the report you obtained seems to indicate that the dynamic meta tags, based on product variables, are more relevant than the ones you initially considered. This highlights the importance of continuously adjusting your SEO strategy.
+
+- **Home**
+~~~
+{% block extra_meta %}
+  <!-- Metatags for engine search optmization -->
+  <meta name="description" content="Taste the best Brazilian finger foods in Dublin. Delivered frozen to your doorstep, our comfort foods are perfect for parties and events and as a quick snack.">
+  <meta name="keywords" content="Brazilian appetizers, frozen Brazilian snacks, finger foods from Brazil, Brazilian cuisine Dublin, party appetizers Dublin, Brazilian snacks Dublin">
+{% endblock %}
+~~~
+
+- **Prodcuts Pages**
+~~~
+{% block extra_meta %}
+  <!-- Metatags for engine search optmization -->
+  <meta name="description" content="Check out our amazing list of products">
+  <meta name="keywords" content="{% for product in products %}{{ product.short_widget_name }}{% if not forloop.last %}, {% endif %}{% endfor %}">
+{% endblock %}
+~~~
+
+- **Prodcut Detail Pages**
+~~~
+{% block extra_meta %}
+  <!-- Metatags for engine search optmization -->
+  <meta name="description" content="Delicious {{ product.short_widget_name }}">
+  <meta name="keywords" content="{% if 'Vegan' in dietary_categories_names and 'Gluten-Free' in dietary_categories_names %}Vegan, Gluten-Free{% elif 'Vegan' in dietary_categories_names %}Vegan{% else %}{{ dietary_categories_names|join:', ' }}{% endif %}, {{ product.full_name }}, {{ product.allergens }}">
+{% endblock %}
+~~~
+
+<details>
+<summary>WordTracker results for USA</summary>
+
+![Nav Bar Effects](documentation/showcase/wordtracker_us.png)
+
+</details>
 
 ### **3. Features**
 
