@@ -443,35 +443,33 @@ The Profile model, in turn, is associated with the User model through a one-to-o
 
 Finally, The Report model captures the relationship between users and cave entries in terms of data inconsistencies. A report gathers info about the reporting user, the cave being reported, the cave owner, and the inconsistency. This is managed through foreign keys that ensure each report correctly maps out the cave and the users involved. 
 
-![Speleometrics - Data Schema](documentation/speleometrics_data_model.png)
+![BFFs - Data Schema](documentation/showcase/bffs.drawio.png)
 
 [Back to top](#readme---table-of-contents)
 
 ### **2.4. Design** 
 
-For the page design, I drew inspiration from the interface I used most often while preparing environmental impact reports, which in this case was Microsoft Word. The blank page in the centre with grey borders would bring comfort to the centred content and familiarity to users, most of whom share a similar professional background to mine.
+The colour scheme plays an important role in evoking a "food craving feel." The choice of main colours was inspired by some prominent Brazilian traditional food brands, such as:
 
-As for the logo, it went through several versions and colours. After testing a few possibilities, one of which was my user profile photo, I decided on something more elemental and simple. The capital greek letter omega is commonly used as a cartographic symbol to designate a cave, and this was present in several versions of the logo. Regarding the colour, I chose orange, as it resembles the soil developed from the rocks of the Quadrilátero Ferrífero.
+- [Boca do Forno](http://bocadoforno.com.br/)
+- [Swift](https://www.swift.com.br/) – A significant source of inspiration for UX, as it is very well-structured.
+- [Sodiê Doces](https://sodiedoces.com.br/)
+- [Fujiyama](https://fujiyamapastelaria.com/)
 
-<details>
-<summary>Orange Soil</summary>
 
-![Orange Soil](documentation/orange.png)
 
-</details>
-
-<details>
-<summary>Word Blank Page</summary>
-
-![Word Blank Page](documentation/word_blank_page.png)
-
-</details>
 
 [Back to top](#readme---table-of-contents)
 
 #### Colour Scheme
 
-I chose a palette that would ornate with orange, white, and grey for the colour scheme that inspired the site's design. Since much of the content will be presented through text and tables, to maintain a clean appearance, I decided to choose a dark tone for the text. To that end, I checked the accessibility of a dark blue shade and a white tone. I opted out of shades of grey or black for this purpose, as I found the dark blue tone more elegant.
+The colour scheme plays an important role in evoking a "food craving feel." The choice of main colours was inspired by some prominent Brazilian traditional food brands, such as:
+
+- [Boca do Forno](http://bocadoforno.com.br/)
+- [Swift](https://www.swift.com.br/) – A significant source of inspiration for UX, as it is very well-structured.
+- [Sodiê Doces](https://sodiedoces.com.br/)
+- [Fujiyama](https://fujiyamapastelaria.com/)
+
 
 
 ![Colour Palette](documentation/color_palette.png)
