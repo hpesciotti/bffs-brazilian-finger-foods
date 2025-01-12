@@ -64,7 +64,7 @@
                                 <p class="fs-4">{{ product.dietary_categories_names|join:" | " }}</p>
                             {% endif %}
                                 <p class="fs-5">Allergens: {{ product.allergens }}</p>
-                                <p class="fs-5">Ingredients: {{ product.ingredients |safe }}</p>
+                                <p class="fs-5">Ingredients:</p> {{ product.ingredients |safe }}
                             {% if product.discount_price_batch %}
                             <p class="card-text">
                                 <span class="strikethrough fs-6">&euro;{{ product.price }}</span>
@@ -122,7 +122,7 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript">
+    <script>
      $('#sort-selector').change(function() {
         var selector = $(this);
         var currentUrl = new URL(window.location);

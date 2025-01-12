@@ -47,7 +47,7 @@
         <!-- Stripe -->
         <script src="https://js.stripe.com/v3/"></script>
         <!-- Mailchimp -->
-        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+        <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
         {% endblock %}
 
         {% block extra_js %}
@@ -169,7 +169,7 @@
         {% include 'includes/footer.html' %}
 
         {% block postloadjs %}
-        <script type="text/javascript">
+        <script>
             jQuery.noConflict();
 
             (function($) {
@@ -179,7 +179,7 @@
             })
             (jQuery);
         </script>
-        <script type="text/javascript">
+        <script>
             var mce_jQuery = jQuery.noConflict();
             (function($) {
                 window.fnames = new Array(); 

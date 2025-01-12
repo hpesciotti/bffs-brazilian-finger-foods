@@ -28,7 +28,7 @@
                 </h5>
                 <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#InfoAccordion">
                     <div class="px-3 py-1 accordion-body">
-                        <p>{{ faq.answer |safe }}</p>
+                        {{ faq.answer |safe }}
                     </div>
                 </div>
             </div>

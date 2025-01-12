@@ -8,9 +8,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Metatags for engine search optmization -->
-        <meta name="description" content="Taste the best Brazilian finger foods in Dublin. Delivered frozen to your doorstep, our comfort foods are perfect for parties and events and as a quick snack.">
-        <meta name="keywords" content="Brazilian appetizers, frozen Brazilian snacks, finger foods from Brazil, Brazilian cuisine Dublin, party appetizers Dublin, Brazilian snacks Dublin">
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
         <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
@@ -50,7 +47,7 @@
         <!-- Stripe -->
         <script src="https://js.stripe.com/v3/"></script>
         <!-- Mailchimp -->
-        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+        <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
         {% endblock %}
 
         {% block extra_js %}
@@ -64,7 +61,7 @@
             <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-flex justify-content-center align-items-center">
                     <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                        <img src="{{ MEDIA_URL }}logo/bffs-logo.webp" alt="BFFs Logo" class="logo m-0 p-0"/>
+                        <img src="{{ MEDIA_URL }}logo/bffs-logo.webp" alt="BFFs Logo" class="logo m-0 p-0">
                     </a>
                 </div>
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
@@ -85,14 +82,14 @@
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                     <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                         <li class="list-inline-item dropdown">
-                            <a class="text-dk-orange nav-link" href="{% url 'profile' %}" id="user-options" data-bs-toggle="dropdown"
+                            <a class="text-dk-orange nav-link" href="{% url 'profile' %}" id="user-options-main" data-bs-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <div class="text-center">
                                     <div><i class="fas fa-user fa-lg"></i></div>
                                     <p class="fs-6 my-0"><strong>My Account</strong></p>
                                 </div>
                             </a>
-                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                            <div class="dropdown-menu border-0" aria-labelledby="user-options-main">
                                 {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
                                 <a href="{% url 'shop_admin' %}" class="dropdown-item">Shop Admin</a>
@@ -113,7 +110,7 @@
                                     <p class="fs-6 my-0">
                                         <strong>
                                             {% if grand_total %}
-                                            &euro;{{ grand_total|floatformat:2 }}
+                                            &euro; {{ grand_total|floatformat:2 }}
                                             {% else %}
                                             &euro; 0.00
                                             {% endif %}
@@ -172,7 +169,7 @@
         {% include 'includes/footer_custom.html' %}
 
         {% block postloadjs %}
-        <script type="text/javascript">
+        <script>
             jQuery.noConflict();
 
             (function($) {
