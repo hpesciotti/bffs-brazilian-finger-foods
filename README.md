@@ -1,8 +1,44 @@
 # BFFs | Brazilian Finger Foods
 
-![BFFs]()
+![BFFs](documentation/showcase/am_i_responsive.png)
 
 [Visit my website here](https://bffs-brazilian-finger-foods-99657e2a95f1.herokuapp.com/)
+
+
+BFFs is an online store specializing in frozen Brazilian appetizers, focusing on delivering quality snacks in an easy and intuitive manner. The e-commerce platform is accessible through all browsers and fully responsive across different screen sizes.
+
+### Features for Users
+Through the web application, users can:
+
+- Browse the store as guests.
+- Register for an account.
+- Explore products by category and price.
+- View, add, and edit products in their shopping bag.
+- As registered users, access their order history.
+- Sign up for promotional newsletters.
+
+### Features for the Store Owner
+The store owner can:
+
+- Manage products, quickly toggle best-seller status (visible on the home page) and edit prices.
+- Manage batches with full CRUD functionality, allowing them to:
+  - Create discounts.
+  - Edit existing batches.
+  - Delete batches.
+
+### Feel free to Test my Web Application
+For purchase you can use the following [Stripe Dummy Card](https://stripe.com/docs/testing) details:
+
+- Card Number: 4242424242424242
+- 3D Secure Auth Number: 4000 0027 6000 3184
+- Exp Date: Any date in the future using the format MM/YY
+- CVN: any 3 digit number
+- Postcode (Card): any 5 numerals  
+
+For Django Admin access with relevant sign-in credentials use this link: [BFFs Django Admin](https://bffs-brazilian-finger-foods-99657e2a95f1.herokuapp.com/admin/)
+
+For access to Shop Admin panel in the frontend view with relevant sign-in credentials use: [BFFS Shop Admin](https://bffs-brazilian-finger-foods-99657e2a95f1.herokuapp.com/shop_admin/)
+
 
 ## Readme - Table of Contents
 
@@ -65,11 +101,13 @@
 
 ## **1. Introduction**
 
-Aiming to reconcile my academic background in Geography (bachelor's degree) and newly acquired coding skills, I propose a collaborative platform to house speleological data from the Quadrilátero Ferrífero region, where I worked as an environmental consultant for 12 years.
+BFF would consist of a small business specializing in Brazilian appetizers in Dublin. The growing Brazilian community and the cosmopolitan nature of the Irish capital—where cuisines from all over the world are represented—make this business venture promising.
 
-This platform has statistical, database search, and webGIS features that are engaging and collaborative. The site aims for precision and reliability in recording speleological information, confers transparency and promotes the free flow of information. 
+An acronym for Brazilian Finger Foods, BFFs is also a play on the phrase Best Friends Forever, bringing originality to the brand name. The dual meaning evokes an affectionate relationship with the comfort foods sold on the site. Acronyms are generally easier to remember, aiding in brand marketing.
 
-The first issue in designing the website, after deciding on the problem statement, in my creative process is the name of the web application. The site’s name comes from a linguistic accident in my poor or literal translation of what I know in Portuguese as 'espeleometria,' a widely used term, into English, resulting in 'speleometric,' which is actually more commonly known in English as 'cave metrics.' I added an 's' at the end because I thought the name sounded better. During the deployment process on Heroku, I was happy to discover that my fortunate accident is an unregistered name on the platform.
+Like many small businesses, given the current real estate crisis, BFF focuses on selling its products online, avoiding needing a fixed store or headquarters. This approach aims to boost sales and strengthen the brand through an attractive e-commerce platform. The sale of frozen products in the food industry offers a significant advantage: their relative longevity, with a shelf life of up to a year. This allows for better planning. The web application on the shop owner’s side includes tools for managing sales and offering discounts on products that have been in stock longer.
+
+As an e-commerce platform, BFFs a is a fully functional e-commerce solution, combining frontend and backend tools to provide an intuitive, simple, and efficient shopping experience. It also automates billing, order processing, and stock management.
 
 [Back to top](#readme---table-of-contents)
 
@@ -77,20 +115,11 @@ The first issue in designing the website, after deciding on the problem statemen
 
 ### **2.1. Strategy/Scope and Structural Plane**
 
-My choice for this project is guided, above all, by access to information. In recent years, I have worked on speleological studies in which the metrics of caves can, by a small statistical margin, preserve them or allow them to be suppressed. In a scenario in which economic interest conflicts with the preservation of speleological heritage, given that the genetic process of caves is the same as the concentration of high iron content, forming iron ore deposits, every decision must be grounded (pun intended) by the most complete and high-quality cave data.
+Overall, the primary objective of this project was to develop an e-commerce store that met the assessment criteria of the Code Institute's Project 5: E-Commerce Module, using the Django framework. The platform was required to function as a responsive online store, integrating Stripe as the payment system, providing user and guest views for authentication (via Django Allauth), and incorporating store features alongside a demonstration of marketing and SEO skills.
 
-In recent years, environmental agencies have tried to generate and maintain a reliable database of caves in the state of Minas Gerais. However, this database only contains spatial data on the caves and does not provide metric data. 
+I have some experience in the catering industry, where stock control was one of my responsibilities as a catering assistant. Drawing from this experience, I implemented a few ideas in the Shop Admin section within the limited time available to develop the platform. Additionally, during the creation of user stories, having completed the mock project Boutique Ado—which successfully covers most customer/user experiences—I found it interesting to add some additional nuance to the shop owner functionalities. Unfortunately, I was unable to implement all the planned features, opting to exclude some "could-have" stories (as per the MoSCoW prioritisation method) from the MVP.
 
-In addition, different environmental studies list different and non-centralized data. This may be due to developers' (mining companies) unwillingness to share information, given the possibility of changes in cutting metrics and losing more deposits. Finally, one could point to a market reserve of specialized consulting companies, which creates a market reserve in possession of a comprehensive database. 
-
-In order to break away from the practices listed in the previous paragraphs and ensure the constitutional right to request and obtain information from government bodies as granted by the Freedom of Information Act, I conceived of this web application. Integrating a database will make the process more transparent and accessible to all stakeholders, contributing to the proper management of speleological heritage.
-
-Speleometrics aims to create a centralized, transparent platform for gathering and sharing cave metrics specific to the Quadrilátero Ferrífero region. This platform will serve various stakeholders—speleologists, conservationists, environmental consultancy companies, public agencies, academics, and cave enthusiasts—by providing accessible and accurate data on caves. The user-friendly dashboard will offer insights into key cave attributes (such as length, depth, area, volume and others), helping in decision-making for environmental licensing, conservation, and research.
-
-In sum the website aims for:
-- Allowing input, update, display, and storage of cave metrics data.
-- The data should be accessible by all listed stakeholders.
-- To provide a user-friendly dashboard to the users, displaying cave metrics specific to the Quadrilátero Ferrífero region.
+From the client’s perspective, it was important to feature engaging text, appealing images, and a design that would entice users to “crave” the products. Through benchmarking several Brazilian brands, I identified the key elements they use to promote similar products and incorporated them into the website. Furthermore, a primary UX goal for the web application was to convey trustworthiness, ensuring that end users would feel confident and safe when making a purchase.
 
 [Back to top](#readme---table-of-contents)
 
