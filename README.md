@@ -455,14 +455,19 @@ Finally, the **Faq** model manages the data displayed on the **FAQs** page. Usin
 
 ### **2.4. Design** 
 
-The colour scheme plays an important role in evoking a "food craving feel." The choice of main colours was inspired by some prominent Brazilian traditional food brands, such as:
+The website design was structured in a way that would evoke a sense of urgency in the user to consume the products. In this sense, the photos of the various appetizers would play a central role in the layout of the web application. To my surprise, this became one of the biggest shortcomings at the beginning of the project. None of the major free image banks had images of Brazilian finger foods. Therefore, I had to resort to AI-generated images. In this task, I used Adobe Firefly, and with detailed prompts, a lot of trial and error, and about two days of image generation, I was able to gather all the assets for the project.
 
+The colour palette plays an important role in evoking a "food craving feel." Although it sells Brazilian food, green and blue are rarely used by food chains in their theme. So, I decided to benchmark some of the most well-known finger food brands in my hometown. The choice of main colours was inspired by those prominent Brazilian traditional food brands, such as:
 - [Boca do Forno](http://bocadoforno.com.br/)
 - [Swift](https://www.swift.com.br/) – A significant source of inspiration for UX, as it is very well-structured.
 - [Sodiê Doces](https://sodiedoces.com.br/)
 - [Fujiyama](https://fujiyamapastelaria.com/)
 
+The golden crispy color of bread crumb battered coxinha and its orange interior (tomato sauce and potato dough) was the inspiration for the logo, which conveys a symbol for a GPS marker, but also a tear-shaped bitten coxinha. Through the benchmark, I also noticed that these tonalities are commonly used by the researched brands. Furthermore, I tried to incorporate elements like a carousel that were both informative and visually appealing. The artwork and logos present on the website were created by me with the help of MS PowerPoint.
 
+![Coxinha](documentation/showcase/coxinha.png)
+
+Image credits: https://www.minhareceita.com.br/receita/coxinha-de-frango-assada/
 
 
 [Back to top](#readme---table-of-contents)
