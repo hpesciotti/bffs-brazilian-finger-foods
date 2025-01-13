@@ -877,8 +877,6 @@ The **Shop Admin**, accessible with a superuser account, allows CRUD operations 
 The shop admin's **Manage Batches** panel provides a quick way to set promotions, check expiry dates, and delete batches. 
 This model functionality is vital for business model adopted, since it allows insight in dailly stock/production operation of the shop. Additionally, the shop manager can thoroughly edit an existing batch via a form based on the Batch model. The sale_price is calculated automatically by a method in the **Batch model**, through the multiplication of product.price and batch.discount_percentage. Accessible via shop_admin/add_a_batch, this feature allows the shop admin to **Add a New Batch** using a form. Fields such as batch number and expiry date are required to submit a new batch. 
 
-![Manage Products](documentation/showcase/shop_admin/manage_products.png)
-
 <details> 
   <summary>Manage Batches Mobile</summary>
 
@@ -917,17 +915,25 @@ This model functionality is vital for business model adopted, since it allows in
 
 [Back to top](#readme---table-of-contents)
 
-#### Contat Us
+#### Contact Us
 
 A simple contact page with a phone number and email. The consumer is informed that the website will soon feature a live chat. However, considering a small business that handles product preparation, delivery, and both operational and financial management by a few people, implementing such a feature may not even be necessary. In digital times, particularly when I see a phone number for customer service, I feel more secure about the customer care experience.
 
-![Profile Page - No Image](documentation/showcase/contact_us.png)
+<details> 
+  <summary>Contact Us</summary>
+
+  ![Contact Us](documentation/showcase/contact_us.png)
+</details>
 
 #### FAQs
 
 Through benchmarking common customer questions about similar products, a selection of questions was saved in an **FAQ** database. The FAQ page, using an accordion layout, dynamically renders all the stored questions via a for loop. The accordion layout provides an easy-to-navigate page, accessible via the **footer**.
 
-![FAQs](documentation/showcase/faqs.png)
+<details> 
+  <summary>FAQs</summary>
+
+  ![FAQs](documentation/showcase/faqs.png)
+</details>
 
 [Back to top](#readme---table-of-contents)
 
@@ -937,7 +943,11 @@ The "My Account" section is conveniently accessible via the navigation bar, allo
 
 Additionally, users have the flexibility to edit their details directly on the profile page or overwrite them during checkout if they choose to update their information. This makes it easier for users to maintain and update their personal details without any hassle, providing a seamless account management experience.
 
-![My Profile Page](documentation/showcase/my_profile.png)
+<details> 
+  <summary>My Profile Page</summary>
+
+  ![My Profile Page](documentation/showcase/my_profile.png)
+</details>
 
 [Back to top](#readme---table-of-contents)
 
