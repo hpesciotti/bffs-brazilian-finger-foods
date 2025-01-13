@@ -35,8 +35,7 @@ Return back to the [README.md](README.md) file.
 html validation was conducted through [HTML W3C Validator](https://validator.w3.org). 
 The following images are validation screenshots taken from the service with the website Heroku live link. 
  - The validator could not test the pages that required logged in user (profile User Section) superuser credentials (Reports Section) and error pages (500, 403 and 404).
- - All the pages were valid, with no errors or warnings except one:
-    - Cave Page: The validator point out that there was a stray div tag on the page (this will be further discussed on Bugs).
+ - All the pages were valid
 
 <details>
 <summary>Cave Page</summary>
@@ -116,33 +115,40 @@ In general, Lighthouse evaluated a below-par performance across all website page
 
 ### **5.2. Manual Testing**
 
+Testing was conducted on desktop using Mozilla Firefox and Google Chrome browsers to ensure all forms accept the intended input and process it appropriately. 
 
-| Feature                    | Tested?  | User Input Required | User Feedback Provided     | Pass/Fail | Fix |
-|----------------------------|----------|---------------------|----------------------------|-----------|-----|
-| Navbar Logo and Icons      | Yes      | Click Links bring user to correct destination    | Text Colour Change/Icon Animation/Dropdowns | Pass | N/A |
-| Home Page                  | Yes      | Hover/Click interactive features | Carousel moves, Netflix Stile row moves | Pass | N/A |
-| Search Home/All Products   | Yes      | Text Input/Click to Search | Load pages results | Pass | N/A |
-| Register Page              | Yes      | Text Input/Click Links | Form works/Toast message works | Pass | N/A |
-| Email Validate             | Yes      | Click Links | Button works/Toast message works | Pass | N/A |
-| Log In Page                | Yes      | Text Input/Click Links | Form field works/Toast message works | Pass | N/A |
-| Log Out Page               | Yes      | Click Links bring user to correct destination | Toast message works | Pass | N/A |
-| Contact Us            | Yes      | Text Input/Click to Save | Pop up Modal/Form field highlight/Button animation | Pass | N/A |
-| Products                   | Yes      | Click product brings user to product detail page | Load a product page  | Pass | N/A |
-| Product Quantity           | Yes      | Click increment/decrement | Product quantity successfully changed | Pass | N/A |
-| Checkout                   | Yes      | Click 'Secure Checkout', correct products in bag, entered delivery and payment details, submitted form to process payment. | Form field highlight/Button animation/Toast message, Loading spinner when processing order, order processed saved to account and email sent. | Pass | N/A |
-| Shop Admin            | Yes      | Click buttons brings user to correct URL | Button animation on hover | Pass | N/A |
-| Manage Batches            | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
-| Add a Batches           | Yes      | Click buttons brings user to correct URL with Edit/Add Batch Form | Button of futher action work | Pass | N/
-| Add a Discount Btn (Manage Batches)           | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
-| Delete Btn (Manage Batches)           | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
-| Edit Btn (Manage Batches)           | Yes      | Click buttons brings user to correct URL with Edit/Add Batch Form | Button of futher action work | Pass | N/A |
-| Manage Products            | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
-| Edit Price (Manage Products)           | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
-| Toggle Best-Seller (Manage Products)           | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
-| Newsletter Sign Up         | Yes      | Text Input/ Click to Subscribe | New tab subscription confirmation | Pass (If you try again there is no message indicating that the user has already subscribed) | Permanent Bug |
-| Footer                     | Yes      | Click Link brings user to FAQ, Social Media, Terms & Conditions, Contac Us and Privacy Policy | Font colour change on hover | Pass | N/A |
+Mobile testing focused on browsing, adding items to the bag, and completing checkout actions. The mobile devices used for testing included the following models:
+- iPhone 12 Mini
+- iPhone X
+- iPhone 14
+
+##### Manual Testing
+| Feature                    | Tested?  | User Input Required                    | User Feedback Provided                                   | Pass/Fail | Fix             |
+|----------------------------|----------|----------------------------------------|--------------------------------------------------------|-----------|-----------------|
+| Navbar Logo and Icons      | Yes      | Click links bring user to correct destination | Text color change, icon animation, dropdowns          | Pass      | N/A             |
+| Home Page                  | Yes      | Hover/click interactive features       | Carousel moves, Netflix-style row moves               | Pass      | N/A             |
+| Search Home/All Products   | Yes      | Text input, click to search            | Load page results                                      | Pass      | N/A             |
+| Register Page              | Yes      | Text input, click links                | Form works, toast message works                       | Pass      | N/A             |
+| Email Validate             | Yes      | Click links                            | Button works, toast message works                     | Pass      | N/A             |
+| Log In Page                | Yes      | Text input, click links                | Form fields work, toast message works                 | Pass      | N/A             |
+| Log Out Page               | Yes      | Click links bring user to correct destination | Toast message works                                   | Pass      | N/A             |
+| Contact Us                 | Yes      | Text input, click to save              | Pop-up modal, form field highlight, button animation   | Pass      | N/A             |
+| Products                   | Yes      | Click product brings user to product detail page | Load product page                                      | Pass      | N/A             |
+| Product Quantity           | Yes      | Click increment/decrement              | Product quantity successfully changed                 | Pass      | N/A             |
+| Checkout                   | Yes      | Click "Secure Checkout", verify correct products in bag, enter delivery and payment details, submit form | Form field highlight, button animation, toast message, loading spinner during order processing, order saved to account, email sent | Pass | N/A |
+| Shop Admin                 | Yes      | Click buttons bring user to correct URL | Button animation on hover                             | Pass      | N/A             |
+| Manage Batches             | Yes      | Click buttons bring user to correct URL | Buttons for further actions work                      | Pass      | N/A             |
+| Add a Batch                | Yes      | Click buttons bring user to correct URL with Edit/Add Batch Form | Buttons for further actions work                      | Pass      | N/A             |
+| Add a Discount Btn (Manage Batches) | Yes | Click buttons bring user to correct URL | Buttons for further actions work                      | Pass      | N/A             |
+| Delete Btn (Manage Batches)| Yes      | Click buttons bring user to correct URL | Buttons for further actions work                      | Pass      | N/A             |
+| Edit Btn (Manage Batches)  | Yes      | Click buttons bring user to correct URL with Edit/Add Batch Form | Buttons for further actions work                      | Pass      | N/A             |
+| Manage Products            | Yes      | Click buttons bring user to correct URL | Buttons for further actions work                      | Pass      | N/A             |
+| Edit Price (Manage Products)| Yes     | Click buttons bring user to correct URL | Buttons for further actions work                      | Pass      | N/A             |
+| Toggle Best-Seller (Manage Products)| Yes | Click buttons bring user to correct URL | Buttons for further actions work                      | Pass      | N/A             |
+| Newsletter Sign Up         | Yes      | Text input, click to subscribe         | New tab subscription confirmation                     | Pass (If tried again, no message indicates prior subscription) | Permanent Bug |
+| Footer                     | Yes      | Click links bring user to FAQ, social media, terms & conditions, contact us, and privacy policy | Font color change on hover                            | Pass      | N/A             |
+
  
-
 ### **5.3. Bugs & Fixes** 
 
 ##### **Bug 01**
