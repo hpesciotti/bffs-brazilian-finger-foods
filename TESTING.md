@@ -1,8 +1,8 @@
 # BFFs | Brazilian Finger Foods
 
-![Speleometrics](documentation/speleometrics.png)
+![BFFs](documentation/showcase/am_i_responsive.png)
 
-[Visit my website here](https://speleometrics-586df55c9a57.herokuapp.com/)
+[Visit my website here](https://bffs-brazilian-finger-foods-99657e2a95f1.herokuapp.com/)
 
 Return back to the [README.md](README.md) file.
 
@@ -57,58 +57,38 @@ The following images are validation screenshots taken from the service with the 
 
 #### **Performance Lighthouse**
 
-In general, Lighthouse evaluated a good performance on all the website pages. The following image shows the score in the performance register by Google's Chrome validator. The cave map page, which relies on Leaflet API, comprised of a basemap and approximately 600 caves, got a score of 79 and 77, desktop and mobile, respectively. It is important to point out that similar webGIS pages have subpar lighthouse scores; as an example, I tested the IDE Sisema page with no vectorial features selected, just the basemap. The result for the desktop was 59. Thus, the scores obtained are reasonable, considering the page's content.
-
-<details>
-<summary>Lighthouse Validator Cave Map Mobile</summary>
-
-![Lighthouse Validator Cave Map Mobile](documentation/testing/lighthouse/lighthouse_cave_map_mobile.png)
-</details>
-
-<details>
-<summary>Lighthouse Validator Cave Map Mobile</summary>
-
-![Lighthouse Validator Cave Map Desktop](documentation/testing/lighthouse/lighthouse_cave_map_desktop.png)
-</details>
-
-<details>
-<summary>Lighthouse Validator Cave Map Mobile</summary>
-
-![Lighthouse Validator IDE Sisema](documentation/testing/lighthouse/lighthouse_ide_sisema.png)
-
-</details>
+In general, Lighthouse evaluated a below-par performance across all website pages, even those comprised solely of static text. This could be attributed to my limited internet connection, which may have impacted the results. It is important to highlight that all images used in the web application were saved in the WebP format and compressed using [TinyPNG](https://tinypng.com/) to optimize them for better performance scores.
 
 
-##### Lighthouse Validator Desktop Pages
-| Page               | Score | Screenshot                                                                                                                 |
-|--------------------|-------|-----------------------------------------------------------------------------------------------------------------------------|
-| About              | 99    | <details><summary>Show Screenshot</summary> ![About](documentation/testing/lighthouse/lighthouse_about_desktop.png) </details> |
-| Add Cave           | 100    | <details><summary>Show Screenshot</summary> ![Add Cave](documentation/testing/lighthouse/lighthouse_add_cave_desktop.png) </details> |
-| Cave Map           | 79    | <details><summary>Show Screenshot</summary> ![Cave Map](documentation/testing/lighthouse/lighthouse_cave_map_desktop.png) </details> |
-| Cave Page          | 99    | <details><summary>Show Screenshot</summary> ![Cave Page](documentation/testing/lighthouse/lighthouse_cave_page_desktop.png) </details> |
-| Cave Table         | 97    | <details><summary>Show Screenshot</summary> ![Cave Table](documentation/testing/lighthouse/lighthouse_cave_table_desktop.png) </details> |
-| Index              | 97    | <details><summary>Show Screenshot</summary> ![Index](documentation/testing/lighthouse/lighthouse_index_desktop.png) </details> |
-| Profile Page       | 99    | <details><summary>Show Screenshot</summary> ![Profile Page](documentation/testing/lighthouse/lighthouse_user_area_desktop.png) </details> |
-| User Edit          | 95    | <details><summary>Show Screenshot</summary> ![User Edit](documentation/testing/lighthouse/lighthouse_user_caves_desktop.png) </details> |
-| User Caves         | 99    | <details><summary>Show Screenshot</summary> ![User Caves](documentation/testing/lighthouse/lighthouse_user_caves_desktop.png) </details> |
-| Report Dashboard   | 100    | <details><summary>Show Screenshot</summary> ![Report Dashboard](documentation/testing/lighthouse/lighthouse_report_desktop.png) </details> |
-| Report Description | 95    | <details><summary>Show Screenshot</summary> ![Report Description](documentation/testing/lighthouse/lighthouse_report_page_desktop.png) </details> |
-
-
-##### Lighthouse Validator Mobile Pages
-| Page               | Score | Screenshot                                                                                                                |
-|--------------------|-------|----------------------------------------------------------------------------------------------------------------------------|
-| About              | 92    | <details><summary>Show Screenshot</summary> ![About](documentation/testing/lighthouse/lighthouse_about_mobile.png) </details> |
-| Add Cave           | 93   | <details><summary>Show Screenshot</summary> ![Add Cave](documentation/testing/lighthouse/lighthouse_add_cave_mobile.png) </details> |
-| Cave Map           | 77    | <details><summary>Show Screenshot</summary> ![Cave Map](documentation/testing/lighthouse/lighthouse_cave_map_mobile.png) </details> |
-| Cave Page           | 93    | <details><summary>Show Screenshot</summary> ![Cave Map](documentation/testing/lighthouse/lighthouse_cave_page_mobile.png) </details> |
-| Cave Table         | 94    | <details><summary>Show Screenshot</summary> ![Cave Table](documentation/testing/lighthouse/lighthouse_cave_table_mobile.png) </details> |
-| Index              | 83    | <details><summary>Show Screenshot</summary> ![Index](documentation/testing/lighthouse/lighthouse_index_mobile.png) </details> |
-| Profile Page       | 99    | <details><summary>Show Screenshot</summary> ![Profile Page](documentation/testing/lighthouse/lighthouse_user_area_mobile.png) </details> |
-| User Edit         | 95    | <details><summary>Show Screenshot</summary> ![User Caves](documentation/testing/lighthouse/lighthouse_user_edit_mobile.png) </details> |
-| User Caves          | 92   | <details><summary>Show Screenshot</summary> ![User Edit](documentation/testing/lighthouse/lighthouse_user_caves_mobile.png) </details> |
-| Report Dashboard   | 95   | <details><summary>Show Screenshot</summary> ![Report Dashboard](documentation/testing/lighthouse/lighthouse_report_mobile.png) </details> |
-| Report Description | 95    | <details><summary>Show Screenshot</summary> ![Report Description](documentation/testing/lighthouse/lighthouse_report_page_mobile.png) </details> |
+##### Lighthouse Validator
+| Page                          | Screenshot                                                             |
+|-------------------------------|-------------------------------------------------------------------------|
+| Add a New Batch - Desktop     | <details><summary>Show Screenshot</summary> ![Add a New Batch - Desktop](documentation/testing/lighthouse/lighthouse_add_a_new_batch_desktop.png) </details> |
+| Add a New Batch - Mobile      | <details><summary>Show Screenshot</summary> ![Add a New Batch - Mobile](documentation/testing/lighthouse/lighthouse_add_a_new_batch_mobile.png) </details> |
+| Shop Admin - Mobile           | <details><summary>Show Screenshot</summary> ![Shop Admin - Mobile](documentation/testing/lighthouse/lighthouse_admin_painel_mobile.png) </details> |
+| Shop Admin - Desktop          | <details><summary>Show Screenshot</summary> ![Shop Admin - Desktop](documentation/testing/lighthouse/lighthouse_admin_painel_desktop.png) </details> |
+| Manage Batches - Desktop      | <details><summary>Show Screenshot</summary> ![Manage Batches - Desktop](documentation/testing/lighthouse/lighthouse_manage_batches_desktop.png) </details> |
+| Manage Batches - Mobile       | <details><summary>Show Screenshot</summary> ![Manage Batches - Mobile](documentation/testing/lighthouse/lighthouse_manage_batches_mobile.png) </details> |
+| Manage Products - Desktop     | <details><summary>Show Screenshot</summary> ![Manage Products - Desktop](documentation/testing/lighthouse/lighthouse_manage_products_desktop.png) </details> |
+| Manage Products - Mobile      | <details><summary>Show Screenshot</summary> ![Manage Products - Mobile](documentation/testing/lighthouse/lighthouse_manage_products_mobile.png) </details> |
+| Product Details - Desktop     | <details><summary>Show Screenshot</summary> ![Product Details - Desktop](documentation/testing/lighthouse/lighthouse_product_detail_desktop.png) </details> |
+| Product Details - Mobile      | <details><summary>Show Screenshot</summary> ![Product Details - Mobile](documentation/testing/lighthouse/lighthouse_product_detail_mobile.png) </details> |
+| All Products Pages - Desktop  | <details><summary>Show Screenshot</summary> ![All Products Pages - Desktop](documentation/testing/lighthouse/lighthouse_products_desktop.png) </details> |
+| All Products Pages - Mobile   | <details><summary>Show Screenshot</summary> ![All Products Pages - Mobile](documentation/testing/lighthouse/lighthouse_products_mobile.png) </details> |
+| Home - Desktop                | <details><summary>Show Screenshot</summary> ![Home - Desktop](documentation/testing/lighthouse/lighthouse_home_desktop.png) </details> |
+| Home - Mobile                 | <details><summary>Show Screenshot</summary> ![Home - Mobile](documentation/testing/lighthouse/lighthouse_home_mobile.png) </details> |
+| FAQs - Desktop                | <details><summary>Show Screenshot</summary> ![FAQs - Desktop](documentation/testing/lighthouse/lighthouse_faqs_desktop.png) </details> |
+| FAQs - Mobile                 | <details><summary>Show Screenshot</summary> ![FAQs - Mobile](documentation/testing/lighthouse/lighthouse_faqs_mobile.png) </details> |
+| Contact Us - Desktop          | <details><summary>Show Screenshot</summary> ![Contact Us - Desktop](documentation/testing/lighthouse/lighthouse_contacts_us_desktop.png) </details> |
+| Contact Us - Mobile           | <details><summary>Show Screenshot</summary> ![Contact Us - Mobile](documentation/testing/lighthouse/lighthouse_contacts_us_mobile.png) </details> |
+| My Profile - Desktop          | <details><summary>Show Screenshot</summary> ![My Profile - Desktop](documentation/testing/lighthouse/lighthouse_myprofile_desktop.png) </details> |
+| My Profile - Mobile           | <details><summary>Show Screenshot</summary> ![My Profile - Mobile](documentation/testing/lighthouse/lighthouse_myprofile_mobile.png) </details> |
+| Login - Desktop               | <details><summary>Show Screenshot</summary> ![Login - Desktop](documentation/testing/lighthouse/lighthouse_login_desktop.png) </details> |
+| Login - Mobile                | <details><summary>Show Screenshot</summary> ![Login - Mobile](documentation/testing/lighthouse/lighthouse_login_mobile.png) </details> |
+| Signin - Desktop              | <details><summary>Show Screenshot</summary> ![Signin - Desktop](documentation/testing/lighthouse/lighthouse_password_reset_desktop.png) </details> |
+| Signin - Mobile               | <details><summary>Show Screenshot</summary> ![Signin - Mobile](documentation/testing/lighthouse/lighthouse_password_reset_mobile.png) </details> |
+| Signout - Desktop             | <details><summary>Show Screenshot</summary> ![Signout - Desktop](documentation/testing/lighthouse/lighthouse_signout_desktop.png) </details> |
+| Signout - Mobile              | <details><summary>Show Screenshot</summary> ![Signout - Mobile](documentation/testing/lighthouse/lighthouse_signout_mobile.png) </details> |
 
 
 #### **Python PEP 8 Validation**
@@ -116,39 +96,51 @@ In general, Lighthouse evaluated a good performance on all the website pages. Th
 
 ##### Python PEP 8 Validator
 
-| Feature           | admin.py                                                                                                               | forms.py                                                                                                               | models.py                                                                                                               | urls.py                                                                                                                | views.py                                                                                                               |
-|-------------------|-------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| Spelometrics      | X                                                                                                                       | X                                                                                                                      | X                                                                                                                      | <details><summary>Show Screenshot</summary> ![Spelometrics urls](documentation/testing/pep8/ci_python_linter_speleometrics_urls.png) </details> | X                                                                                                                      |
-| SpeleoStatistics  | X                                                                                                                       | X                                                                                                                      | X                                                                                                                      | <details><summary>Show Screenshot</summary> ![SpeleoStatistics urls](documentation/testing/pep8/speleostatistics/ci_python_linter_speleostatistics_urls.png) </details> | <details><summary>Show Screenshot</summary> ![SpeleoStatistics views](documentation/testing/pep8/speleostatistics/ci_python_linter_speleostatistics_views.png) </details> |
-| Profiles          | <details><summary>Show Screenshot</summary> ![Profiles admin](documentation/testing/pep8/profiles/ci_python_linter_profiles_admin.png) </details> | <details><summary>Show Screenshot</summary> ![Profiles forms](documentation/testing/pep8/profiles/ci_python_linter_profiles_forms.png) </details> | <details><summary>Show Screenshot</summary> ![Profiles models](documentation/testing/pep8/profiles/ci_python_linter_profiles_models.png) </details> | <details><summary>Show Screenshot</summary> ![Profiles urls](documentation/testing/pep8/profiles/ci_python_linter_profiles_urls.png) </details> | <details><summary>Show Screenshot</summary> ![Profiles views](documentation/testing/pep8/profiles/ci_python_linter_profiles_views.png) </details> |
-| Caves             | <details><summary>Show Screenshot</summary> ![Caves admin](documentation/testing/pep8/caves/ci_python_linter_profiles_caves.png) </details> | <details><summary>Show Screenshot</summary> ![Caves forms](documentation/testing/pep8/caves/ci_python_linter_profiles_forms.png) </details> | <details><summary>Show Screenshot</summary> ![Caves models](documentation/testing/pep8/caves/ci_python_linter_profiles_models.png) </details> | <details><summary>Show Screenshot</summary> ![Caves urls](documentation/testing/pep8/caves/ci_python_linter_profiles_urls.png) </details> | <details><summary>Show Screenshot</summary> ![Caves views](documentation/testing/pep8/caves/ci_python_linter_profiles_views.png) </details> |
+
 
 #### **CSS Validation** 
 
 [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to validate custom CSS file. No errors or warnings were detected.
 
 <details>
-<summary>CSS Validation</summary>
+<summary>Base CSS</summary>
 
-![CSS Validation](documentation/testing/w3c_css_validation_speleometrics.png)
+![CSS Validation](documentation/testing/W3C_CSS_Validation_Base.png)
+</details>
+
+<details>
+<summary>Checkout CSS</summary>
+
+![CSS Validation](documentation/testing/W3C_CSS_Validation_checkout.png)
 </details>
 
 ### **5.2. Manual Testing**
 
 
-| Feature                                          | Tested? | User Input Required                               | User Feedback Provided                                                                                                                                               | Pass/Fail | Fix |
-|--------------------------------------------------|---------|---------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-----|
-| Search Caves                                     | Yes     | Search query                                      | Users can search for caves by name, user or dimensions. Results display relevant caves or "No caves found", if no match.                                               | Pass      | -   |
-| Cave Page                                        | Yes     | Inconsistency details (optional)                  | Logged-in users can report inconsistencies. Success message shown upon successful report submission, the function is disabled if not logged in . Addiontionally, forbidden page is shown if the user is able to bypass verification.                              | Pass      | -   |
-| Add Cave                                         | Yes     | Various fields including image                     | Users receive prompt for required fields. Field validation is done by Regex. Success message displayed upon successful addition of a cave.                                                              | Pass      | -   |
-| Edit Cave                                        | Yes     | Various fields including image                     | Users owners or superuses can edit cave information. Success message shown upon successful edit.                                                                                       | Pass      | -   |
-| Delete Cave                                      | Yes     | Confirmation button                                | Users owners or superusers can confirm deletion or return to the main page. Success message displayed upon deletion.                                                                          | Pass      | -   |
-| User Search Caves                                | Yes     | Search query                                      | Users can search for caves belonging to a specific user. Results display relevant caves or "No caves found" if no match.                                          | Pass      | -   |
-| View Profile                                     | Yes     | None                                              | Displays user profile information. If contact email is empty, redirects to edit profile.                                                                             | Pass      | -   |
-| Edit Profile                                     | Yes     | Various fields including profile image             | Users receive prompt for email, which is the only required field. Success message displayed upon successful edit.                                                                            | Pass      | -   |
-| Map View                                         | Yes     | None                                              | Displays all caves on a map.                                                                                                                                       | Pass      | -   |
-| Custom 403 Page                                  | -     | None                                              | Displays a custom 403 error page when access is forbidden.                                                                                                         | -      | -   |
-| Custom 404 Page                                  | Yes     | None                                              | Displays a custom 404 error page when a page is not found.                                                                                                         | Pass      | -   |
+| Feature                    | Tested?  | User Input Required | User Feedback Provided     | Pass/Fail | Fix |
+|----------------------------|----------|---------------------|----------------------------|-----------|-----|
+| Navbar Logo and Icons      | Yes      | Click Links bring user to correct destination    | Text Colour Change/Icon Animation/Dropdowns | Pass | N/A |
+| Home Page                  | Yes      | Hover/Click interactive features | Carousel moves, Netflix Stile row moves | Pass | N/A |
+| Search Home/All Products   | Yes      | Text Input/Click to Search | Load pages results | Pass | N/A |
+| Register Page              | Yes      | Text Input/Click Links | Form works/Toast message works | Pass | N/A |
+| Email Validate             | Yes      | Click Links | Button works/Toast message works | Pass | N/A |
+| Log In Page                | Yes      | Text Input/Click Links | Form field works/Toast message works | Pass | N/A |
+| Log Out Page               | Yes      | Click Links bring user to correct destination | Toast message works | Pass | N/A |
+| Contact Us            | Yes      | Text Input/Click to Save | Pop up Modal/Form field highlight/Button animation | Pass | N/A |
+| Products                   | Yes      | Click product brings user to product detail page | Load a product page  | Pass | N/A |
+| Product Quantity           | Yes      | Click increment/decrement | Product quantity successfully changed | Pass | N/A |
+| Checkout                   | Yes      | Click 'Secure Checkout', correct products in bag, entered delivery and payment details, submitted form to process payment. | Form field highlight/Button animation/Toast message, Loading spinner when processing order, order processed saved to account and email sent. | Pass | N/A |
+| Shop Admin            | Yes      | Click buttons brings user to correct URL | Button animation on hover | Pass | N/A |
+| Manage Batches            | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
+| Add a Batches           | Yes      | Click buttons brings user to correct URL with Edit/Add Batch Form | Button of futher action work | Pass | N/
+| Add a Discount Btn (Manage Batches)           | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
+| Delete Btn (Manage Batches)           | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
+| Edit Btn (Manage Batches)           | Yes      | Click buttons brings user to correct URL with Edit/Add Batch Form | Button of futher action work | Pass | N/A |
+| Manage Products            | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
+| Edit Price (Manage Products)           | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
+| Toggle Best-Seller (Manage Products)           | Yes      | Click buttons brings user to correct URL | Button of futher action work | Pass | N/A |
+| Newsletter Sign Up         | Yes      | Text Input/ Click to Subscribe | New tab subscription confirmation | Pass (If you try again there is no message indicating that the user has already subscribed) | Permanent Bug |
+| Footer                     | Yes      | Click Link brings user to FAQ, Social Media, Terms & Conditions, Contac Us and Privacy Policy | Font colour change on hover | Pass | N/A |
  
 
 ### **5.3. Bugs & Fixes** 
