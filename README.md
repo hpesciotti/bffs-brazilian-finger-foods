@@ -620,9 +620,7 @@ The following charts show the accessibility of the features per user type.
 
 #### **3.2. CRUD Functionality**
 
-The Create, Read, Update, Delete (CRUD) functionalities are planned for BFFs. Through the Database Model, it is clear that full CRUD functionality is available for the Batch database, meaning that a superuser has access to Create, Read, Update, and Delete operations. 
-
-Regarding user profiles, the only operation currently available is the ability to update user details. Since cave records are crucial to the web application's purpose, deleting profiles could result in data loss (cascade effect). 
+The Create, Read, Update, Delete (CRUD) functionalities are planned for BFFs. Through the Database Model, it is clear that full CRUD functionality is available for the Batch database, meaning that a superuser has access to Create, Read, Update, and Delete operations. Regarding user profiles, the only operation currently available is the ability to update user details.
 
 The following chart displays the CRUD functions per page per user. It's important to point out that full CRUD can only be done by a superuser at the Shop Admin Panel. I chose to center the shop admin in one concise section of the website to improve UX, also taking into account that the admin may not be as digitally knowledgeable.
 
@@ -779,17 +777,24 @@ Additionally, users have the flexibility to edit their details directly on the p
 
 ![Checkout Success](documentation/showcase/checkout/checkout_success.png)
 
-<summary>Edit Batch</summary>
 
-![Stock Update 1](documentation/showcase/checkout/stock_update_1.png)
+<details> 
+  <summary>Stock Update 1</summary>
 
+  ![Stock Update 1](documentation/showcase/checkout/stock_update_1.png)
 </details>
-<summary>Edit Batch</summary>
 
-![Stock Update 2](documentation/showcase/checkout/stock_update_2.png)
 
+<details> 
+  <summary>Stock Update 2</summary>
+
+  ![Stock Update 2](documentation/showcase/checkout/stock_update_2.png)
 </details>
-<summary>Edit Batch</summary>
+
+
+
+<details> 
+<summary>Stock Update 3</summary>
 
 ![Stock Update 3](documentation/showcase/checkout/stock_update_2.png)
 
@@ -808,29 +813,37 @@ The **Shop Admin**, accessible with a superuser account, allows CRUD operations 
 
 ![Manage Batches](documentation/showcase/shop_admin/manage_batch_mobile.png)
 
-<summary>Edit Batch</summary>
 
-![Edit Batch](documentation/showcase/shop_admin/edit_batch.png)
+<details> 
+  <summary>Edit Batch</summary>
 
+  ![Stock Update 2](documentation/showcase/shop_admin/edit_batch.png)
 </details>
 
-<summary>Add Batch</summary>
 
-![Add Batch](documentation/showcase/shop_admin/add_batch.png)
+<details> 
+  <summary>Add Batch</summary>
 
+  ![Add Batch](documentation/showcase/shop_admin/add_batch.png)
 </details>
 
-<summary>Apply Discount</summary>
 
-![Apply Discount](documentation/showcase/shop_admin/apply_discount.png)
+<details> 
+  <summary>Apply Discount</summary>
 
+  ![Apply Discount](documentation/showcase/shop_admin/apply_discount.png)
 </details>
 
-<summary>Best Sellers</summary>
 
-![Delete Batch](documentation/showcase/shop_admin/delete_batch.png)
+<details> 
+  <summary>Delete Batch</summary>
 
+  ![Delete Batch](documentation/showcase/shop_admin/delete_batch.png)
 </details>
+
+
+[Back to top](#readme---table-of-contents)
+
 
 The shop admin's **Manage Batches** panel provides a quick way to set promotions, check expiry dates, and delete batches. 
 This model functionality is vital for business model adopted, since it allows insight in dailly stock/production operation of the shop. Additionally, the shop manager can thoroughly edit an existing batch via a form based on the Batch model. The sale_price is calculated automatically by a method in the **Batch model**, through the multiplication of product.price and batch.discount_percentage. Accessible via shop_admin/add_a_batch, this feature allows the shop admin to **Add a New Batch** using a form. Fields such as batch number and expiry date are required to submit a new batch. 
@@ -838,19 +851,33 @@ This model functionality is vital for business model adopted, since it allows in
 ![Manage Products](documentation/showcase/shop_admin/manage_products.png)
 
 
+
+
+
+
 <details>
 
-<summary>Update Price</summary>
+  <summary>Update Price</summary>
 
-![Update Price](documentation/showcase/shop_admin/update_price.png)
-
-</details>
-
-<summary>Best Sellers</summary>
-
-![Update Price](documentation/showcase/shop_admin/update_price.png)
+  ![Update Price](documentation/showcase/shop_admin/update_price.png)
 
 </details>
+
+
+<details> 
+  <summary>Best Sellers</summary>
+
+  ![Best Sellers](documentation/showcase/shop_admin/best_sellers.png)
+</details>
+
+
+<details> 
+  <summary>Update Price</summary>
+
+  ![Update Price](documentation/showcase/shop_admin/update_price.png)
+</details>
+
+
 
 [Back to top](#readme---table-of-contents)
 
@@ -1037,7 +1064,7 @@ pip install asgiref==3.8.1 \
 - After the insatalation process run ```pip3 freeze --local > requirements.txt``` in the terminal.  
 - Create a new Django project in the terminal ```django-admin startproject bffs .```
 - Create a new app eg. ```python3 mangage.py startapp products```
-- Register caves in **INSTALLED_APPS** in **settings.py** as 'products',
+- Register products in **INSTALLED_APPS** in **settings.py** as 'products',
 - Run ```python3 manage.py createsuperuser``` and enter credentials to create a superuser, allowing Admin access.
 - Run migrations with commands: ```python3 manage.py makemigrations``` and ```python3 manage.py migrate```
 - Create an **env.py** to store all confidential data such as the **DATABASE_URL** and **SECRET_KEY**. 
