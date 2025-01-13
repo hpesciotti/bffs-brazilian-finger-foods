@@ -686,11 +686,9 @@ The design ensures responsiveness and functionality suited to different user typ
 
 The footer complements the promotional delivery price div with a grey background, providing a stark contrast to the site's primary white spaces. It features the web application's Facebook page link with white lettering and a border-box style, along with an invitation for users to subscribe to the newsletter. Upon subscribing, users are redirected to a confirmation page powered by Mailchimp. 
 
-<summary>Footer Desktop</summary>
 
 ![Footer Desktop](documentation/showcase/footer/footer_desktop.png)
 
-</details>
 
 <summary>Mailchimp Confirmation</summary>
 
@@ -712,182 +710,116 @@ Links to the developer’s GitHub and LinkedIn profiles are provided, each with 
 
 #### Home / Index page
 
-The home/index page is comprised of three distinct elements: the hero-carousel, best-sellers and Sa Netflix row
+The home/index page is comprised of three distinct elements: the hero-carousel, Best-Sellers and Special Offers Netflix rows.
 
-with messages to introduce the user to the shops products
+The **hero-carousel** aims to introduce the user to both the store and the brand. It consists of three rotating slides featuring eye-catching images and marketable messages with a welcoming and introductory tone. Alongside the carousel, there is an offer of free delivery for purchases over €35 within County Dublin. This offer is presented in a less prominent grey banner to avoid overshadowing the other graphic elements on the homepage. The focus remains on selling the products, not the free delivery itself.
 
-The hero image is represented by a panoramic photograph of the Serra do Curral, one of the geomorphological units included in the registry. This range features the Quadrilátero Ferrífero's quartzite and ironstone-supported ridges, with most of the region's caves attributed to the latter. The hero image serves to create visual appeal. In the mobile version, this image is responsive and centers on one of the mountain peaks.
-
-The call-to-action banner aims to inform users about the purpose of the site and intuitively encourage them to register via the button. The text succinctly explains the website's main goals.
-
-![Hero Image and Banner](documentation/showcase/hero_image.png)
-
-![Hero Image and Banner](documentation/showcase/hero_image_mobile.png)
-
-Finally, the Cave Metrics section provides statistical data on caves records, both for the entire Quadrilátero Ferrífero region and the geomorphological units it comprises. This section serves as a valuable reference point for a preliminary assessment of significance. Magnitude ratios are essential for project planning that may affect the speleological heritage. Additionally, these metrics can be integrated into environmental studies without the time-consuming process of consolidating and calculating data, as they are easily accessible through the web application. In the backend, those statistics are run every time there's a request to update the page. I opted not to create a database for this function because this information is dynamic, and there was no need for early optimization as the page's loading time was fast.
-
-![Cave Metrics](documentation/showcase/qf_statistics.png)
-
-The section also includes the total number of caves and those recorded in each geomorphological unit. To ensure greater readability and minimize confusion among the tables, the units are embedded within an accordion. In the mobile version, tables have the overflow-x: scroll attribute for screens smaller than 300px, facilitating the reading of presented values.
-
-![Cave Metrics](documentation/showcase/accordion_geomorphological_units.png)
-
-![Cave Metrics](documentation/showcase/qf_accordion_geomorphological_units_mobile.png)
-
-[Back to top](#readme---table-of-contents)
-
-#### Cave Map Search
-
-The page offers a GIS interface through the Leaflet tool, where users can view the location of caves marked with a custom icon. Clicking on the icon triggers a pop-up displaying general information about the cave, with the cave and user names hyperlinked to their respective individual pages. The page also features a composite altimetry basemap with varying scales, using data from SRTM and even IBGE.
-
-Cave locations are displayed by a function that iterates through all records and returns the geographical coordinates of each cave for the map. In the credits section, links are provided to resources that guided the integration of Django elements into JavaScript functions.
+![hero-carousel](documentation/showcase/index/hero_corousel.png)
 
 
-![Map Search Mobile](documentation/showcase/map_search_desktop.png)
+The **rows styled similarly to Netflix** (inspired by tutorial [Future Coders](https://www.youtube.com/watch?v=9nywQdjKnJI&t=971s)) are designed to quickly showcase the products available on the site, ensuring that clearance sales can be featured on the homepage. This approach supports the business model, which integrates seamlessly with the stock management system. It is worth noting that the assignment of "best-sellers" and "special offers" is managed by the superuser through the Shop Admin Panel.
 
-![Map Search Mobile](documentation/showcase/map_search_mobile.png)
+![NetFlix rows](documentation/showcase/index/netflix_style_rows.png)
 
-[Back to top](#readme---table-of-contents)
+Finally, the **product cards** display the item's short name (`product.widget.name`), dietary category, price, and a "View More" button linking to the product detail page. Through filtering, promotional batches of the same product are retrieved from the database and presented on the card in a customized manner. The original price is displayed in a smaller red, strikethrough font, while the promotional price is highlighted in bold green within a span. If no promotion is available, the prices are shown in grey, matching the style of other textual elements.
+ 
+![Product Cards](documentation/showcase/index/products_cards.png)
 
-#### Table Search
+#### All Products / Filtered Products
 
-The Cave Search allows users to search by exact term, name, or author, or to list caves in ascending and descending order based on metric parameters. This functionality was challenging to implement, and I based it on the work of Joy Zadan (PP5). 
+The **All Products Page** and **Filtered Products Page** stem from an intricate search function implemented through the `all_products` view. This function leverages a combination of items from the **Products**, **Batch**, and **DietaryCategories** databases. The robust filtering system allows users to refine their searches by various categories and subcategories, all of which are showcased in a fully expandable navigation element (as shown in the provided image). Additionally, users can search by specific terms through an input form powered by the query parameter `q`.
 
-This page offers two distinct versions for cave listing. The search results are displayed in a table on larger screens, while on smaller resolutions, the caves are presented as cards. This approach ensures that search results are easily interpretable on mobile devices. 
+![Filtered Nav](documentation/showcase/products/collapsable_nav_categories.png)
 
-As shown on the map page, users can access the specific cave and user pages via hyperlinks. Clicking the links opens the desired page in a new browser tab, allowing users to continue their search seamlessly. Lastly, this page offers options to edit and delete data if accessed by a superuser.
+### Mobile and Desktop Display
 
-![Cave Search Desktop](documentation/showcase/table_search_user_desktop.png)
+For **mobile devices**, products are displayed as compact cards, similar to the "Netflix-style" rows found on the index page. These cards provide concise details, including:
+- The product name.
+- Dietary category.
+- Price (with promotional and non-promotional prices differentiated).
 
-<details>
-<summary>Cave Search Desktop Privileges - Mobile</summary>
+For **larger devices**, the products are presented using **large cards**, offering detailed information about each item. These cards include:
+- Full product name.
+- Packaging weight.
+- List of allergens.
+- Ingredient details.
 
-![Cave Search Desktop Privileges - Mobile](documentation/showcase/table_search_admin.png)
+This dual design ensures a user-friendly experience across all devices, adapting to different screen sizes and providing relevant information efficiently. The integration of comprehensive filtering options and mobile responsiveness underscores the flexibility and accessibility of the platform.
 
-</details>
 
-![Cave Search Mobile](documentation/showcase/table_search_mobile.png)
+
+![Product Large Cards](documentation/showcase/products/products_large_cards.png)
 
 [Back to top](#readme---table-of-contents)
 
-#### About
+#### Product Detail Page
 
-The About page is the most straightforward page on the site, consisting solely of text and static images. 
-Its purpose is to provide general information about the studied area, caves, and environmental licensing, especially regarding the relevance and speleological metrics. At the bottom of the page are external links with the `noopener` attribute to official sources on the topic.
 
-![About Desktop](documentation/showcase/about_desktop.png)
+The **bag page** integrates all products selected and added to the cart. It handles prices, delivery costs, and the grand total seamlessly. This functionality relies on **cache data** to manage the main product manipulation features efficiently. The design ensures that users can view and adjust their cart with real-time updates on totals and delivery details.
 
-![About Mobile](documentation/showcase/about_mobile.png)
+
+#### Checkout
+
+The "My Account" section is conveniently accessible via the navigation bar, allowing users to easily manage their personal details. Through the integration of **Django AllAuth**, user data validation and storage are handled seamlessly, ensuring a smooth experience. Users can update their information by filling out the profile form or by selecting the "Save my personal details" checkbox during the checkout process. This ensures that all necessary fields are captured. 
+
+Additionally, users have the flexibility to edit their details directly on the profile page or overwrite them during checkout if they choose to update their information. This makes it easier for users to maintain and update their personal details without any hassle, providing a seamless account management experience.
+
+![Profile Page - No Image](documentation/showcase/my_profile.png)
+
+#### Contat Us
+
+The "My Account" section is conveniently accessible via the navigation bar, allowing users to easily manage their personal details. Through the integration of **Django AllAuth**, user data validation and storage are handled seamlessly, ensuring a smooth experience. Users can update their information by filling out the profile form or by selecting the "Save my personal details" checkbox during the checkout process. This ensures that all necessary fields are captured. 
+
+Additionally, users have the flexibility to edit their details directly on the profile page or overwrite them during checkout if they choose to update their information. This makes it easier for users to maintain and update their personal details without any hassle, providing a seamless account management experience.
+
+![Profile Page - No Image](documentation/showcase/my_profile.png)
+
+
+#### FAQs
+
+Through benchmarking common customer questions about similar products, a selection of questions was saved in an **FAQ** database. The FAQ page, using an accordion layout, dynamically renders all the stored questions via a for loop. The accordion layout provides an easy-to-navigate page, accessible via the **footer**.
+
+![FAQs](documentation/showcase/faqs.png)
+
+#### My Profile
+
+The "My Account" section is conveniently accessible via the navigation bar, allowing users to easily manage their personal details. Through the integration of **Django AllAuth**, user data validation and storage are handled seamlessly, ensuring a smooth experience. Users can update their information by filling out the profile form or by selecting the "Save my personal details" checkbox during the checkout process. This ensures that all necessary fields are captured. 
+
+Additionally, users have the flexibility to edit their details directly on the profile page or overwrite them during checkout if they choose to update their information. This makes it easier for users to maintain and update their personal details without any hassle, providing a seamless account management experience.
+
+![My Profile Page](documentation/showcase/my_profile.png)
+
 
 [Back to top](#readme---table-of-contents)
 
-#### Profile
 
-The Profile page includes several checks to ensure the user has filled in their contact email. The contact email is essential for user interaction when requesting information, as described in user stories #10 and #11. On first access, the user is redirected to the profile edit page. After filling it in, users can access the pages to add caves, check their registered caves, or edit their user profile.
+#### Sign In /Sign Out/Sign Up/
 
-![Profile Page - Image](documentation/showcase/profile_page_custom_image.png)
-
-<details>
-<summary>Profile Page - No Image</summary>
-
-![Profile Page - No Image](documentation/showcase/profile_page_no_picture.png)
-
-</details>
+The Sign In Page/Sign out/Sign up/Log In are supported by Django AllAuth model. 
+I added some personalisation to return error messages through toasts.
 
 <details>
-<summary>Profile Page - Not logged in</summary>
+<summary>Sign Up</summary>
 
-![Profile Page - Not logged in](documentation/showcase/cave_page_not_logged_in.png)
-
-</details>
-
-[Back to top](#readme---table-of-contents)d)
-
-#### My Caves
-
-Through the profile, users can access "My Caves," which returns their registered caves. The interface is similar to the table search, offering users the option to open individual cave pages, edit the caves, and delete the records. In mobile mode, the table view switches to cards for better presentation.
-
-
-![Profile Page - Not populated](documentation/showcase/profile_page_my_caves_populated.png)
-
-<details>
-<summary>Profile Page - Not populated</summary>
-
-![Profile Page - Not populated](documentation/showcase/profile_page_my_caves.png)
-
-</details>
-
-[Back to top](#readme---table-of-contents)
-
-#### Add Cave / Cave Edit
-
-The "Add Cave" feature is authorized for users whose profiles have a contact email. The function that renders this page checks if the user is logged in (`@login_required`) and if they are the owner of the cave (`profile_user = get_object_or_404(User, username=username)` and `profile = get_object_or_404(Profile, user=profile_user)`). 
-
-The form responsible for adding a cave includes required fields such as `cave_name`, `latitude`, `longitude`, `elevation`, `length`, `depth`, `area`, and `volume`, all of which undergo validation, including Regex checks, to ensure consistent data. If the user fills out a field incorrectly, the form returns a custom alert message indicating where the error occurred. It's worth mentioning that despite the option to upload a cave map, no maps have been added to the current cave records (although one appears in the screenshots). This is because materials such as cave sketches and photos are often provided to mining companies under non-disclosure agreements, which unfortunately prevents me from attaching such data at this time. Lastly, the same form used in `cave_add` is also utilized for editing cave data (`cave_edit`), but the function that renders it retrieves the cave data and populates each field accordingly.
-
-Through the profile, users can access "My Caves," which returns their registered caves. The interface is similar to the table search, offering users the option to open individual cave pages, edit the caves, and delete the records. In mobile mode, the table view switches to cards for better presentation.
-
-
-![Register Cave](documentation/showcase/register_cave.png)
-
-<details>
-<summary>Register Cave - No Filled</summary>
-
-![Register Cave - No Filled](documentation/showcase/register_cave_wont_proceed.png)
+![Sign Up](documentation/showcase/sign_up.png)
 
 </details>
 
 <details>
-<summary>Register Cave - Error</summary>
 
-![Register Cave - Error](documentation/showcase/register_cave_error_notifications.png)
+<summary>Sign Out</summary>
 
-</details>
-
-[Back to top](#readme---table-of-contents)
-
-#### Cave Page
-
-The cave page consists of a simple layout where the data is presented individually in a textual format. On this page, the owner of the cave has the option to delete it. Conversely, any user can submit a report for inconsistencies. This report is submitted through a modal equipped with a text box where the reporting user only needs to fill in the specific inconsistency found in the data. The other data points, such as `cave`, `reported_by`, `cave_owner`, and `reported_created_date`, are automatically collected.
-
-![Cave Page](documentation/showcase/cave_page_not_logged_in.png)
-
-<details>
-<summary>Cave Page - Notification</summary>
-
-![Cave Page - Notification](documentation/showcase/cave_page_notitification.png)
+![Sign Out](documentation/showcase/sign_out.png)
 
 </details>
 
 <details>
-<summary>Cave Page - Delete Modal</summary>
 
-![Cave Page - Delete Modal](documentation/showcase/delete_cave_modal.png)
+<summary>Sign In</summary>
+
+![Sign](documentation/showcase/sign_in.png)
 
 </details>
-
-[Back to top](#readme---table-of-contents)
-
-#### Report
-
-The report page is restricted to superusers. Its purpose is to list records with inconsistent data. This page includes filtering options to allow site administrators to organize review requests and provide the necessary follow-up. Each item can be viewed separately using the "Detail" button. 
-
-At the end of the review process, the admin can delete the review request. At this stage of the website, there is no automated way for the user to track if their report request has been addressed, except through email communication from the administrator.
-
-![Report](documentation/showcase/report.png)
-
-![Report Page](documentation/showcase/report_page.png)
-
-[Back to top](#readme---table-of-contents)
-
-#### Sign In Page
-
-The sign In page is supported by Django AllAuth model. 
-I added some personalisation to return erro messages.
-
-![SignIn Validation 1](documentation/showcase/sign_in_validation.png)
-
-![SignIn Validation 2](documentation/showcase/sign_in_validation_2.png)
 
 [Back to top](#readme---table-of-contents)
 
@@ -1352,6 +1284,8 @@ A copy of the original repository can be made through GitHub. Please follow the 
 - [Code Institute Slack](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1727203894349779?thread_ts=1727165566.204429&cid=C7HS3U3AP): Bug Django 5.1.4 and AWS S3 Bucket.
 
 - [Stack Overflow](https://stackoverflow.com/questions/3540770/mailchimp-jquery-conflict): Mailchimp Bug 10
+
+- [Future Coders](https://www.youtube.com/watch?v=9nywQdjKnJI&t=971s): Implementing Netflix style rows.
 
 - [Boostrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/): Implementing nav bar, accordion, focus, hover effects, grid structure and more.
 
