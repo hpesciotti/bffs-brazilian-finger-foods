@@ -540,7 +540,9 @@ The sprint planning for BFFs was also organised using [GitHub Milestones](https:
 
 ### **2.6. Marketing Techniques**
 
-BFFs employs a digital techniques for marketing. The website integrates SEO principles to enhance visibility, while a [Facebook Businnes Page](https://www.facebook.com/profile.php?id=61571720907799) are used to build brand awareness and promotional future campaigns. The main goal of the marketing strategy was to benchmark against popular Brazilian food brands, to come up with a product with a design evokes a sense of craving and comfort, using keywords, appealing images and colours that resonate with the target audience. Regarding the facebook an initial call to action post was published with appealing images from the sold products.
+BFFs employs a digital techniques for marketing. The website integrates **SEO (Search Engine Optimisation)** principles to enhance visibility, while a [**Facebook Businnes Page**](https://www.facebook.com/profile.php?id=61571720907799) are used to build brand awareness and promotional future campaigns. The main goal of the marketing strategy was to benchmark against popular Brazilian food brands, to come up with a product with a design evokes a sense of craving and comfort, using keywords, appealing images and colours that resonate with the target audience. Regarding the facebook an initial call to action post was published with appealing images from the sold products.
+
+In addition to this, **sitemap.xml** and **robots.txt** files are included to increase the site's visibility. These files are essential for **SEO**. The sitemap.xml was generated using [XML Sitemap](https://www.xml-sitemaps.com/) and included in the root folder of the project. A robots.txt file was created in the root folder to instruct search engine crawlers on how to access and crawl the site's pages.
 
 ![Facebook Post](documentation/showcase/facebook_post.png)
 
@@ -746,16 +748,23 @@ For **larger devices**, the products are presented using **large cards**, offeri
 
 This dual design ensures a user-friendly experience across all devices, adapting to different screen sizes and providing relevant information efficiently. The integration of comprehensive filtering options and mobile responsiveness underscores the flexibility and accessibility of the platform.
 
-![Product Large Cards](documentation/showcase/products/products_large_cards.png)
+![Product Detail Page](documentation/showcase/products/product_detail_page.png)
 
 [Back to top](#readme---table-of-contents)
 
 #### Product Detail Page
 
+Product detail page contains the quantity of the packages, allergens, cooking process, storage condition, ingredients, historical description and nutritional chart in accordance with EU standards, with 100g, portions and daily intake of nutrients. The information should be presented in a responsive layout like an accordion.
+
+![Bag](documentation/showcase/bag.png)
+
+![Bag](documentation/showcase/bag.png)
 
 #### Bag Page
 
-The **bag page** integrates all products selected and added to the cart. It handles prices, delivery costs, and the grand total seamlessly. This functionality relies on **cache data** to manage the main product manipulation features efficiently. The design ensures that users can view and adjust their cart with real-time updates on totals and delivery details.
+The **bag page** integrates all products selected and added to the cart. It handles prices, delivery costs, and the grand total. This functionality relies on **sesson data** to manage the main product manipulation features efficiently. The design ensures that users can view and adjust their cart with real-time updates on totals and delivery details.
+
+![Bag](documentation/showcase/bag.png)
 
 [Back to top](#readme---table-of-contents)
 
@@ -763,9 +772,29 @@ The **bag page** integrates all products selected and added to the cart. It hand
 
 The "My Account" section is conveniently accessible via the navigation bar, allowing users to easily manage their personal details. Through the integration of **Django AllAuth**, user data validation and storage are handled seamlessly, ensuring a smooth experience. Users can update their information by filling out the profile form or by selecting the "Save my personal details" checkbox during the checkout process. This ensures that all necessary fields are captured. 
 
-Additionally, users have the flexibility to edit their details directly on the profile page or overwrite them during checkout if they choose to update their information. This makes it easier for users to maintain and update their personal details without any hassle, providing a seamless account management experience.
+Additionally, users have the flexibility to edit their details directly on the profile page or overwrite them during checkout if they choose to update their information. This makes it easier for users to maintain and update their personal details. Finally, the **checkout page** is responsible for generating the email with the order details, as well as updating the stock.
 
-![Profile Page - No Image](documentation/showcase/my_profile.png)
+
+![Checkout](documentation/showcase/checkout/checkout.png)
+
+![Checkout Success](documentation/showcase/checkout/checkout_success.png)
+
+<summary>Edit Batch</summary>
+
+![Stock Update 1](documentation/showcase/checkout/stock_update_1.png)
+
+</details>
+<summary>Edit Batch</summary>
+
+![Stock Update 2](documentation/showcase/checkout/stock_update_2.png)
+
+</details>
+<summary>Edit Batch</summary>
+
+![Stock Update 3](documentation/showcase/checkout/stock_update_2.png)
+
+</details>
+
 
 [Back to top](#readme---table-of-contents)
 
@@ -823,6 +852,7 @@ This model functionality is vital for business model adopted, since it allows in
 
 </details>
 
+[Back to top](#readme---table-of-contents)
 
 #### Contat Us
 
