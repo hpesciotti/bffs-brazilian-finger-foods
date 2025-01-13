@@ -162,6 +162,18 @@ In general, Lighthouse evaluated a below-par performance across all website page
 
 ###  JavaScript Validation
 
+[JSHint](https://jshint.com/) was used to validate the JavaScript code added to the project. External JS, for Bootstrap, jQuery and Fontawesome purposes were not validated through JSHint.
+
+No errors were caught by the validator. Although, there were some incosistencies pointing out to jquery $ operator.
+
+
+| Script                  | Screenshot                                                       |
+|---------------------------|------------------------------------------------------------------|
+| bag               | <details><summary>Show Screenshot</summary> ![bag](documentation/testing/jshint/bag.png) </details> |
+| stripe_elements               | <details><summary>Show Screenshot</summary> ![bag](documentation/testing/jshint/stripe_elements.png) </details> |
+| toasts               | <details><summary>Show Screenshot</summary> ![bag](documentation/testing/jshint/toasts.png) </details> |
+| mailchimp               | <details><summary>Show Screenshot</summary> ![bag](documentation/testing/jshint/mailchimp.png) </details> |
+
 ### **5.2. Manual Testing**
 
 Testing was conducted on desktop using Mozilla Firefox and Google Chrome browsers to ensure all forms accept the intended input and process it appropriately. 
@@ -202,7 +214,7 @@ Mobile testing focused on browsing, adding items to the bag, and completing chec
 
 ##### **Bug 01**
 
-Description: The edit_profile function returned a NameError "name for form is not defined". This must have happened due to a reference to an undefined variable pointed out to the form in the context. Through some code investigation, I detected that the function was not correctly accessing the instance of the Profile model associated with the logged-in user.
+Description: Django 5.1.4 raised an error during rendering prompted by an invalid filter: ‘crispy’. This error occurred when initializing the Django All Auth login form for the user. 
 
 <details>
 <summary>Bug 01</summary>
@@ -211,11 +223,11 @@ Description: The edit_profile function returned a NameError "name for form is no
 
 </details>
 
-Solution: The solution involved verifying if the function utilized the appropriate instance of the user's profile. This was achieved by modifying the edit_profile function to correctly reference the logged-in user's profile through the correct query set, allowing for the data to be retrieved.
+Resolution: Through a search on [Stack Overflow](https://stackoverflow.com/questions/58926652/django-crispy-form-changes-lay-on-production-server), I concluded that there was an incompatibility between Bootstrap 5 and CrispyForms. Therefore, for this version, it was necessary to render the forms as `form_as_P`.
 
 ##### **Bug 02**
 
-Description: The browser encountered a NoReverseMatch error when attempting to use the reverse function for the profile URL in Django. This error must have happened because the URL pattern did not match the parameters being passed to the reverse function. 
+Description: A span with "Forgot your password" on the Django All Auth page was automatically generated, truncating other elements of the page. The page was generated using `forms_as_p`.
 
 <details>
 <summary>Bug 02</summary>
@@ -224,54 +236,41 @@ Description: The browser encountered a NoReverseMatch error when attempting to u
 
 </details>
 
-Resolution: I investigated some former students' git hub repos, and I came to the conclusion that this error was somehow connected to the problem of the user being created by Django All Auth and not being connected later to the Profile database. So, based on Amy Richards's repo, I implemented signals in profile models to ensure that the created users and the future users would have the profile created simultaneously as the user was created. Here is the snippet that I used:
-
-```python
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    """
-    Creates a profile for a new user.
-    """
-    if created:
-        Profile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    """
-    Creates a profile for a user created before profile app.
-    """
-    if hasattr(instance, 'profile'):
-        instance.profile.save()
-
-```
+Resolution: II manually added each form item individually, such as username, email, password, and confirm password, to avoid duplicating help text or other form elements. At that moment, I had not yet installed `crispy_bootstrap`, which was causing a series of errors in my web application.
 
 ##### **Bug 03**
 
-Description: A layout related bug. For unknown reasons, at that time, I could not apply paddings to profile form labels. 
+Description: I tried to get ahead with the deployment to Heroku in the early stages of the project, as per best practices, but I was unsuccessful. When Heroku tried to run `collectstatic`, it returned an error pointing to the update application or `DISABLE_COLLECTSTATIC=1`. Both messages did not match the environmental variable configuration, which did not include `collectstatic`, and Django was on version 5.1.4, which was the latest available.
 
 <details>
 <summary>Bug 03</summary>
 
-![Bug 03](docs/documentation/bug_03.png)
+![Bug 03](documentation/testing/bugs/bug_3.png)
 
 </details>
 
-Description: A layout related bug. For unknown reasons, at that time, I could not apply paddings to profile form labels.
-Solution: I found a thread in stack overflow indicating a solution to the matter. This bug happens because a label is an inline element, and so is not affected by the top and bottom padding. The solution was to transform the labels into block-level elements, thus allowing the padding to have an effect.
+Resolution: I couldn't pinpoint the specific cause of the problem. This bug resulted in two intense days of reconfiguring the AWS S3 bucket and debugging via online forums. I tried installing `whitenoise` for static file collection but had no success. Finally, I found a thread on the [Code Institute Slack channel](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1727203894349779?thread_ts=1727165566.204429&cid=C7HS3U3AP) that pointed to incompatibilities between Django 5.1.4 and S3 bucket. I downgraded Django to version 4.2.16, and the deployment worked without any issues.
 
 
 ##### **Bug 04**
 
-Description: During the customization of the signup form, due to the necessity of making it necessary for the user to provide a valid e-mail address for contact in the profile page, the custom html would return a None placeholder text in the user name's input area. 
+Description: I tried to refactor the hero-carousel variables as `let` instead of `const`, and as a result, I received an error message regarding the redeclaration of the `let hero-carousel` variable.
 
 <details>
-<summary>Bug 04</summary>
+<summary>Bug 04 - Detail 1</summary>
 
-![Bug 04](documentation/testing/bugs/bug_4.png)
+![Bug 04 Detail](documentation/testing/bugs/bug_4_detail_1.png)
 
 </details>
 
-Solution: I thought it was a placeholder mistake, but the placeholder name was an indication username. During a call with my mentor, he pointed out that none was returned from value={{ form.username.value }}. This template variable was not important to the signup page, so I ended up removing it.
+<details>
+<summary>Bug 04 - Detail 2</summary>
+
+![Bug 04 Detail](documentation/testing/bugs/bug_4_detail_2.png)
+
+</details>
+
+Solution: I ended up changing the original `const` syntax to `var` to avoid errors, since `var` allows redeclaration within the same scope.
 
 <details>
 <summary>Bug 04 - Solution</summary>
@@ -282,7 +281,7 @@ Solution: I thought it was a placeholder mistake, but the placeholder name was a
 
 ##### **Bug 05**
 
-Description:  I added a modal to confirm deletion actions, but in the mobile versions of website the modal would not appear with the fading effect occupying the entire screen and/or the buttons would not work. 
+Description: The issue arose due to multiple objects being returned from a **Many-to-One** relationship between the **Batch** and **Product** models, when only one object was expected. This can happen when a query retrieves multiple related objects instead of a single one, which violates the expected behavior.
 
 <details>
 <summary>Bug 05</summary>
@@ -291,24 +290,36 @@ Description:  I added a modal to confirm deletion actions, but in the mobile ve
 
 </details>
 
-Solution: Through some code investigation, I concluded that the bug happened in mobile versions because it was connected to the card representation on small screens, which would override the tables on bigger screens. This function consists of a for loop that returns template variables to populate the cave information shown on the screen. The lock of the screen or the freezing fading effect and absence of the modal box happens because the modal if statement was inserted inside the indentation for the loop card. I adjusted the indentation, and the page and modals worked as expected.
+Solution: I was using thr incorrect Filter. The solution revolvedo on ensuring the query is properly filtered to return only one object. Use `.first()` or `.filter()` to guarantee a single object is returned.
+   Example:
+   ```python
+   product = Product.objects.get(id=1)
+   batch = product.batch_set.first()  # Ensure only one object is returned
+   ```
 
 ##### **Bug 06**
 
-Description: When editing a registered cave it would ask for the user to provide a user, which is an occult field, because this field should not be altered or even filled during cave add; the filling of the field is automatic. I tried to set the user field to not required, and the cave record would return without a user/author. This was unexpected because the edit_caver function would save the user during the editing process (cave.user = user.username), but this did not prevent the empty user outcome. The following screenshot was taken during the debugging section, and the user field was made visible. 
+Description:The issue occurred on the "bag" page, where the increment button allowed users to add more products than the maximum allowed quantity (`batch.quantity`), despite the limit being set correctly. 
 
 <details>
 <summary>Bug 06</summary>
 
-![Bug 06](documentation/testing/bugs/bug_6.png)
+![Bug 06](documentation/testing/bugs/bug_6_details.png)
 
 </details>
 
-Solution: I refactored the edit_cave function to maintain the user as not required, capture the cave user from the cave model, and pass it through a variable user, which was attributed to the cave.user after the validation of the form. This adjustment corrected the issue.
+Solution: This error occurred due to an incompatibility between **CrispyForms** and **Bootstrap 5**. The issue was identified in a thread on the [Code Institute Slack](https://code-institute-room.slack.com/archives/C7EJUQT2N/p1656408408414069?thread_ts=1656406218.111909&cid=C7EJUQT2N). Through the Slack thread, I found the solution to install **crispy-bootstrap**, which resolved the issue. The error was captured by the form, and once the package was installed, it functioned correctly.
+
+<details>
+<summary>Bug 06 - Fix</summary>
+
+![Bug 06](documentation/testing/bugs/bug_6_fix.png)
+
+</details>
 
 ##### **Bug 07**
 
-Description: The notification modal was displaying empty when refresh or redirect requests were made.
+Description: The error **"received unknown parameter method data billing details 'eircode'"** occurred because the **"batch.eircode"** parameter was sent within the billing details, but the **Stripe** did not recognize this field as valid.
 
 <details>
 <summary>Bug 07</summary>
@@ -317,42 +328,83 @@ Description: The notification modal was displaying empty when refresh or redirec
 
 </details>
 
+
+Fix: The parameter **"eircode"** is not recognized by the payment API, Stripe. The solution is to pass the **"eircode"** parameter as **postal_code**, which is native to Stripe:
+
+```python
+order = Order.objects.get(
+    full_name__iexact=shipping_details.name,
+    user_profile=profile,
+    email__iexact=billing_details.email,
+    phone_number__iexact=shipping_details.phone,
+    eircode__iexact=shipping_details.address.get(
+        'postal_code', ''),  # Using postal_code for eircode
+    street_address1__iexact=shipping_details.address.line1,
+    street_address2__iexact=shipping_details.address.line2,
+    grand_total=grand_total,
+    original_bag=bag,
+    stripe_pid=pid,
+)
+```
+
 Solution: I detected this bug during testing, and corrected it by inserting a none to the style attribute of the modal. I implemented this by an If statement, if there was no messages mode display is none.
 
 
+##### **Bug 08**
+
+Description: I noticed that the layout was truncated, especially the footer. Since I hadn't fully customized the layout, I adopted some elements from the Boutique Ado project, which didn't align with the grid format used in Bootstrap. One issue was that the table in the admin panel was being covered by the footer.
+
+<details>
+<summary>Bug 08</summary>
+
+![Bug 08](documentation/testing/bugs/bug_8.png)
+
+</details
+
+Solution: For the Shop Admin Panel, I created a custom template where, on **small screens (sm)**, the footer would have the class **d-none** and disappear. Since this is an admin panel, the superuser is not interested in subscribing to the newsletter or viewing any footer information at that stage, ensuring that it does not interfere with the site navigation.
+
+
+##### **Bug 09**
+
+Description: After making a purchase and clicking the save personal information button, the **eircode** was returned with parentheses around it (`()`). With each new purchase, the same issue occurred, returning `('()')`.
+
+<details>
+<summary>Bug 09 Details</summary>
+
+![Bug 09](documentation/testing/bugs/bug_9_details.png)
+
+</details
+
+Solution: I realized that this issue might be related to a tuple containing the address data from Stripe, where the **postal_code** (previously mentioned in the conflict with eircode) was being stored. I checked the code, and the linter was pointing to a comma, which caused the erroneous assignment to the variable. Instead of returning a string, it returned a tuple. After removing the comma, the issue was resolved.
+
+<details>
+<summary>Bug 09 Fix</summary>
+
+![Bug 09](documentation/testing/bugs/bug_9_fix.png)
+
+</details
 
 ### **5.4. Unsolved Bugs** 
 
-Through my testing, I have not detected critical bugs, but there are three minor issues left unsolved.
-They are not bugs per se because they would not hinder the usage of the website.
-Two of them are more layout inconsistencies, and the last one is an error message trailing div from the w3c validator.
+##### **Bug 10**:
 
-Unresolved Bug 01 - layout inconsistency on the button to upload button of the cav_map. My system is in pot-br, so the default is displayed in Portuguese, but this will change according to the system's main language. The problem is that the box doesn't follow the theme design of the website. To fix this inconsistency, I would have to customise all the add_cave forms, but all my validation done in the model would have to be inserted again, demanding more time, which I was short. So, I opted not to solve this issue.
+After implementing the Mailchimp connection script in JavaScript, I noticed a series of errors in features that were operated by scripts involving the `$` tag of jQuery. As reported in previous bugs, even using jQuery safely, some functionalities were not working, such as the product increment buttons and the notifications triggered by the toast messages. According to online articles, the `$` tag is reassigned in the Mailchimp script, causing these issues. 
 
-<details>
-<summary>Bug 01</summary>
+I attempted several solutions, such as inserting the script into a JavaScript file and loading it via the extra JS tag in Django, or placing the CDN link above the script, but none of these solutions fully resolved the issue. Encapsulating with jQuery was a temporary fix that allowed full navigation on the site without further problems. However, after several tests, the only remaining issue is the `Uncaught TypeError: url is undefined` in the browser, and the inability to notify the user that they are already subscribed to the newsletter. Despite this, I tested with my email, and the newsletter sign-up worked, as all new entries appear in the BFFs group on Mailchimp.
 
-![Bug 01](documentation/testing/bugs/unresolved_bug_1.png)
-
-</details>
-
-The second layout inconsistency has to do with the whitespaces displayed in front of the bio text during the editing of a profile.
-I looked at it, but I could not find a quick fix. To reach MVP and implement other features, I judged this would not be fixed at this time.
-
+### Error:
+Uncaught TypeError: url is undefined getAjaxSubmitUrl https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js:195 <anonymous> https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js:351 <anonymous> https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js:373
 
 <details>
-<summary>Bug 02</summary>
+<summary>Bug 10</summary>
 
-![Bug 02](documentation/testing/bugs/unresolved_bug_1.png)
+![Bug 10](documentation/testing/bugs/bug_10.png)
 
-</details>
-
-
-The validator w3c html validator pointed out that there was a stray div tag on the page.
-I double-checked my code, and there was no indentation problem; there was no layout change as I intended and no loss to the navigability. I suppose this issue concerns the Django's rendering of the page.
+</details
 
 <details>
-<summary>Bug 03</summary>
+<summary>Bug 10</summary>
 
-![Cave Page](documentation/testing/w3_html/cave_page.png)
-</details>
+![Bug 10](documentation/testing/bugs/bug_10_newletter.png)
+
+</details
