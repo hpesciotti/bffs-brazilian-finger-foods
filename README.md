@@ -746,8 +746,6 @@ For **larger devices**, the products are presented using **large cards**, offeri
 
 This dual design ensures a user-friendly experience across all devices, adapting to different screen sizes and providing relevant information efficiently. The integration of comprehensive filtering options and mobile responsiveness underscores the flexibility and accessibility of the platform.
 
-
-
 ![Product Large Cards](documentation/showcase/products/products_large_cards.png)
 
 [Back to top](#readme---table-of-contents)
@@ -755,8 +753,11 @@ This dual design ensures a user-friendly experience across all devices, adapting
 #### Product Detail Page
 
 
+#### Bag Page
+
 The **bag page** integrates all products selected and added to the cart. It handles prices, delivery costs, and the grand total seamlessly. This functionality relies on **cache data** to manage the main product manipulation features efficiently. The design ensures that users can view and adjust their cart with real-time updates on totals and delivery details.
 
+[Back to top](#readme---table-of-contents)
 
 #### Checkout
 
@@ -766,20 +767,76 @@ Additionally, users have the flexibility to edit their details directly on the p
 
 ![Profile Page - No Image](documentation/showcase/my_profile.png)
 
+[Back to top](#readme---table-of-contents)
+
+#### Shop Admin
+
+The **Shop Admin**, accessible with a superuser account, allows CRUD operations on the **Products** and **Batch** Databases. Regarding products, the user can edit the price (calculated by adding the production cost + a certain profit margin for a batch) and the best-seller category. Full product editing was not implemented, as products in the database behave more like categories and are not associated with a unit number in this structure. Furthermore, considering the small business nature, producing 15 types of traditional Brazilian appetizers, it's unlikely that new products would be added regularly. If the manager decides to drop a product, the product page will be set to indicate "out of stock." Validation is handled through custom messages and displayed via toasts. The pages resemble a spreadsheet with the search input form powered by the query parameter `q`. The layout is designed to be familiar to the shop administrator, who is accustomed to similar tools like MS Excel. Due to screen limitations, an `overflow-x` parameter was added to the table for small screens.
+
+![Shop Admin](documentation/showcase/shop_admin/shop_admin.png)
+
+![Manage Batches](documentation/showcase/shop_admin/manage_batch.png)
+
+![Manage Batches](documentation/showcase/shop_admin/manage_batch_mobile.png)
+
+<summary>Edit Batch</summary>
+
+![Edit Batch](documentation/showcase/shop_admin/edit_batch.png)
+
+</details>
+
+<summary>Add Batch</summary>
+
+![Add Batch](documentation/showcase/shop_admin/add_batch.png)
+
+</details>
+
+<summary>Apply Discount</summary>
+
+![Apply Discount](documentation/showcase/shop_admin/apply_discount.png)
+
+</details>
+
+<summary>Best Sellers</summary>
+
+![Delete Batch](documentation/showcase/shop_admin/delete_batch.png)
+
+</details>
+
+The shop admin's **Manage Batches** panel provides a quick way to set promotions, check expiry dates, and delete batches. 
+This model functionality is vital for business model adopted, since it allows insight in dailly stock/production operation of the shop. Additionally, the shop manager can thoroughly edit an existing batch via a form based on the Batch model. The sale_price is calculated automatically by a method in the **Batch model**, through the multiplication of product.price and batch.discount_percentage. Accessible via shop_admin/add_a_batch, this feature allows the shop admin to **Add a New Batch** using a form. Fields such as batch number and expiry date are required to submit a new batch. 
+
+![Manage Products](documentation/showcase/shop_admin/manage_products.png)
+
+
+<details>
+
+<summary>Update Price</summary>
+
+![Update Price](documentation/showcase/shop_admin/update_price.png)
+
+</details>
+
+<summary>Best Sellers</summary>
+
+![Update Price](documentation/showcase/shop_admin/update_price.png)
+
+</details>
+
+
 #### Contat Us
 
-The "My Account" section is conveniently accessible via the navigation bar, allowing users to easily manage their personal details. Through the integration of **Django AllAuth**, user data validation and storage are handled seamlessly, ensuring a smooth experience. Users can update their information by filling out the profile form or by selecting the "Save my personal details" checkbox during the checkout process. This ensures that all necessary fields are captured. 
+A simple contact page with a phone number and email. The consumer is informed that the website will soon feature a live chat. However, considering a small business that handles product preparation, delivery, and both operational and financial management by a few people, implementing such a feature may not even be necessary. In digital times, particularly when I see a phone number for customer service, I feel more secure about the customer care experience.
 
-Additionally, users have the flexibility to edit their details directly on the profile page or overwrite them during checkout if they choose to update their information. This makes it easier for users to maintain and update their personal details without any hassle, providing a seamless account management experience.
-
-![Profile Page - No Image](documentation/showcase/my_profile.png)
-
+![Profile Page - No Image](documentation/showcase/contact_us.png)
 
 #### FAQs
 
 Through benchmarking common customer questions about similar products, a selection of questions was saved in an **FAQ** database. The FAQ page, using an accordion layout, dynamically renders all the stored questions via a for loop. The accordion layout provides an easy-to-navigate page, accessible via the **footer**.
 
 ![FAQs](documentation/showcase/faqs.png)
+
+[Back to top](#readme---table-of-contents)
 
 #### My Profile
 
@@ -789,9 +846,7 @@ Additionally, users have the flexibility to edit their details directly on the p
 
 ![My Profile Page](documentation/showcase/my_profile.png)
 
-
 [Back to top](#readme---table-of-contents)
-
 
 #### Sign In /Sign Out/Sign Up/
 
