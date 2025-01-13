@@ -423,26 +423,25 @@ The wireframes were created using **Balsamiq**. At this stage, alongside the use
 
 Although the design is simple, comparing the final result with the wireframes demonstrates that the production phase successfully implemented what was proposed at the outset.
 
-<details>
-<summary>Home Desktop/Mobile</summary>
 
-![Home Desktop](documentation/wireframes/index.png)
+<details> 
+  <summary>Home Desktop/Mobile</summary>
 
+  ![Home Desktop](documentation/wireframes/index.png)
 </details>
 
 
+
 <details>
-<summary>Products Page Desktop/Mobile</summary>
+  <summary>Products Page Desktop/Mobile</summary>
 
-![About Mobile](documentation/wireframes/products.png)
-
+  ![About Mobile](documentation/wireframes/products.png)
 </details>
 
-<details>
-<summary>Admin Panel</summary>
+<details> 
+  <summary>Admin Panel</summary>
 
-![About Mobile](documentation/wireframes/admin_panel.png)
-
+  ![About Mobile](documentation/wireframes/admin_panel.png)
 </details>
 
 [Back to top](#readme---table-of-contents)
@@ -479,7 +478,11 @@ The colour palette plays an important role in evoking a "food craving feel." Alt
 
 The golden crispy color of bread crumb battered coxinha and its orange interior (tomato sauce and potato dough) was the inspiration for the logo, which conveys a symbol for a GPS marker, but also a tear-shaped bitten coxinha. Through the benchmark, I also noticed that these tonalities are commonly used by the researched brands. Furthermore, I tried to incorporate elements like a carousel that were both informative and visually appealing. The artwork and logos present on the website were created by me with the help of MS PowerPoint.
 
-![Coxinha](documentation/showcase/coxinha.png)
+<details> 
+  <summary>Coxinha</summary>
+
+  ![Coxinha](documentation/showcase/coxinha.png)
+</details>
 
 Image credits: https://www.minhareceita.com.br/receita/coxinha-de-frango-assada/
 
@@ -509,11 +512,10 @@ Since most pages in the web application have a limited number of buttons, the pr
 
 ![Colour Palette](documentation/showcase/colour_palette.png)
 
-<details>
-<summary>Colour Contrast Grid</summary>
+<details> 
+  <summary>MColour Grids</summary>
 
-![Colour Grid](documentation/showcase/contrast_grid.png)
-
+  ![Colour Grid](documentation/showcase/contrast_grid.png)
 </details>
 
 [Back to top](#readme---table-of-contents)
@@ -529,14 +531,11 @@ I implemented Agile Methodology during the planning phase of my e-commerce proje
 
 The sprint planning for BFFs was also organised using [GitHub Milestones](https://github.com/hpesciotti/bffs-brazilian-finger-foods/milestones). Each milestone represented a sprint with tasks directly associated with User Stories to ensure efficient project tracking and completion.
 
-<details>
-<summary>Milestones</summary>
+<details> 
+  <summary>Milestones</summary>
 
-![Milestones](documentation/showcase/milestones.png)
-
+  ![Milestones](documentation/showcase/milestones.png)
 </details>
-
-[Back to top](#readme---table-of-contents)
 
 ### **2.6. Marketing Techniques**
 
@@ -544,14 +543,18 @@ BFFs employs a digital techniques for marketing. The website integrates **SEO (S
 
 In addition to this, **sitemap.xml** and **robots.txt** files are included to increase the site's visibility. These files are essential for **SEO**. The sitemap.xml was generated using [XML Sitemap](https://www.xml-sitemaps.com/) and included in the root folder of the project. A robots.txt file was created in the root folder to instruct search engine crawlers on how to access and crawl the site's pages.
 
-![Facebook Post](documentation/showcase/facebook_post.png)
+<details> 
+  <summary>Facebook Post</summary>
 
-<details>
-<summary>Facebook Heading</summary>
-
-![Facebook Heading](documentation/showcase/facebook_heading.png)
-
+  ![Facebook Post](documentation/showcase/facebook_post.png)
 </details>
+
+<details> 
+  <summary>Facebook Heading</summary>
+
+  ![Facebook Heading](documentation/showcase/facebook_heading.png)
+</details>
+
 
 Regarding **SEO** (Search Engine Optimization), it's a good practice to create a list of **keywords** that can improve your site's visibility on search engines. To avoid keyword stuffing (excessive use of keywords), you've carefully reviewed and revised them, which is essential to keep the content relevant and natural. Using these keywords in meta tags, headings, and alt attributes for images, such as the carousel-hero element on the homepage, is an effective strategy.
 
@@ -586,11 +589,11 @@ Using **WordTracker** ([link to WordTracker](https://www.wordtracker.com)) to ev
 {% endblock %}
 ~~~
 
-<details>
-<summary>WordTracker results for USA</summary>
 
-![WordTracker results for USA](documentation/showcase/wordtracker_us.png)
+<details> 
+  <summary>WordTracker results for USA</summary>
 
+  ![WordTracker results for USA](documentation/showcase/wordtracker_us.png)
 </details>
 
 Finally, it is worth mentioning that the website features a newsletter subscription functionality in its footer via Mailchimp. The free version of this functionality does not allow automatic email sending, but the user is notified that they are subscribed to the newsletter.
@@ -652,11 +655,10 @@ The design ensures responsiveness and functionality suited to different user typ
   - For unauthenticated users, the **My Profile** link is disabled and hidden.
   - The **Shop Admin** tab is visible only to superusers, remaining hidden for other users.
 
-<details>
-<summary>Navbar Desktop</summary>
+<details> 
+  <summary>Navbar Desktop</summary>
 
-![Navbar Desktop](documentation/showcase/navbar/navbar_desktop.png)
-
+  ![Navbar Desktop](documentation/showcase/navbar/navbar_desktop.png)
 </details>
 
 ##### Mobile Version
@@ -665,18 +667,18 @@ The design ensures responsiveness and functionality suited to different user typ
 - During testing, an additional mobile nav version was introduced for **extra small screens**:
   - In this version, the nav-item text is set to **d-none**, leaving only the Font Awesome icons visible.
 
-<details>
-<summary>Navbar Extra Small and Small Screens</summary>
 
-![Navbar](documentation/showcase/navbar/navbar_xs_sm.png)
+<details> 
+  <summary>Navbar XS SM</summary>
 
-</details>
+  ![Navbar](documentation/showcase/navbar/navbar_xs_sm.png)
+</detail
 
-<details>
+<details> 
+  <summary>Nav Toggle SM</summary>
 
-<summary>Navbar Effects</summary>
-
-![Nav Toggle SM](documentation/showcase/navbar/nav_toggle_sm.png)
+  ![Nav Toggle SM](documentation/showcase/navbar/nav_toggle_sm.png)
+</detail
 
 </details>
 
@@ -686,25 +688,29 @@ The design ensures responsiveness and functionality suited to different user typ
 
 The footer complements the promotional delivery price div with a grey background, providing a stark contrast to the site's primary white spaces. It features the web application's Facebook page link with white lettering and a border-box style, along with an invitation for users to subscribe to the newsletter. Upon subscribing, users are redirected to a confirmation page powered by Mailchimp. 
 
+<details> 
+  <summary>Footer Desktop</summary>
 
-![Footer Desktop](documentation/showcase/footer/footer_desktop.png)
+  ![Footer Desktop](documentation/showcase/footer/footer_desktop.png)
+</detail
 
 
-<summary>Mailchimp Confirmation</summary>
+<details> 
+  <summary>Mailchimp Confirmation</summary>
 
-![Footer Desktop](documentation/showcase/footer/mailchimp_newsletter.png)
+  ![Mailchimp Confirmation](documentation/showcase/footer/mailchimp_newsletter.png)
+</detail
 
-</details>
 
 Additionally, the footer includes links to FAQs and Contact Us, as well as the site's Privacy Policy and Terms and Conditions, both generated using Free Privacy Policy. A fictional address of the appetisers company is included for demonstration purposes. The footer also features the statement “© Developed by Henrique Pesciotti, for educational purposes only,” which links back to the website's README document. 
 
 Links to the developer’s GitHub and LinkedIn profiles are provided, each with the rel="noopener" attribute for security and performance.
 
-<summary>Footer Mobile</summary>
+<details> 
+  <summary>Footer Mobile</summary>
 
-![Footer Desktop](documentation/showcase/footer/footer_mobile.png)
-
-</details>
+  ![Footer Mobile](documentation/showcase/footer/footer_mobile.png)
+</detail
 
 [Back to top](#readme---table-of-contents)
 
@@ -714,24 +720,39 @@ The home/index page is comprised of three distinct elements: the hero-carousel, 
 
 The **hero-carousel** aims to introduce the user to both the store and the brand. It consists of three rotating slides featuring eye-catching images and marketable messages with a welcoming and introductory tone. Alongside the carousel, there is an offer of free delivery for purchases over €35 within County Dublin. This offer is presented in a less prominent grey banner to avoid overshadowing the other graphic elements on the homepage. The focus remains on selling the products, not the free delivery itself.
 
-![hero-carousel](documentation/showcase/index/hero_corousel.png)
+<details> 
+  <summary>hero-carousel</summary>
+
+  ![hero-carousel](documentation/showcase/index/hero_corousel.png)
+</detail
 
 
 The **rows styled similarly to Netflix** (inspired by tutorial [Future Coders](https://www.youtube.com/watch?v=9nywQdjKnJI&t=971s)) are designed to quickly showcase the products available on the site, ensuring that clearance sales can be featured on the homepage. This approach supports the business model, which integrates seamlessly with the stock management system. It is worth noting that the assignment of "best-sellers" and "special offers" is managed by the superuser through the Shop Admin Panel.
 
-![NetFlix rows](documentation/showcase/index/netflix_style_rows.png)
+<details> 
+  <summary>Netflix rows</summary>
+
+  ![Netflix rows](documentation/showcase/index/netflix_style_rows.png)
+</detail
 
 Finally, the **product cards** display the item's short name (`product.widget.name`), dietary category, price, and a "View More" button linking to the product detail page. Through filtering, promotional batches of the same product are retrieved from the database and presented on the card in a customized manner. The original price is displayed in a smaller red, strikethrough font, while the promotional price is highlighted in bold green within a span. If no promotion is available, the prices are shown in grey, matching the style of other textual elements.
  
-![Product Cards](documentation/showcase/index/products_cards.png)
+<details> 
+  <summary>Product Cards</summary>
+
+  ![Product Cards](documentation/showcase/index/products_cards.png)
+</details
 
 #### All Products / Filtered Products
 
 The **All Products Page** and **Filtered Products Page** stem from an intricate search function implemented through the `all_products` view. This function leverages a combination of items from the **Products**, **Batch**, and **DietaryCategories** databases. The robust filtering system allows users to refine their searches by various categories and subcategories, all of which are showcased in a fully expandable navigation element (as shown in the provided image). Additionally, users can search by specific terms through an input form powered by the query parameter `q`.
 
-![Filtered Nav](documentation/showcase/products/collapsable_nav_categories.png)
+<details> 
+  <summary>Filtered Nav</summary>
 
-### Mobile and Desktop Display
+  ![Filtered Nav](documentation/showcase/products/collapsable_nav_categories.png)
+</details
+
 
 For **mobile devices**, products are displayed as compact cards, similar to the "Netflix-style" rows found on the index page. These cards provide concise details, including:
 - The product name.
@@ -746,7 +767,11 @@ For **larger devices**, the products are presented using **large cards**, offeri
 
 This dual design ensures a user-friendly experience across all devices, adapting to different screen sizes and providing relevant information efficiently. The integration of comprehensive filtering options and mobile responsiveness underscores the flexibility and accessibility of the platform.
 
-![Product Detail Page](documentation/showcase/products/product_detail_page.png)
+<details> 
+  <summary>Product Detail</summary>
+
+  ![Product Detail](documentation/showcase/products/product_detail_page.png)
+</details
 
 [Back to top](#readme---table-of-contents)
 
@@ -754,15 +779,22 @@ This dual design ensures a user-friendly experience across all devices, adapting
 
 Product detail page contains the quantity of the packages, allergens, cooking process, storage condition, ingredients, historical description and nutritional chart in accordance with EU standards, with 100g, portions and daily intake of nutrients. The information should be presented in a responsive layout like an accordion.
 
-![Bag](documentation/showcase/bag.png)
+<details> 
+  <summary>Product Card Large</summary>
 
-![Bag](documentation/showcase/bag.png)
+  ![Product Card Large](documentation/showcase/products/product_large_cards.png)
+</details
 
 #### Bag Page
 
 The **bag page** integrates all products selected and added to the cart. It handles prices, delivery costs, and the grand total. This functionality relies on **sesson data** to manage the main product manipulation features efficiently. The design ensures that users can view and adjust their cart with real-time updates on totals and delivery details.
 
-![Bag](documentation/showcase/bag.png)
+
+<details> 
+  <summary>Bag</summary>
+
+  ![Bag](documentation/showcase/bag.png)
+</details
 
 [Back to top](#readme---table-of-contents)
 
@@ -772,11 +804,17 @@ The "My Account" section is conveniently accessible via the navigation bar, allo
 
 Additionally, users have the flexibility to edit their details directly on the profile page or overwrite them during checkout if they choose to update their information. This makes it easier for users to maintain and update their personal details. Finally, the **checkout page** is responsible for generating the email with the order details, as well as updating the stock.
 
+<details> 
+  <summary>Checkout</summary>
 
-![Checkout](documentation/showcase/checkout/checkout.png)
+  ![Checkout](documentation/showcase/checkout/checkout.png)
+</details>
 
-![Checkout Success](documentation/showcase/checkout/checkout_success.png)
+<details> 
+  <summary>Checkout Success</summary>
 
+  ![Checkout Success](documentation/showcase/checkout/checkout_success.png)
+</details>
 
 <details> 
   <summary>Stock Update 1</summary>
@@ -794,10 +832,9 @@ Additionally, users have the flexibility to edit their details directly on the p
 
 
 <details> 
-<summary>Stock Update 3</summary>
+  <summary>Stock Update 3</summary>
 
-![Stock Update 3](documentation/showcase/checkout/stock_update_2.png)
-
+  ![Stock Update 3](documentation/showcase/checkout/stock_update_2.png)
 </details>
 
 
@@ -807,17 +844,55 @@ Additionally, users have the flexibility to edit their details directly on the p
 
 The **Shop Admin**, accessible with a superuser account, allows CRUD operations on the **Products** and **Batch** Databases. Regarding products, the user can edit the price (calculated by adding the production cost + a certain profit margin for a batch) and the best-seller category. Full product editing was not implemented, as products in the database behave more like categories and are not associated with a unit number in this structure. Furthermore, considering the small business nature, producing 15 types of traditional Brazilian appetizers, it's unlikely that new products would be added regularly. If the manager decides to drop a product, the product page will be set to indicate "out of stock." Validation is handled through custom messages and displayed via toasts. The pages resemble a spreadsheet with the search input form powered by the query parameter `q`. The layout is designed to be familiar to the shop administrator, who is accustomed to similar tools like MS Excel. Due to screen limitations, an `overflow-x` parameter was added to the table for small screens.
 
-![Shop Admin](documentation/showcase/shop_admin/shop_admin.png)
+<details> 
+  <summary>Shop Admin</summary>
 
-![Manage Batches](documentation/showcase/shop_admin/manage_batch.png)
+  ![Shop Admin](documentation/showcase/shop_admin/shop_admin.png)
+</details>
 
-![Manage Batches](documentation/showcase/shop_admin/manage_batch_mobile.png)
+
+<details> 
+  <summary>Manage Products</summary>
+
+  ![Manage Products](documentation/showcase/shop_admin/manage_products.png)
+</details>
+
+
+<details>
+
+  <summary>Update Price</summary>
+
+  ![Update Price](documentation/showcase/shop_admin/update_price.png)
+
+</details>
+
+
+<details> 
+  <summary>Best Sellers</summary>
+
+  ![Best Sellers](documentation/showcase/shop_admin/best_sellers.png)
+</details>
+
+
+[Back to top](#readme---table-of-contents)
+
+
+The shop admin's **Manage Batches** panel provides a quick way to set promotions, check expiry dates, and delete batches. 
+This model functionality is vital for business model adopted, since it allows insight in dailly stock/production operation of the shop. Additionally, the shop manager can thoroughly edit an existing batch via a form based on the Batch model. The sale_price is calculated automatically by a method in the **Batch model**, through the multiplication of product.price and batch.discount_percentage. Accessible via shop_admin/add_a_batch, this feature allows the shop admin to **Add a New Batch** using a form. Fields such as batch number and expiry date are required to submit a new batch. 
+
+![Manage Products](documentation/showcase/shop_admin/manage_products.png)
+
+<details> 
+  <summary>Manage Batches Mobile</summary>
+
+  ![Manage Batches](documentation/showcase/shop_admin/manage_batch_mobile.png)
+</details>
 
 
 <details> 
   <summary>Edit Batch</summary>
 
-  ![Stock Update 2](documentation/showcase/shop_admin/edit_batch.png)
+  ![Edit Batch](documentation/showcase/shop_admin/edit_batch.png)
 </details>
 
 
@@ -839,42 +914,6 @@ The **Shop Admin**, accessible with a superuser account, allows CRUD operations 
   <summary>Delete Batch</summary>
 
   ![Delete Batch](documentation/showcase/shop_admin/delete_batch.png)
-</details>
-
-
-[Back to top](#readme---table-of-contents)
-
-
-The shop admin's **Manage Batches** panel provides a quick way to set promotions, check expiry dates, and delete batches. 
-This model functionality is vital for business model adopted, since it allows insight in dailly stock/production operation of the shop. Additionally, the shop manager can thoroughly edit an existing batch via a form based on the Batch model. The sale_price is calculated automatically by a method in the **Batch model**, through the multiplication of product.price and batch.discount_percentage. Accessible via shop_admin/add_a_batch, this feature allows the shop admin to **Add a New Batch** using a form. Fields such as batch number and expiry date are required to submit a new batch. 
-
-![Manage Products](documentation/showcase/shop_admin/manage_products.png)
-
-
-
-
-
-
-<details>
-
-  <summary>Update Price</summary>
-
-  ![Update Price](documentation/showcase/shop_admin/update_price.png)
-
-</details>
-
-
-<details> 
-  <summary>Best Sellers</summary>
-
-  ![Best Sellers](documentation/showcase/shop_admin/best_sellers.png)
-</details>
-
-
-<details> 
-  <summary>Update Price</summary>
-
-  ![Update Price](documentation/showcase/shop_admin/update_price.png)
 </details>
 
 
