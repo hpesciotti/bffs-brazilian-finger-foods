@@ -671,15 +671,14 @@ The design ensures responsiveness and functionality suited to different user typ
   <summary>Navbar XS SM</summary>
 
   ![Navbar](documentation/showcase/navbar/navbar_xs_sm.png)
-</detail
+</details>
 
 <details> 
   <summary>Nav Toggle SM</summary>
 
   ![Nav Toggle SM](documentation/showcase/navbar/nav_toggle_sm.png)
-</detail
-
 </details>
+
 
 [Back to top](#readme---table-of-contents)
 
