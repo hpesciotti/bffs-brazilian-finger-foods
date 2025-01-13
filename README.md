@@ -423,7 +423,6 @@ The wireframes were created using **Balsamiq**. At this stage, alongside the use
 
 Although the design is simple, comparing the final result with the wireframes demonstrates that the production phase successfully implemented what was proposed at the outset.
 
-
 <details> 
   <summary>Home Desktop/Mobile</summary>
 
@@ -431,12 +430,12 @@ Although the design is simple, comparing the final result with the wireframes de
 </details>
 
 
-
 <details>
   <summary>Products Page Desktop/Mobile</summary>
 
   ![About Mobile](documentation/wireframes/products.png)
 </details>
+
 
 <details> 
   <summary>Admin Panel</summary>
