@@ -515,7 +515,8 @@ Since most pages in the web application have a limited number of buttons, the pr
 
 #### Font
 
-Regarding the webapplication typography Opens Sans was chosen for the card elements and the nav-bar, while Roboto Condensed was used for the textual sections.
+Regarding the web application typography, **Open Sans** was chosen for the card elements and the nav-bar, while **Roboto Condensed** was used for the textual sections.
+
 
 ### **2.5. Agile and Project Managing** 
 
@@ -581,58 +582,52 @@ Using **WordTracker** ([link to WordTracker](https://www.wordtracker.com)) to ev
 <details>
 <summary>WordTracker results for USA</summary>
 
-![Nav Bar Effects](documentation/showcase/wordtracker_us.png)
+![WordTracker results for USA](documentation/showcase/wordtracker_us.png)
 
 </details>
+
+Finally, it is worth mentioning that the website features a newsletter subscription functionality in its footer via Mailchimp. The free version of this functionality does not allow automatic email sending, but the user is notified that they are subscribed to the newsletter.
 
 ### **3. Features**
 
 #### **3.1. User view**
 
-To ensure an engaging interface and data protection, it was necessary to establish some permissions for the website users.
-Moreover, the classification of users reflects upon the user's access to some pages. 
+To ensure an engaging interface and data protection, it was necessary to establish some permissions for the website users.  
+Moreover, the classification of users reflects upon the user's access to some pages.  
 The following charts show the accessibility of the features per user type.
 
 | Feature / User Type       | Unlogged User | Logged User | Superuser |
 |---------------------------|---------------|-------------|-----------|
 | **Home**                  | Visible       | Visible     | Visible   |
-| **About**                 | Visible       | Visible     | Visible   |
-| **Caves**                 |               |             |           |
-| - Map Search              | Visible       | Visible     | Visible   |
-| - Table Search            | Visible       | Visible     | Visible   |
-| - Cave Page               | Visible       | Visible     | Visible   |
-| - Report Cave             | Not Visible    | Visible     | Visible   |
-| **User Area**             |               |             |           |
-| - Register a Cave         | Not Visible    | Visible     | Visible   |
-| - My Caves                | Not Visible    | Visible     | Visible   |
-| - Edit Cave               | Not Visible    | Visible     | Visible   |
-| - Edit Profile            | Not Visible    | Visible     | Visible   |
-| **Reports**               |               |             |           |
-| - Report List             | Not Visible    | Not Visible  | Visible   |
-| - Report Page             | Not Visible    | Not Visible  | Visible   |
+| **FAQs**                  | Visible       | Visible     | Visible   |
+| **All Products**          | Visible       | Visible     | Visible   |
+| **Product Details**       | Visible       | Visible     | Visible   |
+| **Bag/Cart**              | Visible       | Visible     | Visible   |
+| **Profile**               | Not Visible   | Visible     | Visible   |
+| **Checkout**              | Visible       | Visible     | Visible   |
+| **Shop Admin**            | Not Visible   | Not Visible | Visible   |
 
 [Back to top](#readme---table-of-contents)
 
 #### **3.2. CRUD Functionality**
 
-The Create, Read, Update, Delete (CRUD) functionalities are planned for Speleometrics. Through the Database Model, it is clear that full CRUD functionality is available for the Cave database, meaning that any user who has registered a cave and a superuser has access to Create, Read, Update, and Delete operations. Regarding user profiles, the only operation currently unavailable is the ability to delete them. Since cave records are crucial to the web application's purpose, deleting profiles could result in data loss (cascade effect). Therefore, the option to delete a profile was not initially planned. Additionally, as transparency is a guiding principle of the project, most functionalities are available in Read mode, even for users who are not logged in. The following chart displays the CRUD functions per page per user.
+The Create, Read, Update, Delete (CRUD) functionalities are planned for BFFs. Through the Database Model, it is clear that full CRUD functionality is available for the Batch database, meaning that a superuser has access to Create, Read, Update, and Delete operations. 
+
+Regarding user profiles, the only operation currently available is the ability to update user details. Since cave records are crucial to the web application's purpose, deleting profiles could result in data loss (cascade effect). 
+
+The following chart displays the CRUD functions per page per user. It's important to point out that full CRUD can only be done by a superuser at the Shop Admin Panel. I chose to center the shop admin in one concise section of the website to improve UX, also taking into account that the admin may not be as digitally knowledgeable.
 
 | Feature / User Type       | Unlogged User | Logged User           | Superuser         |
 |---------------------------|---------------|-----------------------|--------------------|
 | **Home**                  | R             | R                     | R                  |
-| **About**                 | R             | R                     | R                  |
-| **Cave**                  |               |                       |                    |
-| - Table Search            | R             | R                     | R                  |
-| - Cave Page               | R             | All = R - If owner = U, D | R, U, D          |
-| - Report Cave             | R             | C                     | C                  |
-| **User Area**             |               |                       |                    |
-| - Register a Cave         | R             | C                     | C                  |
-| - My Caves                | R             | U, D                  | R, U, D            |
-| - Edit Cave               | R             | If owner = U else -  | U                  |
-| - Edit Profile            | R             | All = R / If owner = U | All = R / If owner = U |
-| **Reports**               |               |                       |                    |
-| - Report List             | -             | -                     | R, D               |
-| - Report Page             | -             | -                     | R, D               |
+| **FQAs**                  | R             | R                     | R                  |
+| **All Products**          | R             | R                     | R                  |
+| **Product Details**       | R             | R                     | R                  |
+| **Profile**               | X             | C, R, U, D            | C, R, U, D        |
+| **Bag/Cart**              | C, R, U, D    | C, R, U, D            | C, R, U, D        |
+| **Checkout**              | C, R, U, D    | C, R, U, D            | C, R, U, D        |
+| **Shop Admin**            | X             | X                     | C, R, U, D        |
+
 
 [Back to top](#readme---table-of-contents)
 
@@ -872,10 +867,13 @@ The website has custom pages for the following errors:
 
 ### **3.4. Future Features**
 
-- Extended user management panel with profile viewing and editing capabilities.
-- Disable, delete, or temporarily suspend user accounts due to misuse.
-- Restore disabled or suspended accounts and track account management history.
-- Add more filering options to Cave model fields.
+The future features listed are primarily associated with the shop admin panel, as well as a customer reviews section. The following user stories have been considered as future features. It is worth mentioning that all were classified as "could have" according to the MoSCoW methodology.
+- [User Story #16 - Product Custumer's Reviews](https://github.com/hpesciotti/bffs-brazilian-finger-foods/issues/26)
+- [User Story #17 - Product Review](https://github.com/hpesciotti/bffs-brazilian-finger-foods/issues/17)
+- [User Story #20 - Sales and Clearance notification on Admin Page](https://github.com/hpesciotti/bffs-brazilian-finger-foods/issues/20)
+- [User Story #21 - Admin Update Delivery Status](https://github.com/hpesciotti/bffs-brazilian-finger-foods/issues/21)
+- [User Story #22 - Batch and Product Planning in Admin Panel](https://github.com/hpesciotti/bffs-brazilian-finger-foods/issues/22)
+- [User Story #24 - Insert Discount Codes](https://github.com/hpesciotti/bffs-brazilian-finger-foods/issues/24)
 
 [Back to top](#readme---table-of-contents)
 
@@ -895,41 +893,38 @@ The website has custom pages for the following errors:
 
 ### **4.2 - Frameworks, Libraries, Technologies & Programs Used**  
 
-- [Gitpod](https://www.gitpod.io): used form coding
-
-- [GitHub](https://github.com/): to save and store all files for this web application 
-
+- [Gitpod](https://www.gitpod.io): used for coding
+- [GitHub](https://github.com/): to save and store all files for this web application
 - [Git](https://git-scm.com/): used for version control
-
 - [Django](https://www.djangoproject.com/): for building the web application
-
-- [Regex](https://www.w3schools.com/python/python_regex.asp): for checking for pattern in strings.
-
-- [Google Fonts](https://fonts.google.com/): font was imported from here 
-
-- [Font Awesome](https://fontawesome.com/): icons and their associated kit were downloaded from here  
-
-- [Leaflet](https://leafletjs.com/examples.html): an open-source JavaScript library for mobile-friendly interactive maps, especially the tutorials section on how to how to add a marker and set custom style for the marker.
-
-- [Numpy](https://numpy.org/): for running the statistics
-
-- [Cloudinary](https://cloudinary.com/): for storing images (cave-maps and profile pictures)
-
-- [Microsoft Power Point](https://www.lucidchart.com/pages/?): used to create data chart and logo
-
-- [ChatGPT](https://chat.openai.com/): for improving and making text content more engaging.
-
-- [ArcGIS](https://www.arcgis.com/index.html): to build the QF geomorphological units map.
-
+- [Google Fonts](https://fonts.google.com/): font was imported from here
+- [Font Awesome](https://fontawesome.com/): icons and their associated kit were downloaded from here
+- [AWS S3 Services](https://aws.amazon.com/s3/): for storing media and static data
+- [Microsoft Power Point](https://www.lucidchart.com/pages/?): used to create logo and carousel images
+- [Draw.io](https://aws.amazon.com/s3/): used to create Data Chart
+- [ChatGPT](https://chat.openai.com/): for improving and making text content more engaging
 - [Grammarly](https://app.grammarly.com): for spelling or grammatical inaccuracies in the text
-
 - [Google Chrome Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk): for auditing the performance of the web application
-
-- [Code Institute Linter](https://pep8ci.herokuapp.com/#): for validating Python code according PEP 8
-
+- [Code Institute Linter](https://pep8ci.herokuapp.com/#): for validating Python code according to PEP 8
 - [MS Paint](https://www.microsoft.com/en-us/windows/paint): for editing the captured screenshots
-
-- [Heroku](https://dashboard.heroku.com/): for deploying the terminal application.
+- [Heroku](https://dashboard.heroku.com/): for deploying the terminal application
+- [AllAuth](https://django-allauth.readthedocs.io/): for user authentication and account management
+- [Bootstrap](https://getbootstrap.com/): for CSS classes and template rendering
+- [Crispy Forms](https://pypi.org/project/crispy-bootstrap4/): for form rendering
+- [Django v4.2](https://docs.djangoproject.com/en/4.2/releases/4.2/): for the web framework
+- [django-heroku](https://pypi.org/project/django-heroku/): for deploying Django to Heroku
+- [django-storages](https://django-storages.readthedocs.io/): for managing static and media files on AWS S3
+- [gunicorn](https://pypi.org/project/gunicorn/): for running the app server
+- [psycopg2](https://pypi.org/project/psycopg2/): for PostgreSQL database integration
+- [stripe](https://stripe.com/docs): for payment processing
+- [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html): for AWS SDK to manage AWS services
+- [awscli](https://aws.amazon.com/cli/): for AWS command-line tool
+- [pillow](https://pillow.readthedocs.io/en/stable/): for image processing
+- [s3transfer](https://s3transfer.readthedocs.io/en/latest/): for managing file uploads to AWS S3
+- [sqlparse](https://buildmedia.readthedocs.org/media/pdf/sqlparse/latest/sqlparse.pdf): for SQL parsing
+- [jQuery](https://code.jquery.com/jquery-3.6.0.min.js): for fast, small, and feature-rich JavaScript library
+- [Popper.js](https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js): for positioning tooltips and popovers in Bootstrap
+- [Mailchimp](https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js): for email marketing integration
 
 [Back to top](#readme---table-of-contents)
 
