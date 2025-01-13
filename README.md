@@ -64,7 +64,7 @@ For access to Shop Admin panel in the frontend view with relevant sign-in creden
 
     3.2. [CRUD Functionality](#32-crud-functionality)
 
-    3.3. [Future Features](#33-features-showcase)
+    3.3. [Future Showcase](#33-features-showcase)
 
     3.4. [Future Features](#34-future-features)
 
@@ -610,7 +610,9 @@ The following charts show the accessibility of the features per user type.
 | **Bag/Cart**              | Visible       | Visible     | Visible   |
 | **Profile**               | Not Visible   | Visible     | Visible   |
 | **Checkout**              | Visible       | Visible     | Visible   |
+ **Contact Page**              | Visible       | Visible     | Visible   |
 | **Shop Admin**            | Not Visible   | Not Visible | Visible   |
+
 
 [Back to top](#readme---table-of-contents)
 
@@ -633,42 +635,48 @@ The following chart displays the CRUD functions per page per user. It's importan
 | **Checkout**              | C, R, U, D    | C, R, U, D            | C, R, U, D        |
 | **Shop Admin**            | X             | X                     | C, R, U, D        |
 
+* Contact page is static
 
 [Back to top](#readme---table-of-contents)
 
 ### **3.3. Features Showcase**
 
-#### Header
+#### Navbar
 
-The header features two versions tailored for both mobile and desktop views. Both versions include the site's logo, which has hover and focus functions aligned with the adopted colour scheme. The logo follows current trends by maintaining a minimalist design.
+The design ensures responsiveness and functionality suited to different user types and device sizes, optimizing user experience across platforms.
 
-In the desktop version, links are presented as nav-pills, responsive to hover, focus, and active states. The purpose of the nav-pills is to effectively indicate the section or area of the site being accessed. It is important to note that the "add cave" section, which depends on user validation and is accessed through the user area, sits between the cave and user area tabs.
-
-The navbar is also responsive to user type. When the user is not logged in, the user area is visible but appears as disabled, prompting the user to log in or sign up. Additionally, only superusers can access the reports tab, which remains invisible to other users.
-
-The mobile version includes the logo and stack bars for the drop-down menu. This version lists the sublinks under the Caves section directly without requiring additional clicks. Similar to the desktop version, the responsiveness to the user's status is also applied.
-
-
-![Nav Bar](documentation/showcase/nav_bar.png)
+##### Desktop Version
+- The desktop header features the site's logo with hover effects.
+- Navigation links are presented as **nav-items** that respond to hover, focus, and active states.
+- The navbar is user-type responsive:
+  - For unauthenticated users, the **My Profile** link is disabled and hidden.
+  - The **Shop Admin** tab is visible only to superusers, remaining hidden for other users.
 
 <details>
-<summary>Nav Bar Effects</summary>
+<summary>Navbar Desktop</summary>
 
-![Nav Bar Effects](documentation/showcase/nav_bar_effects.png)
+![Navbar Desktop](documentation/showcase/navbar/navbar_desktop.png)
+
+</details>
+
+##### Mobile Version
+- The mobile navbar replaces the logo with a stack bars button that serves as a drop-down menu.
+- The drop-down menu lists sublinks under product categories accessible to the user.
+- During testing, an additional mobile nav version was introduced for **extra small screens**:
+  - In this version, the nav-item text is set to **d-none**, leaving only the Font Awesome icons visible.
+
+<details>
+<summary>Navbar Extra Small and Small Screens</summary>
+
+![Navbar](documentation/showcase/navbar/navbar_xs_sm.png)
 
 </details>
 
 <details>
-<summary>Nav Bar Privileges - Desktop</summary>
 
-![Nav Bar Privileges - Desktop](documentation/showcase/nav_bar_privliges.png)
+<summary>Navbar Effects</summary>
 
-</details>
-
-<details>
-<summary>Nav Bar Privileges - Mobile</summary>
-
-![Nav Bar Privileges - Mobile](documentation/showcase/nav_bar_privliges_mobile.png)
+![Nav Toggle SM](documentation/showcase/navbar/nav_toggle_sm.png)
 
 </details>
 
@@ -676,17 +684,37 @@ The mobile version includes the logo and stack bars for the drop-down menu. This
 
 #### Footer
 
-I decided not to insert relevant website information in the footer.
-Instead, I inserted Font Awesome links to GitHub and LinkedIn.
-The footer is very minimalistic, almost imperceptible, as intended.
+The footer complements the promotional delivery price div with a grey background, providing a stark contrast to the site's primary white spaces. It features the web application's Facebook page link with white lettering and a border-box style, along with an invitation for users to subscribe to the newsletter. Upon subscribing, users are redirected to a confirmation page powered by Mailchimp. 
 
-![Footer](documentation/showcase/footer.png)
+<summary>Footer Desktop</summary>
+
+![Footer Desktop](documentation/showcase/footer/footer_desktop.png)
+
+</details>
+
+<summary>Mailchimp Confirmation</summary>
+
+![Footer Desktop](documentation/showcase/footer/mailchimp_newsletter.png)
+
+</details>
+
+Additionally, the footer includes links to FAQs and Contact Us, as well as the site's Privacy Policy and Terms and Conditions, both generated using Free Privacy Policy. A fictional address of the appetisers company is included for demonstration purposes. The footer also features the statement “© Developed by Henrique Pesciotti, for educational purposes only,” which links back to the website's README document. 
+
+Links to the developer’s GitHub and LinkedIn profiles are provided, each with the rel="noopener" attribute for security and performance.
+
+<summary>Footer Mobile</summary>
+
+![Footer Desktop](documentation/showcase/footer/footer_mobile.png)
+
+</details>
 
 [Back to top](#readme---table-of-contents)
 
 #### Home / Index page
 
-The home/index page is comprised of three distinct elements: the hero image, the call-to-action banner linked to a sign-in button (which switches to user area if the user is logged in), and the Cave Metrics section.
+The home/index page is comprised of three distinct elements: the hero-carousel, best-sellers and Sa Netflix row
+
+with messages to introduce the user to the shops products
 
 The hero image is represented by a panoramic photograph of the Serra do Curral, one of the geomorphological units included in the registry. This range features the Quadrilátero Ferrífero's quartzite and ironstone-supported ridges, with most of the region's caves attributed to the latter. The hero image serves to create visual appeal. In the mobile version, this image is responsive and centers on one of the mountain peaks.
 
