@@ -696,7 +696,7 @@ The footer complements the promotional delivery price div with a grey background
   <summary>Mailchimp Confirmation</summary>
 
   ![Mailchimp Confirmation](documentation/showcase/footer/mailchimp_newsletter.png)
-</detail
+</details>
 
 
 Additionally, the footer includes links to FAQs and Contact Us, as well as the site's Privacy Policy and Terms and Conditions, both generated using Free Privacy Policy. A fictional address of the appetisers company is included for demonstration purposes. The footer also features the statement “© Developed by Henrique Pesciotti, for educational purposes only,” which links back to the website's README document. 
@@ -707,7 +707,7 @@ Links to the developer’s GitHub and LinkedIn profiles are provided, each with 
   <summary>Footer Mobile</summary>
 
   ![Footer Mobile](documentation/showcase/footer/footer_mobile.png)
-</detail
+</details>
 
 [Back to top](#readme---table-of-contents)
 
@@ -721,7 +721,7 @@ The **hero-carousel** aims to introduce the user to both the store and the brand
   <summary>hero-carousel</summary>
 
   ![hero-carousel](documentation/showcase/index/hero_corousel.png)
-</detail
+</details>
 
 
 The **rows styled similarly to Netflix** (inspired by tutorial [Future Coders](https://www.youtube.com/watch?v=9nywQdjKnJI&t=971s)) are designed to quickly showcase the products available on the site, ensuring that clearance sales can be featured on the homepage. This approach supports the business model, which integrates seamlessly with the stock management system. It is worth noting that the assignment of "best-sellers" and "special offers" is managed by the superuser through the Shop Admin Panel.
@@ -730,7 +730,7 @@ The **rows styled similarly to Netflix** (inspired by tutorial [Future Coders](h
   <summary>Netflix rows</summary>
 
   ![Netflix rows](documentation/showcase/index/netflix_style_rows.png)
-</detail
+</details>
 
 Finally, the **product cards** display the item's short name (`product.widget.name`), dietary category, price, and a "View More" button linking to the product detail page. Through filtering, promotional batches of the same product are retrieved from the database and presented on the card in a customized manner. The original price is displayed in a smaller red, strikethrough font, while the promotional price is highlighted in bold green within a span. If no promotion is available, the prices are shown in grey, matching the style of other textual elements.
  
@@ -738,7 +738,7 @@ Finally, the **product cards** display the item's short name (`product.widget.na
   <summary>Product Cards</summary>
 
   ![Product Cards](documentation/showcase/index/products_cards.png)
-</details
+</details>
 
 #### All Products / Filtered Products
 
@@ -748,7 +748,7 @@ The **All Products Page** and **Filtered Products Page** stem from an intricate 
   <summary>Filtered Nav</summary>
 
   ![Filtered Nav](documentation/showcase/products/collapsable_nav_categories.png)
-</details
+</details>
 
 
 For **mobile devices**, products are displayed as compact cards, similar to the "Netflix-style" rows found on the index page. These cards provide concise details, including:
@@ -768,7 +768,7 @@ This dual design ensures a user-friendly experience across all devices, adapting
   <summary>Product Detail</summary>
 
   ![Product Detail](documentation/showcase/products/product_detail_page.png)
-</details
+</details>
 
 [Back to top](#readme---table-of-contents)
 
@@ -780,7 +780,7 @@ Product detail page contains the quantity of the packages, allergens, cooking pr
   <summary>Product Card Large</summary>
 
   ![Product Card Large](documentation/showcase/products/product_large_cards.png)
-</details
+</details>
 
 #### Bag Page
 
@@ -791,7 +791,7 @@ The **bag page** integrates all products selected and added to the cart. It hand
   <summary>Bag</summary>
 
   ![Bag](documentation/showcase/bag.png)
-</details
+</details>
 
 [Back to top](#readme---table-of-contents)
 
