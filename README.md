@@ -679,7 +679,6 @@ The design ensures responsiveness and functionality suited to different user typ
   ![Nav Toggle SM](documentation/showcase/navbar/nav_toggle_sm.png)
 </details>
 
-
 [Back to top](#readme---table-of-contents)
 
 #### Footer
@@ -690,7 +689,7 @@ The footer complements the promotional delivery price div with a grey background
   <summary>Footer Desktop</summary>
 
   ![Footer Desktop](documentation/showcase/footer/footer_desktop.png)
-</detail
+</details>
 
 
 <details> 
