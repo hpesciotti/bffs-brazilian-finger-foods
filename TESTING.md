@@ -37,27 +37,31 @@ The following images are validation screenshots taken from the service with the 
  - The validator could not test the pages that required logged in user (profile User Section) superuser credentials (Reports Section) and error pages (500, 403 and 404).
  - All the pages were valid
 
-<details>
-<summary>Cave Page</summary>
-
-![Cave Page](documentation/testing/w3_html/cave_page.png)
-</details>
-
+##### W3C Html Validator
 | Page         | Status                 | Screenshot                                                |
 |--------------|------------------------|-----------------------------------------------------------|
-| About        | No errors or warnings   | <details><summary>Show Screenshot</summary> ![About](documentation/testing/w3_html/about.png) </details> |
-| Add Cave     | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Add Cave](documentation/testing/w3_html/add_cave.png) </details> |
-| Cave Map     | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Cave Map](documentation/testing/w3_html/cave_map.png) </details> |
-| Cave Table   | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Cave Table](documentation/testing/w3_html/cave_table.png) </details> |
-| Index        | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Index](documentation/testing/w3_html/index.png) </details> |
-| Profile Page | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Profile Page](documentation/testing/w3_html/profile_page.png) </details> |
-| User Caves   | No errors or warnings   | <details><summary>Show Screenshot</summary> ![User Caves](documentation/testing/w3_html/user_caves.png) </details> |
+| Add Batches        | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Add Batches](documentation/testing/w3c_html/add_batches.png) </details> |
+| Apply Discount     | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Apply Discount](documentation/testing/w3c_html/apply_discount.png) </details> |
+| Bag     | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Bag](documentation/testing/w3c_html/bag.png) </details> |
+| Checkout Success   | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Checkout Success](documentation/testing/w3c_html/checkout_success.png) </details> |
+| Checkout       | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Checkout](documentation/testing/w3c_html/checkout.png) </details> |
+| Delete Batch | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Delete Batch](documentation/testing/w3c_html/delete_batch.png) </details> |
+| FAQs   | No errors or warnings   | <details><summary>Show Screenshot</summary> ![FAQs](documentation/testing/w3c_html/faq.png) </details> |
+| Index        | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Index](documentation/testing/w3c_html/index.png) </details> |
+| Log Out   | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Log Out](documentation/testing/w3c_html/faq.png) </details> |
+| Manage Batches   | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Manage Batches](documentation/testing/w3c_html/manage_batches.png) </details> |
+| Product Details   | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Product Details](documentation/testing/w3c_html/prod_details.png) </details> |
+| All Products   | No errors or warnings   | <details><summary>Show Screenshot</summary> ![All Products](documentation/testing/w3c_html/prod.png) </details> |
+| My Profile   | No errors or warnings   | <details><summary>Show Screenshot</summary> ![My Profile](documentation/testing/w3c_html/profile.png) </details> |
+| Shop Admin  | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Shop Admin](documentation/testing/w3c_html/shop_admin.png) </details> |
+| Sign In  | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Sign In](documentation/testing/w3c_html/sign_in.png) </details> |
+| Sign Up  | No errors or warnings   | <details><summary>Show Screenshot</summary> ![Sign Up](documentation/testing/w3c_html/sign_up.png) </details> |
+| Update Price  | No errors or warnings   | <details><summary>Show Screenshot</summary> ![User Caves](documentation/testing/w3c_html/update_price.png) </details> |
 
 
 #### **Performance Lighthouse**
 
 In general, Lighthouse evaluated a below-par performance across all website pages, even those comprised solely of static text. This could be attributed to my limited internet connection, which may have impacted the results. It is important to highlight that all images used in the web application were saved in the WebP format and compressed using [TinyPNG](https://tinypng.com/) to optimize them for better performance scores.
-
 
 ##### Lighthouse Validator
 | Page                          | Screenshot                                                             |
@@ -91,9 +95,52 @@ In general, Lighthouse evaluated a below-par performance across all website page
 
 
 #### **Python PEP 8 Validation**
+
 [Code Institute Python PEP 8 Linter](https://pep8ci.herokuapp.com/#) was used, no major error was detected, aside from indentation and whitespaces. After some refactoring the Python Linter didn't encoutered any errors. 
 
 ##### Python PEP 8 Validator
+| App_File                  | Screenshot                                                       |
+|---------------------------|------------------------------------------------------------------|
+| bag_admin.py               | <details><summary>Show Screenshot</summary> ![bag_admin](documentation/testing/python_linter/bag_admin.png) </details> |
+| bag_apps.py                | <details><summary>Show Screenshot</summary> ![bag_apps](documentation/testing/python_linter/bag_apps.png) </details> |
+| bag_context.py             | <details><summary>Show Screenshot</summary> ![bag_context](documentation/testing/python_linter/bag_context.png) </details> |
+| bag_models.py              | <details><summary>Show Screenshot</summary> ![bag_models](documentation/testing/python_linter/bag_models.png) </details> |
+| bag_urls.py                | <details><summary>Show Screenshot</summary> ![bag_urls](documentation/testing/python_linter/bag_urls.png) </details> |
+| bag_views.py               | <details><summary>Show Screenshot</summary> ![bag_views](documentation/testing/python_linter/bag_views.png) </details> |
+| checkout_admin.py          | <details><summary>Show Screenshot</summary> ![checkout_admin](documentation/testing/python_linter/checkout_admin.png) </details> |
+| checkout_apps.py           | <details><summary>Show Screenshot</summary> ![checkout_apps](documentation/testing/python_linter/checkout_apps.png) </details> |
+| checkout_forms.py          | <details><summary>Show Screenshot</summary> ![checkout_forms](documentation/testing/python_linter/checkout_forms.png) </details> |
+| checkout_signals.py        | <details><summary>Show Screenshot</summary> ![checkout_signals](documentation/testing/python_linter/checkout_signals.png) </details> |
+| checkout_urls.py           | <details><summary>Show Screenshot</summary> ![checkout_urls](documentation/testing/python_linter/checkout_urls.png) </details> |
+| checkout_views.py          | <details><summary>Show Screenshot</summary> ![checkout_views](documentation/testing/python_linter/checkout_views.png) </details> |
+| checkout_webhook_handler.py| <details><summary>Show Screenshot</summary> ![checkout_webhook_handler](documentation/testing/python_linter/checkout_webhook_handler.png) </details> |
+| checkout_webhook.py        | <details><summary>Show Screenshot</summary> ![checkout_webhook](documentation/testing/python_linter/checkout_webhook.png) </details> |
+| faqs_admin.py              | <details><summary>Show Screenshot</summary> ![faqs_admin](documentation/testing/python_linter/faq_admin.png) </details> |
+| faqs_apps.py               | <details><summary>Show Screenshot</summary> ![faqs_apps](documentation/testing/python_linter/faq_apps.png) </details> |
+| faqs_models.py             | <details><summary>Show Screenshot</summary> ![faqs_models](documentation/testing/python_linter/faq_models.png) </details> |
+| faqs_urls.py               | <details><summary>Show Screenshot</summary> ![faqs_urls](documentation/testing/python_linter/faq_urls.png) </details> |
+| faqs_views.py              | <details><summary>Show Screenshot</summary> ![faqs_views](documentation/testing/python_linter/faq_views.png) </details> |
+| home_admin.py              | <details><summary>Show Screenshot</summary> ![home_admin](documentation/testing/python_linter/home_admin.png) </details> |
+| home_apps.py               | <details><summary>Show Screenshot</summary> ![home_apps](documentation/testing/python_linter/home_apps.png) </details> |
+| home_models.py             | <details><summary>Show Screenshot</summary> ![home_models](documentation/testing/python_linter/home_models.png) </details> |
+| home_urls.py               | <details><summary>Show Screenshot</summary> ![home_urls](documentation/testing/python_linter/home_urls.png) </details> |
+| home_views.py              | <details><summary>Show Screenshot</summary> ![home_views](documentation/testing/python_linter/home_views.png) </details> |
+| products_admin.py          | <details><summary>Show Screenshot</summary> ![products_admin](documentation/testing/python_linter/prod_admin.png) </details> |
+| products_apps.py           | <details><summary>Show Screenshot</summary> ![products_apps](documentation/testing/python_linter/prod_apps.png) </details> |
+| products_models.py         | <details><summary>Show Screenshot</summary> ![products_models](documentation/testing/python_linter/prod_models.png) </details> |
+| products_urls.py           | <details><summary>Show Screenshot</summary> ![products_urls](documentation/testing/python_linter/prod_urls.png) </details> |
+| products_views.py          | <details><summary>Show Screenshot</summary> ![products_views](documentation/testing/python_linter/prod_views.png) </details> |
+| profiles_admin.py          | <details><summary>Show Screenshot</summary> ![profiles_admin](documentation/testing/python_linter/prof_admin.png) </details> |
+| profiles_apps.py           | <details><summary>Show Screenshot</summary> ![profiles_apps](documentation/testing/python_linter/prof_apps.png) </details> |
+| profiles_forms.py          | <details><summary>Show Screenshot</summary> ![profiles_forms](documentation/testing/python_linter/prof_forms.png) </details> |
+| profiles_models.py         | <details><summary>Show Screenshot</summary> ![profiles_models](documentation/testing/python_linter/prof_models.png) </details> |
+| profiles_views.py          | <details><summary>Show Screenshot</summary> ![profiles_views](documentation/testing/python_linter/prof_views.png) </details> |
+| shop_admin_admin.py        | <details><summary>Show Screenshot</summary> ![shop_admin_admin](documentation/testing/python_linter/shop_admin.png) </details> |
+| shop_admin_apps.py         | <details><summary>Show Screenshot</summary> ![shop_admin_apps](documentation/testing/python_linter/shop_apps.png) </details> |
+| shop_admin_forms.py        | <details><summary>Show Screenshot</summary> ![shop_admin_forms](documentation/testing/python_linter/shop_forms.png) </details> |
+| shop_admin_models.py       | <details><summary>Show Screenshot</summary> ![shop_admin_models](documentation/testing/python_linter/shop_models.png) </details> |
+| shop_admin_urls.py         | <details><summary>Show Screenshot</summary> ![shop_admin_urls](documentation/testing/python_linter/shop_urls.png) </details> |
+| shop_admin_views.py        | <details><summary>Show Screenshot</summary> ![shop_admin_views](documentation/testing/python_linter/shop_views.png) </details> |
 
 
 
@@ -112,6 +159,8 @@ In general, Lighthouse evaluated a below-par performance across all website page
 
 ![CSS Validation](documentation/testing/W3C_CSS_Validation_checkout.png)
 </details>
+
+###  JavaScript Validation
 
 ### **5.2. Manual Testing**
 
